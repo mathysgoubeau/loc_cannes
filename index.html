@@ -1,201 +1,1762 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Custodia Conciergerie | Cannes</title>
-    <meta
-      name="description"
-      content="Custodia Conciergerie accompagne les propriétaires à Cannes avec une gestion locative soignée, une vraie présence locale et une exécution rigoureuse."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="grain"></div>
-    <header class="site-header">
-      <a class="brand" href="#top">
-        <span class="brand-kicker">Custodia</span>
-        <span class="brand-name">Conciergerie</span>
-      </a>
-      <nav class="nav">
-        <a href="#services">Services</a>
-        <a href="#methode">Méthode</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custodia Conciergerie — Prestige & Élégance, Côte d'Azur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       VARIABLES & RESET
+    ============================================================ */
+    :root {
+      --black:   #0a0a0a;
+      --off-white: #f5f2ec;
+      --white:   #ffffff;
+      --gold:    #c9a96e;
+      --gold-light: #e8d5b0;
+      --gold-dark:  #a07840;
+      --grey:    #888888;
+      --grey-light: #e8e4de;
+      --section-gap: 120px;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-intro">
-          <p class="eyebrow">Cannes · locations courte durée · intendance</p>
-          <h1>Une présence sérieuse pour les biens qui demandent plus qu’une simple gestion.</h1>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ============================================================
+       CUSTOM CURSOR
+    ============================================================ */
+    #cursor {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+    }
+    #cursor-follower {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,110,0.5);
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.25s ease, width 0.4s, height 0.4s, border-color 0.3s;
+    }
+    body:hover #cursor-follower { transform: translate(-50%,-50%) scale(1); }
+    a:hover ~ #cursor, button:hover ~ #cursor { width: 20px; height: 20px; }
+
+    /* ============================================================
+       SCROLLBAR
+    ============================================================ */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 60px;
+      transition: background 0.5s, padding 0.4s, backdrop-filter 0.5s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex; gap: 42px; list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.7);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 100%;
+      height: 1px; background: var(--gold);
+      transition: right 0.35s ease;
+    }
+    .nav-links a:hover { color: var(--off-white); }
+    .nav-links a:hover::after { right: 0; }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      padding: 10px 24px !important;
+      letter-spacing: 0.18em !important;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* Mobile menu */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      width: 24px; height: 1px; background: var(--off-white);
+      transition: all 0.3s;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(201,169,110,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.04) 0%, transparent 50%),
+        linear-gradient(160deg, #0a0a0a 0%, #111008 50%, #0a0a0a 100%);
+    }
+
+    /* Animated lines */
+    .hero-lines {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .hero-lines::before, .hero-lines::after {
+      content: '';
+      position: absolute;
+      border: 1px solid rgba(201,169,110,0.08);
+      border-radius: 50%;
+      animation: pulse-ring 8s ease-in-out infinite;
+    }
+    .hero-lines::before {
+      width: 700px; height: 700px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .hero-lines::after {
+      width: 1000px; height: 1000px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: 2s;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 0.4; transform: translate(-50%,-50%) scale(1); }
+      50% { opacity: 0.15; transform: translate(-50%,-50%) scale(1.03); }
+    }
+
+    .hero-ornament {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 1px; height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      margin-top: -220px;
+      animation: fade-in-down 1.5s ease 0.3s both;
+    }
+
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 900px;
+      padding: 0 30px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      animation: fade-in-up 1s ease 0.4s both;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 32px;
+      animation: fade-in-up 1s ease 0.6s both;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.55);
+      margin-bottom: 56px;
+      animation: fade-in-up 1s ease 0.8s both;
+    }
+
+    .hero-btns {
+      display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+      animation: fade-in-up 1s ease 1s both;
+    }
+
+    .btn-primary {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 42px;
+      background: var(--gold);
+      color: var(--black);
+      border: 1px solid var(--gold);
+      transition: background 0.35s, color 0.35s, transform 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: transparent; color: var(--gold); transform: translateY(-2px); }
+
+    .btn-secondary {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 42px;
+      background: transparent;
+      color: var(--off-white);
+      border: 1px solid rgba(245,242,236,0.25);
+      transition: border-color 0.35s, color 0.35s, transform 0.3s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--off-white); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      animation: fade-in-up 1s ease 1.4s both;
+    }
+    .hero-scroll span {
+      font-size: 0.55rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: rgba(245,242,236,0.4);
+    }
+    .scroll-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scroll-pulse 2s ease infinite;
+    }
+    @keyframes scroll-pulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ============================================================
+       SECTION HEADERS
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 24px;
+    }
+    .section-label::before, .section-label::after {
+      content: ''; flex: 0 0 30px; height: 1px; background: var(--gold-dark);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--white);
+    }
+    .section-title em { font-style: italic; color: var(--gold-light); }
+
+    .section-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(245,242,236,0.6);
+      max-width: 540px;
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    #about {
+      padding: var(--section-gap) 60px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      max-width: 1300px; margin: 0 auto;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+    .about-frame {
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #161410 0%, #1e1a12 100%);
+      border: 1px solid rgba(201,169,110,0.15);
+      position: relative; overflow: hidden;
+    }
+    .about-frame-img {
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.7;
+    }
+    /* Decorative placeholder with gradient */
+    .about-frame-placeholder {
+      width: 100%; height: 100%;
+      background:
+        linear-gradient(135deg, rgba(201,169,110,0.06) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a96e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+        linear-gradient(160deg, #1a160e 0%, #0f0e0b 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-frame-icon {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: rgba(201,169,110,0.12);
+      letter-spacing: 0.1em;
+    }
+
+    .about-corner {
+      position: absolute;
+      width: 60px; height: 60px;
+      border-color: var(--gold);
+      border-style: solid;
+      border-width: 0;
+    }
+    .about-corner.tl { top: -12px; left: -12px; border-top-width: 1px; border-left-width: 1px; }
+    .about-corner.br { bottom: -12px; right: -12px; border-bottom-width: 1px; border-right-width: 1px; }
+
+    .about-badge {
+      position: absolute; bottom: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .about-badge-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 0.7;
+    }
+
+    .about-content { padding-left: 20px; }
+    .about-content .section-label { justify-content: flex-start; }
+    .about-content .section-label::before { display: none; }
+
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 28px; margin-top: 48px;
+    }
+    .stat {
+      border-top: 1px solid rgba(201,169,110,0.2);
+      padding-top: 20px;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.45);
+      margin-top: 6px;
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    #services {
+      padding: var(--section-gap) 60px;
+      background: linear-gradient(180deg, transparent 0%, rgba(201,169,110,0.03) 50%, transparent 100%);
+      position: relative;
+    }
+    #services::before {
+      content: '';
+      position: absolute; top: 0; left: 60px; right: 60px;
+      height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.2), transparent);
+    }
+    #services::after {
+      content: '';
+      position: absolute; bottom: 0; left: 60px; right: 60px;
+      height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.2), transparent);
+    }
+
+    .services-header {
+      text-align: center; margin-bottom: 80px;
+    }
+    .services-header .section-label { justify-content: center; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; max-width: 1300px; margin: 0 auto;
+    }
+
+    .service-card {
+      background: rgba(15,14,11,0.6);
+      border: 1px solid rgba(201,169,110,0.08);
+      padding: 52px 40px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s, background 0.4s;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s ease;
+    }
+    .service-card:hover { border-color: rgba(201,169,110,0.25); background: rgba(20,18,12,0.9); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-number {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(201,169,110,0.07);
+      position: absolute; top: 20px; right: 30px;
+      line-height: 1; transition: color 0.4s;
+    }
+    .service-card:hover .service-number { color: rgba(201,169,110,0.12); }
+
+    .service-icon {
+      width: 48px; height: 48px;
+      border: 1px solid rgba(201,169,110,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px;
+      transition: background 0.4s, border-color 0.4s;
+    }
+    .service-card:hover .service-icon { background: rgba(201,169,110,0.1); border-color: var(--gold); }
+    .service-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.2; }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .service-text {
+      font-size: 0.72rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(245,242,236,0.5);
+    }
+
+    .service-more {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 28px;
+      font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      opacity: 0; transform: translateY(6px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .service-more::after { content: '→'; }
+    .service-card:hover .service-more { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       VEHICLES
+    ============================================================ */
+    #vehicles {
+      padding: var(--section-gap) 60px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .vehicles-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 50px;
+      padding: 40px;
+      border: 1px solid rgba(201,169,110,0.12);
+      background:
+        radial-gradient(circle at top right, rgba(201,169,110,0.08), transparent 35%),
+        linear-gradient(160deg, rgba(18,16,12,0.98) 0%, rgba(10,10,10,0.98) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .vehicles-shell::before {
+      content: '';
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(201,169,110,0.08);
+      pointer-events: none;
+    }
+
+    .vehicles-copy {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 10px;
+    }
+    .vehicles-copy .section-label { justify-content: flex-start; }
+    .vehicles-copy .section-label::before { display: none; }
+
+    .vehicle-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0 18px;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.62);
+    }
+    .vehicle-tag::before {
+      content: '';
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+
+    .vehicle-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .vehicle-name span {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .vehicle-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 34px;
+    }
+    .vehicle-spec {
+      padding: 10px 14px;
+      border: 1px solid rgba(201,169,110,0.18);
+      background: rgba(255,255,255,0.02);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.72);
+    }
+
+    .vehicle-note {
+      font-size: 0.7rem;
+      line-height: 1.9;
+      color: rgba(245,242,236,0.5);
+      max-width: 460px;
+    }
+
+    .vehicle-gallery {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: stretch;
+      min-height: 520px;
+    }
+
+    .vehicle-photo {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      background: #111008;
+      border: 1px solid rgba(201,169,110,0.12);
+    }
+    .vehicle-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease, opacity 0.35s ease;
+    }
+    .vehicle-photo:hover img {
+      transform: scale(1.03);
+      opacity: 0.92;
+    }
+    .vehicle-photo.tall {
+      grid-row: span 2;
+      min-height: 100%;
+    }
+
+    .vehicle-photo-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 10px 14px;
+      background: rgba(10,10,10,0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(201,169,110,0.15);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    /* ============================================================
+       PROCESS
+    ============================================================ */
+    #process {
+      padding: var(--section-gap) 60px;
+      max-width: 1300px; margin: 0 auto;
+    }
+    .process-header { text-align: center; margin-bottom: 80px; }
+    .process-header .section-label { justify-content: center; }
+
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 30px; left: 12.5%; right: 12.5%;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold-dark), rgba(201,169,110,0.2), var(--gold-dark));
+    }
+
+    .process-step {
+      text-align: center; padding: 0 20px;
+      position: relative;
+    }
+
+    .step-dot {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,110,0.3);
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 30px;
+      position: relative; z-index: 1;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .process-step:hover .step-dot { border-color: var(--gold); background: rgba(201,169,110,0.08); }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .step-text {
+      font-size: 0.68rem; line-height: 1.8;
+      color: rgba(245,242,236,0.45);
+    }
+
+    /* ============================================================
+       GALLERY
+    ============================================================ */
+    #gallery {
+      padding: var(--section-gap) 60px;
+    }
+    .gallery-header { text-align: center; margin-bottom: 60px; }
+    .gallery-header .section-label { justify-content: center; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 4px; max-width: 1300px; margin: 0 auto;
+    }
+
+    .gallery-item {
+      overflow: hidden; position: relative;
+      background: #111008;
+      cursor: pointer;
+    }
+    .gallery-item:first-child { grid-row: span 2; }
+
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover .gallery-image { transform: scale(1.04); }
+
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+      display: flex; align-items: flex-end;
+      padding: 24px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-label {
+      font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    /* TikTok embed section */
+    .tiktok-strip {
+      max-width: 1300px; margin: 60px auto 0;
+      display: flex; gap: 20px; align-items: center;
+      padding: 32px 40px;
+      border: 1px solid rgba(201,169,110,0.12);
+      background: rgba(15,14,11,0.5);
+    }
+    .tiktok-text { flex: 1; }
+    .tiktok-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; color: var(--white);
+      margin-bottom: 6px;
+    }
+    .tiktok-text p {
+      font-size: 0.7rem; color: rgba(245,242,236,0.5);
+      letter-spacing: 0.05em;
+    }
+    .tiktok-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 30px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+      white-space: nowrap;
+    }
+    .tiktok-btn:hover { background: var(--gold); color: var(--black); }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    #testimonials {
+      padding: var(--section-gap) 60px;
+      background: linear-gradient(180deg, transparent 0%, rgba(201,169,110,0.025) 50%, transparent 100%);
+      position: relative;
+    }
+    #testimonials::before {
+      content: '';
+      position: absolute; top: 0; left: 60px; right: 60px;
+      height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.18), transparent);
+    }
+
+    .testimonials-header { text-align: center; margin-bottom: 70px; }
+    .testimonials-header .section-label { justify-content: center; }
+
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; max-width: 1300px; margin: 0 auto;
+    }
+
+    .testimonial {
+      padding: 44px 36px;
+      border: 1px solid rgba(201,169,110,0.1);
+      background: rgba(12,11,8,0.5);
+      position: relative;
+      transition: border-color 0.4s;
+    }
+    .testimonial:hover { border-color: rgba(201,169,110,0.22); }
+
+    .testimonial-quote {
+      font-family: var(--font-display);
+      font-size: 3.5rem; color: rgba(201,169,110,0.15);
+      line-height: 0.8; margin-bottom: 20px;
+    }
+
+    .testimonial-stars {
+      display: flex; gap: 5px; margin-bottom: 22px;
+    }
+    .star {
+      width: 10px; height: 10px;
+      background: var(--gold);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .testimonial-text {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(245,242,236,0.8);
+      margin-bottom: 28px;
+    }
+
+    .testimonial-author {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(201,169,110,0.2), rgba(201,169,110,0.05));
+      border: 1px solid rgba(201,169,110,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem; color: var(--gold);
+    }
+    .author-info .name {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.08em; color: var(--off-white);
+    }
+    .author-info .location {
+      font-size: 0.6rem; color: rgba(245,242,236,0.35);
+      margin-top: 3px; letter-spacing: 0.08em;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    #contact {
+      padding: var(--section-gap) 60px;
+      max-width: 1300px; margin: 0 auto;
+    }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 100px; align-items: start;
+    }
+
+    .contact-info .section-label { justify-content: flex-start; }
+    .contact-info .section-label::before { display: none; }
+
+    .contact-details {
+      margin-top: 44px;
+      display: flex; flex-direction: column; gap: 28px;
+    }
+    .contact-item {
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .contact-icon-wrap {
+      width: 42px; height: 42px; flex-shrink: 0;
+      border: 1px solid rgba(201,169,110,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-icon-wrap svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.4; }
+    .contact-item-label {
+      font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 5px;
+    }
+    .contact-item-val {
+      font-family: var(--font-display);
+      font-size: 1.05rem; color: rgba(245,242,236,0.8);
+      line-height: 1.4;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label {
+      font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(245,242,236,0.4);
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(245,242,236,0.15);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 300;
+      padding: 12px 0;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+      appearance: none;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(245,242,236,0.2); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-bottom-color: var(--gold);
+    }
+    .form-group select option { background: #111; }
+    .form-group textarea { resize: none; height: 100px; }
+
+    .form-submit {
+      font-family: var(--font-body);
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      padding: 18px 48px;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      cursor: pointer;
+      transition: background 0.35s, transform 0.3s;
+      margin-top: 10px;
+      align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--gold-dark); transform: translateY(-2px); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      border-top: 1px solid rgba(201,169,110,0.1);
+      padding: 56px 60px 40px;
+    }
+    .footer-inner {
+      max-width: 1300px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 48px;
+    }
+    .footer-brand .nav-logo { font-size: 1.4rem; display: block; margin-bottom: 18px; }
+    .footer-brand p {
+      font-size: 0.68rem; line-height: 1.85;
+      color: rgba(245,242,236,0.4); max-width: 280px;
+    }
+    .footer-socials { display: flex; gap: 12px; margin-top: 24px; }
+    .social-link {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(201,169,110,0.2);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, background 0.3s;
+      text-decoration: none;
+    }
+    .social-link:hover { border-color: var(--gold); background: rgba(201,169,110,0.07); }
+    .social-link svg { width: 14px; height: 14px; fill: var(--gold); }
+
+    .footer-col h4 {
+      font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 0.7rem; color: rgba(245,242,236,0.4);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--off-white); }
+
+    .footer-bottom {
+      max-width: 1300px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid rgba(201,169,110,0.07);
+    }
+    .footer-bottom p {
+      font-size: 0.6rem; color: rgba(245,242,236,0.25);
+      letter-spacing: 0.1em;
+    }
+    .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in-down {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+    .reveal-delay-4 { transition-delay: 0.6s; }
+    .reveal-delay-5 { transition-delay: 0.75s; }
+    .reveal-delay-6 { transition-delay: 0.9s; }
+
+    /* ============================================================
+       MOBILE MENU OVERLAY
+    ============================================================ */
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--black);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 40px;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2.2rem; font-weight: 300;
+      color: var(--off-white); text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute; top: 30px; right: 30px;
+      font-size: 1.5rem; color: var(--off-white);
+      cursor: pointer; background: none; border: none;
+      font-family: var(--font-display);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 30px; }
+      nav.scrolled { padding: 16px 30px; }
+      .nav-links { gap: 28px; }
+
+      #about { grid-template-columns: 1fr; gap: 60px; padding: 80px 30px; }
+      .about-content { padding-left: 0; }
+      .about-badge { bottom: -20px; right: 10px; }
+
+      #services { padding: 80px 30px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+
+      #vehicles { padding: 80px 30px; }
+      .vehicles-shell {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 32px;
+      }
+      .vehicle-gallery {
+        min-height: auto;
+      }
+
+      #process { padding: 80px 30px; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 50px; }
+      .process-steps::before { display: none; }
+
+      #gallery { padding: 80px 30px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item:first-child { grid-row: span 1; }
+
+      #testimonials { padding: 80px 30px; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+
+      #contact { padding: 80px 30px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 60px; }
+
+      footer { padding: 48px 30px 30px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+      #cursor, #cursor-follower { display: none; }
+
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-title { font-size: clamp(2.6rem, 10vw, 4rem); }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .vehicle-gallery {
+        grid-template-columns: 1fr;
+      }
+      .vehicle-photo.tall {
+        grid-row: span 1;
+      }
+      .vehicle-photo {
+        min-height: 280px;
+      }
+      .process-steps { grid-template-columns: 1fr; gap: 40px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 4px;
+      }
+      .gallery-item { height: 240px; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+      .tiktok-strip { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+    <a href="#about" onclick="closeMobileMenu()">À Propos</a>
+    <a href="#services" onclick="closeMobileMenu()">Services</a>
+    <a href="#vehicles" onclick="closeMobileMenu()">Véhicules</a>
+    <a href="#gallery" onclick="closeMobileMenu()">Galerie</a>
+    <a href="#testimonials" onclick="closeMobileMenu()">Avis</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">CUSTODIA<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">À Propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#vehicles">Véhicules</a></li>
+      <li><a href="#gallery">Galerie</a></li>
+      <li><a href="#testimonials">Avis</a></li>
+      <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
+    </ul>
+    <div class="hamburger" onclick="openMobileMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-ornament"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Conciergerie de Prestige — Côte d'Azur · 06</p>
+
+      <h1 class="hero-title">
+        L'art de prendre soin<br>
+        de ce qui vous est <em>précieux</em>
+      </h1>
+
+      <p class="hero-subtitle">Gestion locative · Accueil sur mesure · Services d'exception</p>
+
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Découvrir nos services</a>
+        <a href="#contact" class="btn-secondary">Prendre rendez-vous</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Défiler</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about">
+    <div class="about-visual reveal">
+      <div class="about-frame">
+        <div class="about-frame-placeholder">
+          <span class="about-frame-icon">C</span>
         </div>
+        <div class="about-corner tl"></div>
+        <div class="about-corner br"></div>
+      </div>
+      <div class="about-badge">
+        <span class="about-badge-num">06</span>
+        <span class="about-badge-text">Alpes-Maritimes</span>
+      </div>
+    </div>
 
-        <div class="hero-layout">
-          <div class="hero-lead">
-            <p>
-              Custodia Conciergerie accompagne les propriétaires qui veulent une
-              location bien tenue, un suivi clair et une exécution constante.
-              Le positionnement est volontairement sobre: moins d’effets, plus
-              de rigueur, plus de présence, plus d’attention au détail.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#contact">Parler de votre bien</a>
-              <a
-                class="button button-secondary"
-                href="https://www.tiktok.com/@custodia.conciergerie06"
-                target="_blank"
-                rel="noreferrer"
-                >Voir le TikTok</a
-              >
+    <div class="about-content">
+      <div class="section-label reveal">Notre Histoire</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Une conciergerie<br>
+        née de la <em>passion</em><br>
+        du détail
+      </h2>
+      <p class="section-desc reveal reveal-delay-2" style="margin-top: 24px;">
+        Custodia Conciergerie est née d'une conviction simple : chaque propriété mérite une attention absolue, chaque client mérite une expérience sans pareil. Basée dans les Alpes-Maritimes, nous intervenons sur l'ensemble de la Côte d'Azur pour vous offrir la sérénité que vous méritez.
+      </p>
+      <p class="section-desc reveal reveal-delay-3" style="margin-top: 18px;">
+        De la gestion locative complète à l'accueil chaleureux de vos voyageurs, chaque prestation est pensée, soignée et exécutée avec rigueur. Votre bien, notre fierté.
+      </p>
+
+      <div class="about-stats">
+        <div class="stat reveal reveal-delay-2">
+          <div class="stat-num">100+</div>
+          <div class="stat-label">Propriétés gérées</div>
+        </div>
+        <div class="stat reveal reveal-delay-3">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Clients satisfaits</div>
+        </div>
+        <div class="stat reveal reveal-delay-4">
+          <div class="stat-num">7/7</div>
+          <div class="stat-label">Disponibilité</div>
+        </div>
+        <div class="stat reveal reveal-delay-5">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-label">Note moyenne</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section id="services">
+    <div class="services-header">
+      <div class="section-label reveal">Nos Prestations</div>
+      <h2 class="section-title reveal reveal-delay-1">Des services pensés pour<br><em>l'excellence</em></h2>
+    </div>
+
+    <div class="services-grid">
+      <!-- 1 -->
+      <div class="service-card reveal">
+        <span class="service-number">01</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="service-title">Gestion Locative Complète</h3>
+        <p class="service-text">Nous prenons en charge l'intégralité de votre location saisonnière : création et optimisation des annonces sur toutes les plateformes, gestion des réservations, communication avec les voyageurs, et suivi financier transparent.</p>
+        <a href="#contact" class="service-more">En savoir plus</a>
+      </div>
+
+      <!-- 2 -->
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-number">02</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3 class="service-title">Accueil & Conciergerie</h3>
+        <p class="service-text">Un accueil personnalisé et chaleureux pour chacun de vos voyageurs. Remise des clés, présentation du logement, recommandations locales — nous veillons à ce que chaque séjour commence sous les meilleurs auspices.</p>
+        <a href="#contact" class="service-more">En savoir plus</a>
+      </div>
+
+      <!-- 3 -->
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-number">03</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="service-title">Ménage & Blanchisserie</h3>
+        <p class="service-text">Nettoyage professionnel entre chaque séjour, change de linge, renouvellement des consommables. Votre propriété est toujours impeccable, prête à accueillir dans un cadre digne des plus beaux hôtels.</p>
+        <a href="#contact" class="service-more">En savoir plus</a>
+      </div>
+
+      <!-- 4 -->
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-number">04</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3 class="service-title">Maintenance & Suivi</h3>
+        <p class="service-text">Interventions réactives en cas de panne ou d'incident, coordination des prestataires, visites régulières de contrôle. Votre bien est protégé et entretenu en toutes circonstances, même en votre absence.</p>
+        <a href="#contact" class="service-more">En savoir plus</a>
+      </div>
+
+      <!-- 5 -->
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-number">05</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="service-title">Disponibilité 7j/7</h3>
+        <p class="service-text">Nos équipes sont joignables tous les jours, toute l'année. Chaque demande reçoit une réponse rapide et une solution concrète. La tranquillité d'esprit de nos clients est notre priorité absolue.</p>
+        <a href="#contact" class="service-more">En savoir plus</a>
+      </div>
+
+      <!-- 6 -->
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-number">06</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 class="service-title">Services Premium sur Mesure</h3>
+        <p class="service-text">Décoration florale, paniers d'accueil, transferts privés, expériences exclusives sur la Côte d'Azur... Nous concevons des moments d'exception pour vos hôtes les plus exigeants.</p>
+        <a href="#contact" class="service-more">En savoir plus</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VEHICLES
+  ============================================================ -->
+  <section id="vehicles">
+    <div class="vehicles-shell">
+      <div class="vehicles-copy">
+        <div class="section-label reveal">Mobilité Premium</div>
+        <h2 class="section-title reveal reveal-delay-1">
+          Un premier aperçu<br>
+          de la <em>RS3</em>
+        </h2>
+        <div class="vehicle-tag reveal reveal-delay-2">Audi Sport · Performance & Élégance</div>
+        <h3 class="vehicle-name reveal reveal-delay-2">Audi <span>RS3</span></h3>
+        <p class="section-desc reveal reveal-delay-3">
+          Voici l'intégration de la première voiture pour te permettre de voir le rendu sur le site. La section est prête à accueillir les prochains véhicules dès que tu me donnes les autres modèles.
+        </p>
+        <div class="vehicle-specs reveal reveal-delay-4">
+          <span class="vehicle-spec">Extérieur</span>
+          <span class="vehicle-spec">Intérieur</span>
+          <span class="vehicle-spec">Galerie réelle</span>
+        </div>
+        <p class="vehicle-note reveal reveal-delay-5">
+          J'ai utilisé les deux visuels présents dans `assets` pour créer une présentation plus premium, avec une photo principale et un focus sur le volant / l'habitacle.
+        </p>
+      </div>
+
+      <div class="vehicle-gallery">
+        <figure class="vehicle-photo tall reveal reveal-delay-1">
+          <img src="assets/rs3.jpg" alt="Audi RS3 vue extérieure" />
+          <figcaption class="vehicle-photo-label">Vue extérieure</figcaption>
+        </figure>
+        <figure class="vehicle-photo reveal reveal-delay-2">
+          <img src="assets/volant_rs3.jpg" alt="Audi RS3 vue intérieure avec volant" />
+          <figcaption class="vehicle-photo-label">Volant & intérieur</figcaption>
+        </figure>
+        <figure class="vehicle-photo reveal reveal-delay-3">
+          <img src="assets/rs3.jpg" alt="Audi RS3 détail carrosserie" />
+          <figcaption class="vehicle-photo-label">Détail RS3</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROCESS
+  ============================================================ -->
+  <section id="process">
+    <div class="process-header">
+      <div class="section-label reveal">Notre Méthode</div>
+      <h2 class="section-title reveal reveal-delay-1">Un accompagnement<br><em>fluide & sans friction</em></h2>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-dot"><span class="step-num">I</span></div>
+        <h3 class="step-title">Prise de contact</h3>
+        <p class="step-text">Nous échangeons sur votre bien, vos objectifs et vos attentes pour proposer une prestation parfaitement adaptée.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-dot"><span class="step-num">II</span></div>
+        <h3 class="step-title">Audit & Stratégie</h3>
+        <p class="step-text">Visite du logement, photos professionnelles, optimisation des annonces, définition d'une politique tarifaire performante.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-dot"><span class="step-num">III</span></div>
+        <h3 class="step-title">Mise en service</h3>
+        <p class="step-text">Votre bien est actif sur toutes les plateformes. Nous gérons les réservations, accueillons les voyageurs et assurons les prestations.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-dot"><span class="step-num">IV</span></div>
+        <h3 class="step-title">Reporting & Optimisation</h3>
+        <p class="step-text">Tableau de bord transparent, virements ponctuels, bilans réguliers et ajustements continus pour maximiser vos revenus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GALLERY
+  ============================================================ -->
+  <section id="gallery">
+    <div class="gallery-header">
+      <div class="section-label reveal">Notre Univers</div>
+      <h2 class="section-title reveal reveal-delay-1">L'élégance de la<br><em>Côte d'Azur</em></h2>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img class="gallery-image" src="assets/photo_cannes1.jpg" alt="Cannes vue 1" />
+        <div class="gallery-overlay"><span class="gallery-label">Cannes · Vue 01</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img class="gallery-image" src="assets/photo_cannes2.jpg" alt="Cannes vue 2" />
+        <div class="gallery-overlay"><span class="gallery-label">Cannes · Vue 02</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img class="gallery-image" src="assets/photo_cannes3.jpg" alt="Cannes vue 3" />
+        <div class="gallery-overlay"><span class="gallery-label">Cannes · Vue 03</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img class="gallery-image" src="assets/photo_cannes4.jpg" alt="Cannes vue 4" />
+        <div class="gallery-overlay"><span class="gallery-label">Cannes · Vue 04</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img class="gallery-image" src="assets/photo_cannes5.jpg" alt="Cannes vue 5" />
+        <div class="gallery-overlay"><span class="gallery-label">Cannes · Vue 05</span></div>
+      </div>
+    </div>
+
+    <div class="tiktok-strip reveal" style="max-width:1300px;margin:40px auto 0;">
+      <div class="tiktok-text">
+        <h3>Suivez-nous sur TikTok</h3>
+        <p>Découvrez nos coulisses, nos propriétés et les moments qui font la différence.</p>
+      </div>
+      <a href="https://www.tiktok.com/@custodia.conciergerie06" target="_blank" rel="noopener" class="tiktok-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.77 1.52V6.73a4.85 4.85 0 01-1-.04z"/></svg>
+        @custodia.conciergerie06
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section id="testimonials">
+    <div class="testimonials-header">
+      <div class="section-label reveal">Témoignages</div>
+      <h2 class="section-title reveal reveal-delay-1">Ce que disent<br><em>nos clients</em></h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-text">Custodia a transformé ma villa en une source de revenus sans que j'aie quoi que ce soit à gérer. Professionnalisme exemplaire, communication parfaite et résultats au-delà de mes espérances.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div class="author-info">
+            <div class="name">Marc D.</div>
+            <div class="location">Propriétaire · Cannes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal reveal-delay-1">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-text">L'accueil de nos invités a été parfait. Tout était préparé avec un souci du détail rare. Nos locataires ont laissé des avis 5 étoiles sans exception. Je recommande absolument.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div class="author-info">
+            <div class="name">Sophie L.</div>
+            <div class="location">Propriétaire · Antibes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal reveal-delay-2">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-text">Enfin une conciergerie qui comprend vraiment ce que signifie le service haut de gamme. Disponibles à toute heure, réactifs, élégants dans leur façon de travailler. Un vrai partenaire de confiance.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div class="author-info">
+            <div class="name">Alexandre R.</div>
+            <div class="location">Investisseur · Nice</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="section-label reveal">Contact</div>
+        <h2 class="section-title reveal reveal-delay-1">
+          Parlons de votre<br>
+          <em>propriété</em>
+        </h2>
+        <p class="section-desc reveal reveal-delay-2" style="margin-top:20px;">
+          Que vous soyez propriétaire souhaitant déléguer, ou voyageur à la recherche d'une expérience sur mesure — notre équipe vous répond avec la discrétion et la réactivité qui vous sont dues.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-item reveal reveal-delay-2">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Téléphone</div>
+              <div class="contact-item-val">+33 (0)6 — Sur demande</div>
             </div>
           </div>
 
-          <aside class="hero-note">
-            <p class="note-title">Ce que cela implique sur le terrain</p>
-            <ul>
-              <li>un bien préparé avant chaque arrivée</li>
-              <li>un accueil propre et lisible pour les voyageurs</li>
-              <li>un suivi local au lieu d’une gestion distante</li>
-              <li>une communication simple côté propriétaire</li>
-            </ul>
-          </aside>
-        </div>
-      </section>
-
-      <section class="opening">
-        <p>
-          Un propriétaire ne cherche pas seulement à louer. Il cherche à
-          déléguer sans dégrader l’image du bien, sans courir après les infos et
-          sans avoir le sentiment que personne ne tient réellement le sujet.
-        </p>
-      </section>
-
-      <section class="services" id="services">
-        <div class="section-label">Services</div>
-        <div class="services-grid">
-          <article>
-            <span>01</span>
-            <h2>Organisation des séjours</h2>
-            <p>
-              Gestion du rythme locatif, préparation des arrivées et coordination
-              générale pour garder une exploitation propre et cohérente.
-            </p>
-          </article>
-          <article>
-            <span>02</span>
-            <h2>Accueil voyageurs</h2>
-            <p>
-              Arrivées, départs, échanges avant séjour et présence disponible
-              pour poser une expérience plus rassurante dès le départ.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h2>Préparation du bien</h2>
-            <p>
-              Vérification visuelle, remise en ordre, niveau de présentation et
-              attention aux détails qui changent immédiatement la perception.
-            </p>
-          </article>
-          <article>
-            <span>04</span>
-            <h2>Intendance locale</h2>
-            <p>
-              Coordination sur place et suivi courant pour éviter qu’un logement
-              perde progressivement en tenue ou en exigence.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="split-story">
-        <div class="story-main">
-          <div class="section-label">Positionnement</div>
-          <h2>Le vrai luxe, ici, tient surtout dans la régularité.</h2>
-          <p>
-            Le bien est suivi. Les choses sont dites clairement. Le niveau
-            reste stable d’un séjour à l’autre. C’est souvent cela qui manque
-            quand la gestion devient trop automatisée, trop distante ou trop
-            approximative.
-          </p>
-        </div>
-        <div class="story-side">
-          <p>présence locale</p>
-          <p>standards clairs</p>
-          <p>suivi régulier</p>
-          <p>communication simple</p>
-        </div>
-      </section>
-
-      <section class="method" id="methode">
-        <div class="section-label">Méthode</div>
-        <div class="method-grid">
-          <div class="method-intro">
-            <h2>Une façon de travailler qui reste lisible.</h2>
-            <p>
-              Pas de discours compliqué. D’abord comprendre le bien, ensuite
-              cadrer ce qui doit être pris en charge, puis tenir le niveau dans
-              la durée.
-            </p>
+          <div class="contact-item reveal reveal-delay-3">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-val">contact@custodia-conciergerie.fr</div>
+            </div>
           </div>
-          <div class="method-steps">
-            <article>
-              <strong>01</strong>
-              <p>Échange initial sur le bien, le niveau attendu et les points de vigilance.</p>
-            </article>
-            <article>
-              <strong>02</strong>
-              <p>Mise en place des repères de fonctionnement et des standards de tenue.</p>
-            </article>
-            <article>
-              <strong>03</strong>
-              <p>Suivi courant avec une logique de continuité, pas de bricolage au cas par cas.</p>
-            </article>
+
+          <div class="contact-item reveal reveal-delay-4">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Zone d'intervention</div>
+              <div class="contact-item-val">Alpes-Maritimes (06)<br>Côte d'Azur</div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="closing-quote">
-        <p>
-          Ce qu’un propriétaire attend au fond reste simple: un bien net, des
-          voyageurs bien reçus, et quelqu’un de fiable pour tenir le niveau.
-        </p>
-      </section>
+      <div class="reveal reveal-delay-2">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Prénom</label>
+              <input type="text" placeholder="Jean" />
+            </div>
+            <div class="form-group">
+              <label>Nom</label>
+              <input type="text" placeholder="Dupont" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="jean@exemple.com" />
+          </div>
+          <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" placeholder="+33 6 00 00 00 00" />
+          </div>
+          <div class="form-group">
+            <label>Vous êtes</label>
+            <select>
+              <option value="" disabled selected>Sélectionner...</option>
+              <option>Propriétaire souhaitant déléguer</option>
+              <option>Investisseur immobilier</option>
+              <option>Voyageur / Client</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Votre message</label>
+            <textarea placeholder="Décrivez votre bien ou votre demande..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Envoyer la demande</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-      <section class="contact" id="contact">
-        <div class="section-label">Contact</div>
-        <div class="contact-layout">
-          <div class="contact-copy">
-            <h2>Une première version plus crédible, moins “template”, plus éditoriale.</h2>
-            <p>
-              Il reste à remplacer la partie maquette par les vraies informations:
-              coordonnées, zone exacte, photos, prestations réelles et éléments
-              de réassurance.
-            </p>
-          </div>
-          <div class="contact-links">
-            <a href="https://www.tiktok.com/@custodia.conciergerie06" target="_blank" rel="noreferrer">
-              <span>TikTok</span>
-              <strong>@custodia.conciergerie06</strong>
-            </a>
-            <a href="mailto:contact@custodia-conciergerie.fr">
-              <span>Email maquette</span>
-              <strong>contact@custodia-conciergerie.fr</strong>
-            </a>
-            <a href="tel:+33600000000">
-              <span>Téléphone maquette</span>
-              <strong>06 00 00 00 00</strong>
-            </a>
-          </div>
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">CUSTODIA<span style="color:var(--gold)">.</span></a>
+        <p>Conciergerie de prestige sur la Côte d'Azur. Nous gérons votre bien avec l'élégance et la rigueur qu'il mérite, pour que vous n'ayez qu'une chose à faire — profiter.</p>
+        <div class="footer-socials">
+          <a href="https://www.tiktok.com/@custodia.conciergerie06" target="_blank" rel="noopener" class="social-link" title="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.77 1.52V6.73a4.85 4.85 0 01-1-.04z"/></svg>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener" class="social-link" title="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
         </div>
-      </section>
-    </main>
-  </body>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Gestion locative</a></li>
+          <li><a href="#services">Accueil & Conciergerie</a></li>
+          <li><a href="#services">Ménage & Blanchisserie</a></li>
+          <li><a href="#services">Maintenance</a></li>
+          <li><a href="#services">Services premium</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#process">Notre méthode</a></li>
+          <li><a href="#gallery">Galerie</a></li>
+          <li><a href="#testimonials">Avis clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Zones</h4>
+        <ul>
+          <li><a href="#contact">Cannes</a></li>
+          <li><a href="#contact">Antibes</a></li>
+          <li><a href="#contact">Nice</a></li>
+          <li><a href="#contact">Saint-Raphaël</a></li>
+          <li><a href="#contact">Côte d'Azur</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Custodia Conciergerie — Tous droits réservés</p>
+      <p>Conciergerie de prestige · <a href="#contact">Alpes-Maritimes · 06</a></p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* --- Custom cursor --- */
+    const cursor = document.getElementById('cursor');
+    const follower = document.getElementById('cursor-follower');
+    let mx = 0, my = 0, fx = 0, fy = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top  = my + 'px';
+    });
+    function animateFollower() {
+      fx += (mx - fx) * 0.12;
+      fy += (my - fy) * 0.12;
+      follower.style.left = fx + 'px';
+      follower.style.top  = fy + 'px';
+      requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+    document.querySelectorAll('a, button, .service-card, .gallery-item').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width  = '18px';
+        cursor.style.height = '18px';
+        follower.style.width  = '52px';
+        follower.style.height = '52px';
+        follower.style.borderColor = 'rgba(201,169,110,0.7)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width  = '10px';
+        cursor.style.height = '10px';
+        follower.style.width  = '36px';
+        follower.style.height = '36px';
+        follower.style.borderColor = 'rgba(201,169,110,0.5)';
+      });
+    });
+
+    /* --- Navbar scroll --- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* --- Scroll reveal --- */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    /* --- Mobile menu --- */
+    function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    /* --- Form submit --- */
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = 'Message envoyé ✓';
+      btn.style.background = 'var(--gold-dark)';
+      setTimeout(() => {
+        btn.textContent = 'Envoyer la demande';
+        btn.style.background = 'var(--gold)';
+        e.target.reset();
+      }, 3500);
+    }
+
+    /* --- Smooth nav links --- */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
 </html>
