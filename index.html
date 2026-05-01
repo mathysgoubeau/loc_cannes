@@ -3,68 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CTD conciergerie - Voitures, logements & packs premium</title>
-  <meta name="description" content="Conciergerie premium a Cannes pour reserver une voiture, un logement ou un pack complet sur la Cote d'Azur." />
+  <title>CTD Conciergerie Premium - Cannes</title>
+  <meta name="description" content="Conciergerie premium a Cannes : packs sejours cle en main, location vehicules, finalisation securisee et gestion de caution." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #132026;
-      --ink-soft: #30414a;
-      --paper: #fffaf0;
-      --sand: #f4dfbd;
-      --sun: #f7b267;
-      --coral: #ef6f5e;
-      --lagoon: #0e8a8a;
-      --mint: #cce8dd;
+      --black: #000000;
+      --black-soft: #101010;
+      --gold: #c5a059;
       --white: #ffffff;
-      --line: rgba(19, 32, 38, 0.12);
-      --shadow: 0 24px 70px rgba(19, 32, 38, 0.18);
+      --smoke: #f6f6f4;
+      --mist: #ecebea;
+      --muted: #626262;
+      --line: rgba(0, 0, 0, 0.12);
+      --line-dark: rgba(255, 255, 255, 0.16);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.13);
       --radius: 8px;
-      --font-body: "Inter", Arial, sans-serif;
-      --font-display: "Playfair Display", Georgia, serif;
+      --font: "Inter", Arial, sans-serif;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: var(--font-body);
+      color: var(--black);
+      background: var(--white);
+      font-family: var(--font);
+      letter-spacing: 0;
       overflow-x: hidden;
     }
 
-    img { display: block; max-width: 100%; }
+    body.menu-open {
+      overflow: hidden;
+    }
 
-    a { color: inherit; text-decoration: none; }
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
-    button, input, select, textarea { font: inherit; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .site-shell {
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .page {
       min-height: 100vh;
-      background:
-        linear-gradient(180deg, rgba(255, 250, 240, 0.84), rgba(255, 250, 240, 0.74) 48%, rgba(255, 250, 240, 1) 100%),
-        url("photo voiture/IMG_8105.jpeg") center / cover fixed;
+      background: var(--white);
     }
 
     .nav {
       position: fixed;
       inset: 0 0 auto;
-      z-index: 20;
-      display: flex;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 24px;
       align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-      padding: 18px clamp(18px, 4vw, 64px);
-      transition: background 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
+      padding: 18px clamp(18px, 5vw, 72px);
+      color: var(--white);
+      transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
     }
 
-    .nav.is-scrolled {
-      background: rgba(255, 250, 240, 0.92);
+    .nav.is-scrolled,
+    .nav.is-open {
+      color: var(--black);
+      background: rgba(255, 255, 255, 0.92);
       box-shadow: 0 1px 0 var(--line);
       backdrop-filter: blur(18px);
       padding-block: 12px;
@@ -73,790 +96,1088 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
+      min-width: max-content;
+      font-size: 0.83rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .brand-mark {
-      width: 34px;
-      height: 34px;
       display: grid;
+      width: 38px;
+      height: 38px;
       place-items: center;
-      border-radius: 50%;
-      background: var(--ink);
-      color: var(--paper);
-      font-family: var(--font-display);
-      font-size: 1.05rem;
+      border: 1px solid currentColor;
+      color: currentColor;
+      font-size: 0.82rem;
+      font-weight: 800;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px;
+      justify-content: center;
+      gap: clamp(14px, 2.5vw, 34px);
       margin: 0;
+      padding: 0;
       list-style: none;
-      background: rgba(255, 255, 255, 0.54);
-      border: 1px solid rgba(255, 255, 255, 0.56);
-      border-radius: 999px;
-      box-shadow: 0 14px 42px rgba(19, 32, 38, 0.08);
-      backdrop-filter: blur(18px);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
     .nav-links a {
-      display: inline-flex;
-      min-height: 38px;
-      align-items: center;
-      padding: 0 15px;
-      border-radius: 999px;
-      color: rgba(19, 32, 38, 0.72);
-      font-size: 0.84rem;
-      font-weight: 700;
-      transition: background 0.2s ease, color 0.2s ease;
+      opacity: 0.78;
+      transition: opacity 0.2s ease, color 0.2s ease;
     }
 
     .nav-links a:hover {
-      background: var(--white);
-      color: var(--ink);
+      color: var(--gold);
+      opacity: 1;
     }
 
-    .nav-cta,
+    .nav-actions {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid currentColor;
+      border-radius: var(--radius);
+      color: inherit;
+      background: rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(10px);
+    }
+
+    .menu-btn span,
+    .menu-btn::before,
+    .menu-btn::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: currentColor;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .menu-btn {
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav.is-open .menu-btn span {
+      opacity: 0;
+    }
+
+    .nav.is-open .menu-btn::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav.is-open .menu-btn::after {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .nav.is-scrolled .menu-btn,
+    .nav.is-open .menu-btn {
+      background: rgba(255, 255, 255, 0.86);
+    }
+
     .btn {
       display: inline-flex;
-      min-height: 44px;
+      min-height: 46px;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      border: 0;
-      border-radius: 999px;
-      padding: 0 20px;
-      color: var(--white);
-      background: var(--ink);
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 0 19px;
+      color: var(--black);
+      background: var(--gold);
+      font-size: 0.78rem;
       font-weight: 800;
-      box-shadow: 0 14px 30px rgba(19, 32, 38, 0.18);
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
     }
 
-    .nav-cta:hover,
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 18px 38px rgba(19, 32, 38, 0.24);
+      background: #d4b46b;
     }
 
-    .btn.sun {
-      color: var(--ink);
-      background: var(--sun);
+    .btn.dark {
+      color: var(--white);
+      background: var(--black);
+    }
+
+    .btn.dark:hover {
+      background: var(--black-soft);
+    }
+
+    .btn.light {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn.light:hover {
+      color: var(--black);
+      background: var(--white);
     }
 
     .btn.ghost {
-      color: var(--ink);
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: none;
-      border: 1px solid rgba(19, 32, 38, 0.14);
+      color: var(--black);
+      border-color: var(--line);
+      background: transparent;
     }
 
-    .menu-btn { display: none; }
+    .btn.ghost:hover {
+      border-color: var(--gold);
+      background: rgba(197, 160, 89, 0.08);
+    }
+
+    .btn[disabled] {
+      cursor: not-allowed;
+      opacity: 0.42;
+      transform: none;
+    }
+
+    .btn[disabled]:hover {
+      background: var(--gold);
+    }
 
     .hero {
       position: relative;
+      min-height: 96svh;
       display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1.1fr);
-      gap: clamp(28px, 5vw, 76px);
-      align-items: center;
-      width: min(1180px, calc(100% - 36px));
-      min-height: 100svh;
-      margin: 0 auto;
-      padding: 118px 0 50px;
+      place-items: center;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--black);
     }
 
-    .hero-copy {
-      width: min(640px, 100%);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 18px;
-      color: var(--lagoon);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
+    .hero::before {
       content: "";
-      width: 38px;
-      height: 2px;
-      background: var(--coral);
-    }
-
-    h1, h2, h3, p { margin-top: 0; }
-
-    .hero h1 {
-      max-width: 560px;
-      margin-bottom: 18px;
-      font-family: var(--font-display);
-      font-size: clamp(2.55rem, 5.2vw, 5.2rem);
-      line-height: 0.98;
-      letter-spacing: 0;
-    }
-
-    .hero h1 span { color: var(--coral); }
-
-    .hero-lead {
-      max-width: 420px;
-      margin-bottom: 26px;
-      color: var(--ink-soft);
-      font-size: clamp(0.98rem, 1.2vw, 1.1rem);
-      line-height: 1.65;
-      font-weight: 500;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 34px;
-    }
-
-    .trust-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      max-width: 570px;
-      margin: 0 auto;
-    }
-
-    .trust-item {
-      padding: 14px;
-      border: 1px solid rgba(19, 32, 38, 0.1);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(18px);
-    }
-
-    .trust-item strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.82rem;
-    }
-
-    .trust-item span {
-      display: block;
-      color: rgba(19, 32, 38, 0.62);
-      font-size: 0.74rem;
-      line-height: 1.35;
-    }
-
-    .hero-media {
-      position: relative;
-      min-height: 640px;
-    }
-
-    .summer-card {
       position: absolute;
-      overflow: hidden;
-      border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: var(--shadow);
-    }
-
-    .summer-card.main {
-      inset: auto 0 0 12%;
-      height: min(70vh, 670px);
-    }
-
-    .summer-card.side {
-      left: 0;
-      top: 76px;
-      width: 42%;
-      height: 280px;
-      border: 8px solid var(--paper);
-    }
-
-    .summer-card.detail {
-      right: 8%;
-      top: 22px;
-      width: 35%;
-      height: 190px;
-      border: 8px solid var(--paper);
-    }
-
-    .summer-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .float-booking {
-      position: relative;
-      width: min(720px, 100%);
-      margin: 18px auto 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr auto;
-      gap: 10px;
-      align-items: end;
-      padding: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.68);
-      border-radius: var(--radius);
-      background: rgba(255, 250, 240, 0.88);
-      box-shadow: 0 22px 55px rgba(19, 32, 38, 0.16);
-      backdrop-filter: blur(18px);
-    }
-
-    .whatsapp-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 18px;
-      align-items: center;
-      padding: clamp(22px, 4vw, 36px);
-      border-radius: var(--radius);
+      inset: 0;
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 240, 0.72)),
-        url("photo voiture/IMG_8100.jpeg") right center / auto 160% no-repeat;
-      box-shadow: var(--shadow);
-      overflow: hidden;
+        linear-gradient(90deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.2) 46%, rgba(0, 0, 0, 0.76)),
+        url("assets/photo_cannes3.jpg") center / cover;
+      opacity: 0.58;
+      transform: scale(1.04);
     }
 
-    .whatsapp-panel h2 {
-      margin-bottom: 10px;
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 36px));
+      padding: 120px 0 64px;
     }
 
-    .whatsapp-panel p {
-      max-width: 520px;
-      margin-bottom: 0;
-      color: rgba(19, 32, 38, 0.66);
-      line-height: 1.65;
-      font-weight: 600;
-    }
-
-    .closing-note {
-      max-width: 760px;
-      margin: 0 auto;
+    .hero-topline {
+      display: grid;
+      width: 100%;
+      min-width: 0;
+      gap: 18px;
+      justify-items: center;
+      margin-bottom: clamp(36px, 7vw, 68px);
       text-align: center;
     }
 
-    .closing-note h2 {
-      margin-bottom: 14px;
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3.8rem);
-      line-height: 1.04;
-    }
-
-    .closing-note p {
-      margin-bottom: 0;
-      color: rgba(19, 32, 38, 0.64);
-      font-size: clamp(1rem, 1.5vw, 1.18rem);
-      line-height: 1.7;
-      font-weight: 600;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 7px;
-      color: rgba(19, 32, 38, 0.58);
-      font-size: 0.72rem;
+    .kicker {
+      margin: 0;
+      color: var(--gold);
+      font-size: 0.76rem;
       font-weight: 800;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: 0.09em;
     }
 
-    .field select,
-    .field input,
-    .field textarea {
+    .hero h1 {
       width: 100%;
-      min-height: 44px;
-      border: 1px solid rgba(19, 32, 38, 0.14);
-      border-radius: 6px;
-      padding: 0 12px;
-      color: var(--ink);
-      background: rgba(255, 255, 255, 0.86);
-      outline: none;
+      min-width: 0;
+      max-width: min(850px, 100%);
+      margin: 0;
+      font-size: clamp(2.35rem, 7vw, 6.8rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      overflow-wrap: break-word;
     }
 
-    .field textarea {
-      min-height: 108px;
-      padding-top: 12px;
-      resize: vertical;
+    .hero-subline {
+      width: 100%;
+      min-width: 0;
+      max-width: min(520px, 100%);
+      margin: 0;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: clamp(0.98rem, 1.25vw, 1.12rem);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .split-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      width: min(760px, 100%);
+      margin: 0 auto;
+    }
+
+    .split-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 210px;
+      display: grid;
+      align-content: end;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius);
+      padding: clamp(20px, 4vw, 30px);
+      background: var(--black);
+      isolation: isolate;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .split-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: var(--split-image) center / cover;
+      opacity: 0.54;
+      transform: scale(1.04);
+      transition: transform 0.6s ease, opacity 0.25s ease;
+    }
+
+    .split-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.88));
+    }
+
+    .split-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .split-card:hover::before {
+      opacity: 0.72;
+      transform: scale(1.1);
+    }
+
+    .split-card > span:not(.btn) {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .split-card strong {
+      display: block;
+      margin-bottom: 20px;
+      font-size: clamp(1.2rem, 2.6vw, 2rem);
+      font-weight: 500;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .split-card .btn {
+      width: fit-content;
+    }
+
+    .quick-strip {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      width: min(980px, calc(100% - 36px));
+      margin: -34px auto 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--line-dark);
+      box-shadow: var(--shadow);
+    }
+
+    .quick-strip div {
+      min-height: 78px;
+      padding: 18px 20px;
+      background: var(--white);
+    }
+
+    .quick-strip strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .quick-strip span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.35;
     }
 
     .section {
       width: min(1180px, calc(100% - 36px));
       margin: 0 auto;
-      padding: clamp(68px, 9vw, 118px) 0;
+      padding: clamp(72px, 10vw, 128px) 0;
     }
 
-    #voitures {
-      padding-top: clamp(16px, 3vw, 34px);
+    .section.compact {
+      padding-top: clamp(52px, 8vw, 86px);
     }
 
     .section-head {
       display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.72fr);
-      gap: 28px;
+      grid-template-columns: minmax(0, 0.92fr) minmax(300px, 0.58fr);
+      gap: 36px;
       align-items: end;
-      margin-bottom: 30px;
+      margin-bottom: clamp(26px, 5vw, 48px);
     }
 
-    .section-kicker {
-      margin-bottom: 12px;
-      color: var(--coral);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
 
-    .section h2 {
+    .section h2,
+    .band h2 {
       margin-bottom: 0;
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4vw, 4rem);
-      line-height: 1.02;
+      font-size: clamp(2rem, 5vw, 4.7rem);
+      font-weight: 300;
+      line-height: 1;
       letter-spacing: 0;
+      text-transform: uppercase;
     }
 
     .section-head p,
     .muted {
-      color: rgba(19, 32, 38, 0.66);
-      line-height: 1.7;
-      font-weight: 500;
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.65;
     }
 
-    .offers {
+    .pack-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .offer {
-      position: relative;
-      overflow: hidden;
-      min-height: 500px;
-      display: flex;
-      align-items: flex-end;
-      border-radius: var(--radius);
-      background: var(--ink);
-      box-shadow: 0 18px 50px rgba(19, 32, 38, 0.14);
-    }
-
-    .offer.featured {
-      order: -1;
-      min-height: 540px;
-      outline: 2px solid rgba(247, 178, 103, 0.85);
-      outline-offset: -8px;
-      box-shadow: 0 28px 70px rgba(19, 32, 38, 0.2);
-    }
-
-    .offer img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.55s ease;
-    }
-
-    .offer:hover img { transform: scale(1.045); }
-
-    .offer::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(19, 32, 38, 0.05), rgba(19, 32, 38, 0.18) 36%, rgba(19, 32, 38, 0.82));
-    }
-
-    .offer.featured::after {
-      background:
-        linear-gradient(180deg, rgba(19, 32, 38, 0.02), rgba(19, 32, 38, 0.16) 30%, rgba(19, 32, 38, 0.9)),
-        linear-gradient(135deg, rgba(247, 178, 103, 0.24), transparent 42%);
-    }
-
-    .offer-body {
-      position: relative;
-      z-index: 1;
-      padding: 24px;
-      color: var(--white);
-    }
-
-    .offer-tag {
-      display: inline-flex;
-      margin-bottom: 13px;
-      border-radius: 999px;
-      padding: 7px 10px;
-      color: var(--ink);
-      background: var(--sun);
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .offer-tag.recommended {
-      background: var(--mint);
-    }
-
-    .offer h3 {
-      margin-bottom: 10px;
-      font-family: var(--font-display);
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .offer p {
-      margin-bottom: 20px;
-      color: rgba(255, 255, 255, 0.78);
-      line-height: 1.55;
-      font-weight: 500;
-    }
-
-    .offer ul {
-      display: grid;
-      gap: 8px;
-      padding: 0;
-      margin: 0 0 24px;
-      list-style: none;
-    }
-
-    .offer li {
-      display: flex;
-      gap: 8px;
-      color: rgba(255, 255, 255, 0.86);
-      font-size: 0.91rem;
-      font-weight: 700;
-    }
-
-    .offer li::before {
-      content: "";
-      flex: 0 0 7px;
-      width: 7px;
-      height: 7px;
-      margin-top: 7px;
-      border-radius: 50%;
-      background: var(--mint);
-    }
-
-    .fleet {
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
       gap: 16px;
       align-items: stretch;
     }
 
-    .feature-car {
+    .pack-card {
       position: relative;
+      display: grid;
+      grid-template-rows: 250px 1fr;
       overflow: hidden;
+      min-height: 100%;
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--ink);
+      background: var(--white);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .pack-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(197, 160, 89, 0.62);
       box-shadow: var(--shadow);
     }
 
-    .feature-car img {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      transform: scale(1.04);
-      animation: heroCarDrift 13s ease-in-out infinite alternate;
+    .pack-card.featured {
+      z-index: 2;
+      transform: scale(1.035);
+      border: 2px solid var(--gold);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.18);
     }
 
-    .feature-car::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(135deg, rgba(255, 250, 240, 0.12), transparent 36%, rgba(19, 32, 38, 0.18));
-      mix-blend-mode: screen;
+    .pack-card.featured:hover {
+      transform: scale(1.035) translateY(-5px);
     }
 
-    .feature-car .caption {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 20px;
-      color: var(--white);
-    }
-
-    .feature-car h3 {
-      margin: 0 0 4px;
-      font-size: 1.45rem;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      border-radius: 999px;
-      padding: 0 12px;
-      color: var(--ink);
-      background: var(--mint);
-      font-size: 0.78rem;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .car-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .car-tile {
+    .pack-media {
       position: relative;
       overflow: hidden;
-      border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: 0 14px 36px rgba(19, 32, 38, 0.12);
-      transform: translateY(0);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: var(--black);
     }
 
-    .car-tile:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 52px rgba(19, 32, 38, 0.18);
-    }
-
-    .car-tile img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-
-    .car-tile:hover img { transform: scale(1.08); }
-
-    .car-tile span {
-      display: block;
-      padding: 13px 14px 15px;
-      font-weight: 800;
-    }
-
-    .vehicle-marquee {
-      overflow: hidden;
-      margin-top: 0;
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.58);
-      box-shadow: 0 18px 52px rgba(19, 32, 38, 0.1);
-    }
-
-    .vehicle-track {
-      display: flex;
-      width: max-content;
-      gap: 18px;
-      padding: 18px;
-      animation: slideVehicles 38s linear infinite;
-    }
-
-    .vehicle-marquee:hover .vehicle-track { animation-play-state: paused; }
-
-    .vehicle-frame {
-      flex: 0 0 390px;
-      overflow: hidden;
-      aspect-ratio: 16 / 10;
-      border-radius: var(--radius);
-      background: var(--ink);
-    }
-
-    .vehicle-frame img {
+    .pack-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0.9;
+      transition: transform 0.7s ease;
     }
 
-    .experience-band {
-      background:
-        linear-gradient(90deg, rgba(19, 32, 38, 0.82), rgba(19, 32, 38, 0.24)),
-        url("assets/photo_cannes3.jpg") center / cover;
-      color: var(--white);
+    .pack-card:hover .pack-media img {
+      transform: scale(1.06);
     }
 
-    .experience {
-      width: min(1180px, calc(100% - 36px));
-      margin: 0 auto;
-      padding: clamp(72px, 9vw, 116px) 0;
-      display: grid;
-      grid-template-columns: minmax(0, 0.8fr) minmax(320px, 0.62fr);
-      gap: 48px;
+    .badge {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      display: inline-flex;
+      min-height: 30px;
       align-items: center;
+      border-radius: var(--radius);
+      padding: 0 10px;
+      color: var(--black);
+      background: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .experience h2 {
-      margin-bottom: 20px;
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5vw, 4.9rem);
-      line-height: 0.98;
+    .pack-body {
+      display: grid;
+      gap: 20px;
+      padding: 24px;
     }
 
-    .experience p {
-      max-width: 620px;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 1.08rem;
-      line-height: 1.72;
-      font-weight: 500;
-    }
-
-    .steps {
+    .pack-title {
       display: grid;
       gap: 10px;
     }
 
-    .step {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 14px;
-      align-items: start;
-      padding: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(16px);
-    }
-
-    .step b {
-      display: grid;
-      width: 44px;
-      height: 44px;
-      place-items: center;
-      border-radius: 50%;
-      color: var(--ink);
-      background: var(--sun);
-    }
-
-    .step strong { display: block; margin-bottom: 4px; }
-
-    .step span {
-      color: rgba(255, 255, 255, 0.74);
-      line-height: 1.45;
-      font-size: 0.92rem;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr 0.9fr;
-      grid-auto-rows: 260px;
-      gap: 12px;
-    }
-
-    .gallery figure {
-      position: relative;
-      overflow: hidden;
+    .pack-title h3 {
       margin: 0;
-      border-radius: var(--radius);
-      background: var(--ink);
-      box-shadow: 0 18px 46px rgba(19, 32, 38, 0.12);
+      font-size: clamp(1.28rem, 2.4vw, 1.9rem);
+      font-weight: 500;
+      line-height: 1.05;
+      text-transform: uppercase;
     }
 
-    .gallery figure:first-child {
-      grid-row: span 2;
+    .price {
+      color: var(--gold);
+      font-size: 1.02rem;
+      font-weight: 800;
     }
 
-    .gallery img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.04);
-      transition: transform 0.7s ease;
+    .capacity {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
     }
 
-    .gallery figure:nth-child(odd) img { animation: slowZoom 12s ease-in-out infinite alternate; }
-    .gallery figure:nth-child(even) img { animation: slowPan 14s ease-in-out infinite alternate; }
-    .gallery figure:hover img { transform: scale(1.1); }
-
-    @keyframes heroCarDrift {
-      from { transform: scale(1.04) translate3d(-8px, 0, 0); }
-      to { transform: scale(1.1) translate3d(12px, -8px, 0); }
-    }
-
-    @keyframes slideVehicles {
-      from { transform: translateX(0); }
-      to { transform: translateX(calc(-50% - 7px)); }
-    }
-
-    @keyframes slowZoom {
-      from { transform: scale(1.03); }
-      to { transform: scale(1.12); }
-    }
-
-    @keyframes slowPan {
-      from { transform: scale(1.08) translateX(-12px); }
-      to { transform: scale(1.08) translateX(12px); }
-    }
-
-    .contact-card {
+    .offer-list,
+    .check-list,
+    .timeline,
+    .mini-list {
       display: grid;
-      grid-template-columns: 0.78fr 1fr;
-      gap: 26px;
-      padding: clamp(18px, 3vw, 34px);
-      border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: var(--shadow);
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
-    .contact-aside {
-      overflow: hidden;
+    .offer-list li,
+    .check-list li,
+    .mini-list li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--black);
+      line-height: 1.45;
+    }
+
+    .offer-list li::before,
+    .check-list li::before,
+    .mini-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .options-band {
+      margin-top: 22px;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--ink);
+      background: var(--smoke);
+    }
+
+    .options-band h3 {
+      margin-bottom: 18px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .check-list {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px 18px;
+    }
+
+    .band {
+      background: var(--black);
       color: var(--white);
     }
 
-    .contact-aside img {
+    .band-inner {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: clamp(72px, 10vw, 126px) 0;
+    }
+
+    .vehicle-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .vehicle-hero,
+    .vehicle-tile,
+    .proof-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--black-soft);
+    }
+
+    .vehicle-hero {
+      min-height: 560px;
+      display: grid;
+      align-content: end;
+      padding: clamp(22px, 4vw, 34px);
+    }
+
+    .vehicle-hero img,
+    .vehicle-tile img,
+    .proof-tile img {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: 320px;
+      height: 100%;
       object-fit: cover;
     }
 
-    .contact-aside div { padding: 22px; }
-
-    .contact-aside h3 {
-      margin-bottom: 8px;
-      font-family: var(--font-display);
-      font-size: 1.9rem;
+    .vehicle-hero img {
+      opacity: 0.72;
     }
 
-    .contact-aside p {
-      color: rgba(255, 255, 255, 0.72);
-      line-height: 1.6;
+    .vehicle-hero::after,
+    .vehicle-tile::after,
+    .proof-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.82));
     }
 
-    .form {
+    .vehicle-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+    }
+
+    .vehicle-copy h3 {
+      margin-bottom: 12px;
+      font-size: clamp(1.7rem, 4vw, 3.9rem);
+      font-weight: 300;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .vehicle-copy p {
+      color: rgba(255, 255, 255, 0.74);
+      line-height: 1.65;
+    }
+
+    .vehicle-side {
       display: grid;
-      gap: 14px;
-      align-content: start;
+      gap: 16px;
+    }
+
+    .vehicle-tile {
+      min-height: 272px;
+      display: grid;
+      align-content: end;
+      padding: 22px;
+    }
+
+    .vehicle-tile img {
+      opacity: 0.66;
+      transition: transform 0.65s ease;
+    }
+
+    .vehicle-tile:hover img {
+      transform: scale(1.07);
+    }
+
+    .vehicle-tile strong {
+      position: relative;
+      z-index: 1;
+      display: block;
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .vehicle-tile span {
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin-top: 7px;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.4;
+    }
+
+    .whatsapp-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) auto;
+      gap: 28px;
+      align-items: center;
+      margin-top: 42px;
+      padding: clamp(24px, 4vw, 40px);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.7)),
+        url("photo voiture/IMG_8102.jpeg") center / cover;
+    }
+
+    .whatsapp-panel h3 {
+      margin-bottom: 12px;
+      font-size: clamp(1.6rem, 3vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .whatsapp-panel p {
+      max-width: 650px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.65;
+    }
+
+    .checkout {
+      width: 100%;
+      background: var(--smoke);
+    }
+
+    .checkout > .section-head,
+    .checkout > .checkout-layout {
+      width: min(1180px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .checkout-card,
+    .summary-card,
+    .process-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 16px 46px rgba(0, 0, 0, 0.06);
+    }
+
+    .checkout-card {
+      padding: clamp(20px, 4vw, 34px);
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+      margin-bottom: 24px;
     }
 
-    .submit-note {
-      color: rgba(19, 32, 38, 0.56);
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label,
+    .upload-label,
+    .choice-title {
+      color: var(--black);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 13px;
+      color: var(--black);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field textarea {
+      min-height: 114px;
+      padding-top: 13px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.14);
+    }
+
+    .upload-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 12px 0 18px;
+    }
+
+    .upload-tile {
+      display: grid;
+      gap: 12px;
+      min-height: 132px;
+      align-content: center;
+      border: 1px dashed rgba(0, 0, 0, 0.28);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: var(--smoke);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .upload-tile:hover,
+    .upload-tile.has-file {
+      border-color: var(--gold);
+      background: rgba(197, 160, 89, 0.08);
+    }
+
+    .upload-tile input {
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .file-status {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .consent-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .check-row,
+    .radio-card {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 12px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.48;
+    }
+
+    .check-row input,
+    .radio-card input {
+      width: 18px;
+      height: 18px;
+      margin: 2px 0 0;
+      accent-color: var(--gold);
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .radio-card {
+      cursor: pointer;
+      min-height: 118px;
+    }
+
+    .radio-card strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 0.96rem;
+      text-transform: uppercase;
+    }
+
+    .radio-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .conditional-note {
+      display: grid;
+      gap: 12px;
+      margin: 12px 0 18px;
+      padding: 14px;
+      border: 1px solid rgba(197, 160, 89, 0.48);
+      border-radius: var(--radius);
+      background: rgba(197, 160, 89, 0.08);
+    }
+
+    .conditional-note.is-hidden {
+      display: none;
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--black);
+    }
+
+    .timeline b {
+      display: inline-grid;
+      min-height: 32px;
+      place-items: center;
+      border-radius: var(--radius);
+      color: var(--black);
+      background: var(--gold);
+      font-size: 0.78rem;
+    }
+
+    .summary-card {
+      position: sticky;
+      top: 92px;
+      overflow: hidden;
+    }
+
+    .summary-media {
+      position: relative;
+      height: 220px;
+      background: var(--black);
+    }
+
+    .summary-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.82;
+    }
+
+    .summary-body {
+      display: grid;
+      gap: 18px;
+      padding: 22px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+      font-size: 0.92rem;
+    }
+
+    .summary-row strong {
+      font-weight: 800;
+    }
+
+    .summary-total {
+      display: grid;
+      gap: 6px;
+      padding: 16px;
+      border-radius: var(--radius);
+      color: var(--white);
+      background: var(--black);
+    }
+
+    .summary-total span {
+      color: rgba(255, 255, 255, 0.68);
       font-size: 0.82rem;
-      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .summary-total strong {
+      font-size: 1.8rem;
+      font-weight: 400;
+    }
+
+    .payment-state {
+      min-height: 20px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .process-card {
+      padding: clamp(22px, 4vw, 34px);
+    }
+
+    .process-card h3 {
+      margin-bottom: 18px;
+      font-size: 1.18rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .proof-tile {
+      min-height: 230px;
+      display: grid;
+      align-content: end;
+      padding: 18px;
+      color: var(--white);
+    }
+
+    .proof-tile span,
+    .proof-tile strong {
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+
+    .proof-tile span {
+      margin-bottom: 7px;
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .proof-tile strong {
+      font-size: 1.05rem;
+      line-height: 1.18;
+      text-transform: uppercase;
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .trust-badges span {
+      display: inline-flex;
+      min-height: 36px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      color: var(--black);
+      background: var(--white);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     footer {
-      padding: 34px clamp(18px, 4vw, 64px);
-      background: var(--ink);
-      color: rgba(255, 255, 255, 0.68);
+      color: rgba(255, 255, 255, 0.72);
+      background: var(--black);
     }
 
     .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: start;
+      width: min(1180px, calc(100% - 36px));
       margin: 0 auto;
-      font-size: 0.88rem;
+      padding: 42px 0;
     }
 
-    .footer-inner strong { color: var(--white); }
+    .footer-logo {
+      display: grid;
+      width: 72px;
+      height: 72px;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-inner strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--white);
+      font-size: 0.86rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-inner p {
+      max-width: 420px;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 18px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
 
     .reveal {
       opacity: 0;
@@ -869,283 +1190,757 @@
       transform: translateY(0);
     }
 
-    @media (max-width: 980px) {
-      .nav-links { display: none; }
-      .menu-btn {
-        display: inline-flex;
-        min-height: 40px;
-        align-items: center;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 0 14px;
-        background: rgba(255, 255, 255, 0.72);
-        color: var(--ink);
-        font-weight: 800;
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 1060px) {
+      .pack-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero,
-      .section-head,
-      .experience,
-      .contact-card,
-      .whatsapp-panel {
+      .pack-card,
+      .pack-card.featured {
+        grid-template-columns: minmax(240px, 0.42fr) 1fr;
+        grid-template-rows: 1fr;
+        transform: none;
+      }
+
+      .pack-card.featured:hover {
+        transform: translateY(-5px);
+      }
+
+      .pack-media {
+        min-height: 320px;
+      }
+
+      .check-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .vehicle-layout,
+      .checkout-layout,
+      .trust-grid {
         grid-template-columns: 1fr;
+      }
+
+      .summary-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 840px) {
+      .nav {
+        grid-template-columns: auto 1fr;
+      }
+
+      .nav-links {
+        position: fixed;
+        left: 14px;
+        right: 14px;
+        top: 68px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--white);
+        color: var(--black);
+        box-shadow: var(--shadow);
+      }
+
+      .nav.is-open .nav-links {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 16px;
+        border-bottom: 1px solid var(--line);
+        opacity: 1;
+      }
+
+      .nav-links li:last-child a {
+        border-bottom: 0;
+      }
+
+      .nav-actions {
+        grid-column: 2;
+        justify-self: end;
+      }
+
+      .nav-actions .nav-cta {
+        display: none;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        color: var(--black);
+        border-color: var(--gold);
+        background: var(--gold);
+      }
+
+      .nav.is-scrolled .menu-btn,
+      .nav.is-open .menu-btn {
+        top: 12px;
+      }
+
+      .section-head,
+      .split-actions,
+      .quick-strip,
+      .whatsapp-panel,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-strip {
+        margin-top: 0;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .section,
+      .band-inner,
+      .checkout > .section-head,
+      .checkout > .checkout-layout {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .hero-inner {
+        width: min(100% - 28px, 1180px);
+        padding-top: 104px;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.95rem, 10vw, 2.8rem);
+      }
+
+      .split-card {
+        min-height: 176px;
+      }
+
+      .vehicle-hero {
+        min-height: 480px;
+      }
+
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brand span:last-child {
+        display: none;
       }
 
       .hero {
-        align-items: start;
-        min-height: auto;
+        min-height: 100svh;
       }
 
-      .hero-media {
-        min-height: 620px;
+      .hero-topline {
+        justify-items: start;
+        text-align: left;
       }
 
-      .offers { grid-template-columns: 1fr; }
-      .offer,
-      .offer.featured { min-height: 430px; }
-      .experience-band { background-position: center; }
-    }
+      .split-card .btn {
+        width: 100%;
+      }
 
-    @media (max-width: 720px) {
-      .site-shell { background-attachment: scroll; }
-      .nav-cta { display: none; }
-      .brand { font-size: 0.86rem; }
-      .hero { width: min(100% - 28px, 1180px); padding-top: 104px; }
-      .hero h1 { font-size: clamp(2.55rem, 15vw, 4.1rem); }
-      .trust-row,
-      .float-booking,
-      .car-grid,
-      .gallery,
-      .form-grid {
+      .pack-card,
+      .pack-card.featured {
         grid-template-columns: 1fr;
       }
 
-      .section { width: min(100% - 28px, 1180px); }
-      .hero-media { min-height: 520px; }
-      .summer-card.main { left: 0; height: 455px; }
-      .summer-card.side { top: 24px; width: 48%; height: 165px; }
-      .summer-card.detail { top: 8px; right: 0; width: 44%; height: 138px; }
-      .feature-car img { height: 390px; }
-      .feature-car .caption { align-items: flex-start; flex-direction: column; }
-      .vehicle-frame { flex-basis: 300px; }
-      .gallery { grid-auto-rows: 230px; }
-      .gallery figure:first-child { grid-row: span 1; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .pack-media {
+        min-height: 230px;
+      }
+
+      .pack-body,
+      .checkout-card,
+      .summary-body,
+      .process-card {
+        padding: 18px;
+      }
+
+      .form-grid,
+      .upload-grid,
+      .choice-grid,
+      .check-list {
+        grid-template-columns: 1fr;
+      }
+
+      .vehicle-hero {
+        min-height: 420px;
+      }
+
+      .vehicle-side {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        padding-bottom: 88px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="site-shell">
-    <header class="nav" id="nav">
-      <a href="#top" class="brand" aria-label="CTD conciergerie">
-        <span class="brand-mark">C</span>
-        <span>CTD conciergerie</span>
+  <div class="page">
+    <header class="nav" id="siteNav">
+      <a class="brand" href="#home" aria-label="CTD Conciergerie Premium">
+        <span class="brand-mark">CTD</span>
+        <span>Conciergerie Premium</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#offres">Offres</a></li>
-        <li><a href="#voitures">Voitures</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#packs">Packs sejours</a></li>
+        <li><a href="#vehicules">Vehicules</a></li>
+        <li><a href="#finalisation">Finalisation</a></li>
+        <li><a href="#trust">Trust</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Demander un devis</a>
-      <button class="menu-btn" type="button" id="menuBtn">Menu</button>
+
+      <div class="nav-actions">
+        <a class="btn light nav-cta js-whatsapp" href="#" data-message="Bonjour CTD, je souhaite verifier une disponibilite premium a Cannes.">WhatsApp</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false"><span></span></button>
+      </div>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Cannes - Cote d'Azur</p>
-          <h1>CTD conciergerie <span>premium.</span></h1>
-          <p class="hero-lead">Voitures, logements et packs sur mesure pour vos sejours a Cannes.</p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn sun">Commander maintenant</a>
-            <a href="#offres" class="btn ghost">Voir les offres</a>
+    <main>
+      <section class="hero" id="home" aria-label="Accueil CTD">
+        <div class="hero-inner">
+          <div class="hero-topline">
+            <p class="kicker">Cannes - Cote d'Azur</p>
+            <h1>Experience premium. Cle en main.</h1>
+            <p class="hero-subline">Choisissez votre parcours. CTD coordonne le reste.</p>
           </div>
-          <form class="float-booking" id="quickForm">
-            <div class="field">
-              <label for="quickType">Besoin</label>
-              <select id="quickType" name="type">
-                <option>Voiture</option>
-                <option>Logement</option>
-                <option>Pack complet</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="quickDate">Arrivee</label>
-              <input id="quickDate" name="date" type="date" />
-            </div>
-            <button class="btn" type="submit">WhatsApp</button>
-          </form>
+
+          <div class="split-actions">
+            <a class="split-card" href="#packs" style="--split-image: url('assets/photo_cannes5.jpg');">
+              <span>Offre principale</span>
+              <strong>Nos packs sejours</strong>
+              <span class="btn">Voir les packs</span>
+            </a>
+
+            <a class="split-card" href="#vehicules" style="--split-image: url('photo voiture/IMG_8113.jpeg');">
+              <span>Location simple</span>
+              <strong>Location vehicules</strong>
+              <span class="btn light">Voir les vehicules</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <aside class="quick-strip" aria-label="Points de confiance">
+        <div>
+          <strong>PDF instantane</strong>
+          <span>Catalogue envoye via WhatsApp Pro.</span>
+        </div>
+        <div>
+          <strong>Dossier bloque</strong>
+          <span>Documents requis avant paiement.</span>
+        </div>
+        <div>
+          <strong>Caution cadree</strong>
+          <span>Validation 72h avant arrivee.</span>
+        </div>
+      </aside>
+
+      <section class="section" id="packs">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">Packs sejours</p>
+            <h2>L'offre complete.</h2>
+          </div>
+          <p>Logement haut standing, vehicule, activite signature. Un seul interlocuteur. Zero dispersion.</p>
         </div>
 
-        <div class="hero-media reveal">
-          <figure class="summer-card main">
-            <img src="photo voiture/IMG_8105.jpeg" alt="Vehicule premium CTD conciergerie" />
-          </figure>
-          <figure class="summer-card side">
-            <img src="assets/photo_cannes2.jpg" alt="Cannes en ete" />
-          </figure>
-          <figure class="summer-card detail">
-            <img src="photo voiture/IMG_7531.jpeg" alt="Interieur vehicule premium" />
-          </figure>
+        <div class="pack-grid">
+          <article class="pack-card reveal">
+            <div class="pack-media">
+              <img src="assets/rs3.jpg" alt="Vehicule premium pour Pack Riviera" />
+            </div>
+            <div class="pack-body">
+              <div class="pack-title">
+                <h3>Pack Riviera</h3>
+                <div class="price">2 000 &euro; | Caution 2 000 &euro;</div>
+                <div class="capacity">Jusqu'a 2 personnes</div>
+              </div>
+              <ul class="offer-list">
+                <li>Vehicule premium compact</li>
+                <li>Appartement standing</li>
+                <li>Beach club ou table reservee</li>
+              </ul>
+              <a class="btn dark js-whatsapp" href="#" data-pack="Pack Riviera" data-message="Bonjour CTD, je souhaite verifier la disponibilite du Pack Riviera. Merci de m'envoyer le catalogue PDF.">Verifier la disponibilite</a>
+            </div>
+          </article>
+
+          <article class="pack-card featured reveal">
+            <div class="pack-media">
+              <img src="photo voiture/IMG_8105.jpeg" alt="SUV luxe pour Pack Signature Cannes" />
+              <span class="badge">Le plus demande</span>
+            </div>
+            <div class="pack-body">
+              <div class="pack-title">
+                <h3>Pack Signature Cannes</h3>
+                <div class="price">6 000 &euro; | Caution 6 000 &euro;</div>
+                <div class="capacity">Jusqu'a 5 personnes</div>
+              </div>
+              <ul class="offer-list">
+                <li>SUV luxe selon disponibilite</li>
+                <li>Villa ou appartement haut standing</li>
+                <li>Yacht sunset ou beach club premium</li>
+              </ul>
+              <a class="btn js-whatsapp" href="#" data-pack="Pack Signature Cannes" data-message="Bonjour CTD, je souhaite verifier la disponibilite du Pack Signature Cannes. Merci de m'envoyer le catalogue PDF.">Verifier la disponibilite</a>
+            </div>
+          </article>
+
+          <article class="pack-card reveal">
+            <div class="pack-media">
+              <img src="assets/photo_cannes4.jpg" alt="Experience prestige a Cannes" />
+            </div>
+            <div class="pack-body">
+              <div class="pack-title">
+                <h3>Pack Full Black</h3>
+                <div class="price">10 000 &euro; | Caution 10 000 &euro;</div>
+                <div class="capacity">Jusqu'a 8 personnes</div>
+              </div>
+              <ul class="offer-list">
+                <li>Vehicule luxe ou chauffeur</li>
+                <li>Villa privee selectionnee</li>
+                <li>Yacht day, chef ou event prive</li>
+              </ul>
+              <a class="btn dark js-whatsapp" href="#" data-pack="Pack Full Black" data-message="Bonjour CTD, je souhaite verifier la disponibilite du Pack Full Black. Merci de m'envoyer le catalogue PDF.">Verifier la disponibilite</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="options-band reveal">
+          <h3>Options additionnelles</h3>
+          <ul class="check-list">
+            <li>Transfert aeroport</li>
+            <li>Chef a domicile</li>
+            <li>Photographe prive</li>
+            <li>Decoration EVJF / event</li>
+            <li>Extension de sejour</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="band" id="vehicules">
+        <div class="band-inner">
+          <div class="section-head reveal">
+            <div>
+              <p class="kicker">Location vehicules</p>
+              <h2>Simple. Net. Premium.</h2>
+            </div>
+            <p>Pour les clients qui veulent uniquement le vehicule. Disponibilite, dates, depot, depart.</p>
+          </div>
+
+          <div class="vehicle-layout">
+            <article class="vehicle-hero reveal">
+              <img src="photo voiture/IMG_8113.jpeg" alt="SUV premium noir disponible en location" />
+              <div class="vehicle-copy">
+                <p class="kicker">Selection CTD</p>
+                <h3>SUV luxe ou berline sportive.</h3>
+                <p>Prise en charge coordonnee. Etat propre. Process clair.</p>
+                <a class="btn js-whatsapp" href="#" data-message="Bonjour CTD, je souhaite louer un vehicule premium a Cannes. Pouvez-vous verifier les disponibilites ?">Verifier un vehicule</a>
+              </div>
+            </article>
+
+            <div class="vehicle-side">
+              <a class="vehicle-tile reveal js-whatsapp" href="#" data-message="Bonjour CTD, je souhaite recevoir les disponibilites SUV luxe.">
+                <img src="photo voiture/IMG_8106.jpeg" alt="Detail SUV luxe noir" />
+                <strong>SUV luxe</strong>
+                <span>Confort. Presence. Week-end ou sejour.</span>
+              </a>
+
+              <a class="vehicle-tile reveal js-whatsapp" href="#" data-message="Bonjour CTD, je souhaite recevoir les disponibilites berline sportive.">
+                <img src="assets/volant_rs3.jpg" alt="Interieur Audi RS3 premium" />
+                <strong>Berline sportive</strong>
+                <span>Format direct. Sensation. Cannes et alentours.</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="whatsapp-panel reveal">
+            <div>
+              <p class="kicker">Entry point conversion</p>
+              <h3>WhatsApp ouvre le dossier.</h3>
+              <p>Message pre-rempli, catalogue PDF, reponse humaine et filtrage naturel avant finalisation.</p>
+            </div>
+            <a class="btn js-whatsapp" href="#" data-message="Bonjour CTD, je souhaite ouvrir un dossier premium. Merci de m'envoyer le catalogue PDF.">Ouvrir WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section checkout" id="finalisation">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">Checkout securise</p>
+            <h2>Finalisation sans friction.</h2>
+          </div>
+          <p>Le paiement reste bloque tant que le dossier client n'est pas complet.</p>
+        </div>
+
+        <div class="checkout-layout">
+          <form class="checkout-card reveal" id="checkoutForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="packSelect">Pack</label>
+                <select id="packSelect" name="pack">
+                  <option value="riviera">Pack Riviera</option>
+                  <option value="signature" selected>Pack Signature Cannes</option>
+                  <option value="fullblack">Pack Full Black</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="arrivalDate">Arrivee</label>
+                <input id="arrivalDate" name="arrival" type="date" />
+              </div>
+              <div class="field">
+                <label for="clientName">Nom client</label>
+                <input id="clientName" name="name" type="text" placeholder="Nom complet" autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="clientPhone">Telephone</label>
+                <input id="clientPhone" name="phone" type="tel" placeholder="+33" autocomplete="tel" />
+              </div>
+            </div>
+
+            <p class="choice-title">Documents obligatoires</p>
+            <div class="upload-grid">
+              <label class="upload-tile" for="idDoc">
+                <span class="upload-label">Piece d'identite</span>
+                <span class="file-status">Photo ou PDF</span>
+                <input id="idDoc" type="file" accept="image/*,application/pdf" />
+              </label>
+
+              <label class="upload-tile" for="licenseFront">
+                <span class="upload-label">Permis recto</span>
+                <span class="file-status">Photo ou PDF</span>
+                <input id="licenseFront" type="file" accept="image/*,application/pdf" />
+              </label>
+
+              <label class="upload-tile" for="licenseBack">
+                <span class="upload-label">Permis verso</span>
+                <span class="file-status">Photo ou PDF</span>
+                <input id="licenseBack" type="file" accept="image/*,application/pdf" />
+              </label>
+
+              <label class="upload-tile" for="addressDoc">
+                <span class="upload-label">Justificatif domicile</span>
+                <span class="file-status">Photo ou PDF</span>
+                <input id="addressDoc" type="file" accept="image/*,application/pdf" />
+              </label>
+            </div>
+
+            <div class="consent-stack">
+              <label class="check-row">
+                <input id="validDocs" type="checkbox" />
+                <span>Je certifie que ces documents sont valides et m'appartiennent.</span>
+              </label>
+
+              <label class="check-row">
+                <input id="legalClause" type="checkbox" />
+                <span>Je reconnais que la caution doit etre validee 72h avant l'arrivee. En cas d'echec, le sejour est annule et l'acompte non rembourse.</span>
+              </label>
+            </div>
+
+            <div style="height: 24px;"></div>
+
+            <p class="choice-title">Mode de caution</p>
+            <div class="choice-grid">
+              <label class="radio-card">
+                <input type="radio" name="cautionMode" value="card" checked />
+                <span>
+                  <strong>Empreinte bancaire</strong>
+                  <span>Deadline automatique a J-3.</span>
+                </span>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="cautionMode" value="cash" />
+                <span>
+                  <strong>Especes sur place</strong>
+                  <span>Presence et montant controles le jour J.</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="conditional-note" id="cardNotice">
+              <ul class="timeline">
+                <li><b>J-4</b><span>Relance automatique pour valider l'empreinte bancaire.</span></li>
+                <li><b>J-3</b><span>Deadline a 72h avant l'arrivee.</span></li>
+                <li><b>+6h</b><span>Delai de regularisation si echec.</span></li>
+              </ul>
+            </div>
+
+            <div class="conditional-note is-hidden" id="cashNotice">
+              <label class="check-row">
+                <input id="cashClause" type="checkbox" />
+                <span>J'accepte que l'absence de caution, un montant incomplet ou de faux billets sur place entrainent l'annulation du sejour et la perte de l'acompte.</span>
+              </label>
+            </div>
+          </form>
+
+          <aside class="summary-card reveal" aria-label="Resume paiement">
+            <div class="summary-media">
+              <img src="assets/photo_cannes1.jpg" alt="Cannes et experience premium" />
+            </div>
+            <div class="summary-body">
+              <div>
+                <p class="kicker">Resume</p>
+                <h3 id="summaryPack">Pack Signature Cannes</h3>
+              </div>
+              <div class="summary-row">
+                <span>Montant pack</span>
+                <strong id="summaryPrice">6 000 &euro;</strong>
+              </div>
+              <div class="summary-row">
+                <span>Caution</span>
+                <strong id="summaryCaution">6 000 &euro;</strong>
+              </div>
+              <div class="summary-row">
+                <span>Documents</span>
+                <strong id="summaryDocs">0/4</strong>
+              </div>
+              <div class="summary-total">
+                <span>Acompte 25%</span>
+                <strong id="summaryDeposit">1 500 &euro;</strong>
+              </div>
+              <button class="btn" id="paymentBtn" type="submit" form="checkoutForm" disabled>Continuer vers paiement securise</button>
+              <p class="payment-state" id="paymentState">Ajoutez les documents et acceptez les clauses.</p>
+              <div class="trust-badges">
+                <span>Stripe</span>
+                <span>Revolut Business</span>
+                <span>3D Secure</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section compact" id="trust">
+        <div class="trust-grid">
+          <article class="process-card reveal">
+            <p class="kicker">Regle d'or caution</p>
+            <h3>96h. 72h. 6h.</h3>
+            <ul class="timeline">
+              <li><b>J-4</b><span>Relance automatique client.</span></li>
+              <li><b>J-3</b><span>Empreinte bancaire obligatoire.</span></li>
+              <li><b>+6h</b><span>Regularisation finale.</span></li>
+              <li><b>Auto</b><span>Annulation et acompte conserve si echec.</span></li>
+            </ul>
+          </article>
+
+          <div class="proof-grid">
+            <article class="proof-tile reveal">
+              <img src="assets/photo_cannes2.jpg" alt="Feed Instagram CTD" />
+              <span>Instagram</span>
+              <strong>Feed lifestyle Cannes</strong>
+            </article>
+            <article class="proof-tile reveal">
+              <img src="photo voiture/IMG_8100.jpeg" alt="Vlog client vehicule premium" />
+              <span>TikTok</span>
+              <strong>Vlogs clients reels</strong>
+            </article>
+            <article class="proof-tile reveal">
+              <img src="assets/photo_cannes5.jpg" alt="Partenaires CTD" />
+              <span>Partenaires</span>
+              <strong>Vehicules et lieux premium</strong>
+            </article>
+          </div>
         </div>
       </section>
     </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-logo" aria-label="Logo SAS CTD">SAS<br />CTD</div>
+        <div>
+          <strong>CTD Conciergerie Premium</strong>
+          <p>Packs sejours, location vehicules, partenaires immobiliers, partenaires vehicules et finalisation securisee sur la Cote d'Azur.</p>
+        </div>
+        <nav class="footer-links" aria-label="Liens footer">
+          <a href="#packs">Packs</a>
+          <a href="#vehicules">Vehicules</a>
+          <a href="#finalisation">Checkout</a>
+          <a class="js-whatsapp" href="#" data-message="Bonjour CTD, je souhaite echanger avec votre equipe.">WhatsApp</a>
+        </nav>
+      </div>
+    </footer>
   </div>
 
-  <section class="section" id="offres">
-    <div class="section-head reveal">
-      <div>
-        <p class="section-kicker">Services</p>
-        <h2>Trois solutions, un pack pensé pour tout simplifier.</h2>
-      </div>
-      <p>Pour un sejour fluide, le pack complet regroupe l'essentiel : voiture, logement et organisation.</p>
-    </div>
-
-    <div class="offers">
-      <article class="offer reveal">
-        <img src="photo voiture/IMG_8113.jpeg" alt="Location voiture premium" />
-        <div class="offer-body">
-          <span class="offer-tag">Voiture</span>
-          <h3>Arriver, rouler, profiter.</h3>
-          <p>Une selection de vehicules propres, presentes clairement, avec prise en charge adaptee au sejour.</p>
-          <ul>
-            <li>Vehicules premium selon disponibilite</li>
-            <li>Demande de dates et preferences</li>
-            <li>Organisation locale simplifiee</li>
-          </ul>
-          <a class="btn sun" href="#contact">Commander une voiture</a>
-        </div>
-      </article>
-
-      <article class="offer reveal">
-        <img src="assets/photo_cannes4.jpg" alt="Logement sur la Cote d'Azur" />
-        <div class="offer-body">
-          <span class="offer-tag">Logement</span>
-          <h3>Une adresse qui colle au sejour.</h3>
-          <p>Appartement, villa ou pied-a-terre : l'objectif est d'avoir un lieu confortable, bien situe et pret a l'arrivee.</p>
-          <ul>
-            <li>Recherche selon budget et quartier</li>
-            <li>Accueil et preparation du sejour</li>
-            <li>Options pratiques sur demande</li>
-          </ul>
-          <a class="btn sun" href="#contact">Trouver un logement</a>
-        </div>
-      </article>
-
-      <article class="offer featured reveal">
-        <img src="assets/photo_cannes5.jpg" alt="Pack complet voiture et logement" />
-        <div class="offer-body">
-          <span class="offer-tag recommended">Pack conseillé</span>
-          <h3>Le sejour complet, sans dispersion.</h3>
-          <p>Le format le plus confortable pour arriver a Cannes avec la voiture, le logement et les extras deja coordonnes.</p>
-          <ul>
-            <li>Voiture + logement + extras</li>
-            <li>Planning clair avant l'arrivee</li>
-            <li>Interlocuteur unique</li>
-          </ul>
-          <a class="btn sun" href="#contact">Demander un pack</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" id="voitures">
-    <div class="vehicle-marquee reveal" aria-label="Galerie vehicules animee">
-      <div class="vehicle-track">
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_8105.jpeg" alt="Vehicule premium vue laterale" /></figure>
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_8106.jpeg" alt="Vehicule premium detail avant" /></figure>
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_8113.jpeg" alt="Vehicule premium exterieur" /></figure>
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_7531.jpeg" alt="Interieur vehicule premium" /></figure>
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_8102.jpeg" alt="Vehicule premium disponible" /></figure>
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_8105.jpeg" alt="Vehicule premium vue laterale" /></figure>
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_8106.jpeg" alt="Vehicule premium detail avant" /></figure>
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_8113.jpeg" alt="Vehicule premium exterieur" /></figure>
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_7531.jpeg" alt="Interieur vehicule premium" /></figure>
-        <figure class="vehicle-frame"><img src="photo voiture/IMG_8102.jpeg" alt="Vehicule premium disponible" /></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="experience-band" id="experience">
-    <div class="experience">
-      <div class="reveal">
-        <p class="section-kicker">Reservation</p>
-        <h2>Une demande courte, une reponse claire.</h2>
-        <p>Precisez votre besoin, vos dates et vos preferences. L'equipe revient vers vous avec une solution adaptee pour organiser le sejour dans les meilleures conditions.</p>
-        <a class="btn sun" href="#contact">Lancer une demande</a>
-      </div>
-      <div class="steps">
-        <div class="step reveal">
-          <b>1</b>
-          <div><strong>Vous choisissez</strong><span>Voiture, logement ou pack complet.</span></div>
-        </div>
-        <div class="step reveal">
-          <b>2</b>
-          <div><strong>Nous affinons</strong><span>Dates, budget, lieu, nombre de personnes et preferences.</span></div>
-        </div>
-        <div class="step reveal">
-          <b>3</b>
-          <div><strong>Nous proposons</strong><span>Une option concrete avec les details importants.</span></div>
-        </div>
-        <div class="step reveal">
-          <b>4</b>
-          <div><strong>Le sejour est pret</strong><span>Coordination et suivi jusqu'a l'arrivee.</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="closing-note reveal">
-      <p class="section-kicker">Bienvenue sur la Cote d'Azur</p>
-      <h2>Votre sejour commence avec les bons choix.</h2>
-      <p>CTD conciergerie prepare l'essentiel pour que chaque arrivee soit simple, elegante et agreable.</p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-inner">
-      <strong>CTD conciergerie</strong>
-      <span>Voitures, logements et packs premium sur la Cote d'Azur.</span>
-      <a href="#contact">Demander un devis</a>
-    </div>
-  </footer>
-
   <script>
-    const nav = document.getElementById("nav");
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.querySelector(".nav-links");
-    const quickForm = document.getElementById("quickForm");
     const whatsappNumber = "33672208288";
+
+    const packs = {
+      riviera: {
+        name: "Pack Riviera",
+        price: 2000,
+        caution: 2000
+      },
+      signature: {
+        name: "Pack Signature Cannes",
+        price: 6000,
+        caution: 6000
+      },
+      fullblack: {
+        name: "Pack Full Black",
+        price: 10000,
+        caution: 10000
+      }
+    };
+
+    const nav = document.getElementById("siteNav");
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    const checkoutForm = document.getElementById("checkoutForm");
+    const packSelect = document.getElementById("packSelect");
+    const validDocs = document.getElementById("validDocs");
+    const legalClause = document.getElementById("legalClause");
+    const cashClause = document.getElementById("cashClause");
+    const cardNotice = document.getElementById("cardNotice");
+    const cashNotice = document.getElementById("cashNotice");
+    const paymentBtn = document.getElementById("paymentBtn");
+    const paymentState = document.getElementById("paymentState");
+    const summaryPack = document.getElementById("summaryPack");
+    const summaryPrice = document.getElementById("summaryPrice");
+    const summaryCaution = document.getElementById("summaryCaution");
+    const summaryDeposit = document.getElementById("summaryDeposit");
+    const summaryDocs = document.getElementById("summaryDocs");
+    const docInputs = ["idDoc", "licenseFront", "licenseBack", "addressDoc"].map((id) => document.getElementById(id));
+
+    function formatEuro(value) {
+      return new Intl.NumberFormat("fr-FR", {
+        style: "currency",
+        currency: "EUR",
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+
+    function openWhatsApp(message) {
+      window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    }
+
+    function currentCautionMode() {
+      const selected = document.querySelector("input[name='cautionMode']:checked");
+      return selected ? selected.value : "card";
+    }
+
+    function selectedPack() {
+      return packs[packSelect.value] || packs.signature;
+    }
+
+    function updateCheckout() {
+      const pack = selectedPack();
+      const deposit = Math.round(pack.price * 0.25);
+      const filesReady = docInputs.filter((input) => input.files.length > 0).length;
+      const cautionMode = currentCautionMode();
+      const cashReady = cautionMode === "cash" ? cashClause.checked : true;
+      const ready = filesReady === docInputs.length && validDocs.checked && legalClause.checked && cashReady;
+
+      summaryPack.textContent = pack.name;
+      summaryPrice.textContent = formatEuro(pack.price);
+      summaryCaution.textContent = formatEuro(pack.caution);
+      summaryDeposit.textContent = formatEuro(deposit);
+      summaryDocs.textContent = `${filesReady}/${docInputs.length}`;
+      paymentBtn.disabled = !ready;
+
+      cardNotice.classList.toggle("is-hidden", cautionMode !== "card");
+      cashNotice.classList.toggle("is-hidden", cautionMode !== "cash");
+
+      if (ready) {
+        paymentState.textContent = "Dossier complet. Paiement securise pret.";
+        paymentBtn.textContent = `Continuer vers paiement securise`;
+      } else if (filesReady < docInputs.length) {
+        paymentState.textContent = "Ajoutez les documents obligatoires.";
+      } else if (!validDocs.checked || !legalClause.checked) {
+        paymentState.textContent = "Validez les clauses obligatoires.";
+      } else {
+        paymentState.textContent = "Validez la clause de caution especes.";
+      }
+    }
 
     window.addEventListener("scroll", () => {
       nav.classList.toggle("is-scrolled", window.scrollY > 24);
     });
 
     menuBtn.addEventListener("click", () => {
-      const visible = getComputedStyle(navLinks).display !== "none";
-      navLinks.style.display = visible ? "none" : "flex";
-      navLinks.style.position = "fixed";
-      navLinks.style.left = "14px";
-      navLinks.style.right = "14px";
-      navLinks.style.top = "70px";
-      navLinks.style.flexDirection = "column";
-      navLinks.style.alignItems = "stretch";
-      navLinks.style.borderRadius = "8px";
-      navLinks.querySelectorAll("a").forEach((link) => {
-        link.style.justifyContent = "center";
-      });
+      const isOpen = nav.classList.toggle("is-open");
+      document.body.classList.toggle("menu-open", isOpen);
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
     });
 
     document.querySelectorAll("a[href^='#']").forEach((link) => {
       link.addEventListener("click", (event) => {
-        const target = document.querySelector(link.getAttribute("href"));
+        const href = link.getAttribute("href");
+        if (href === "#") return;
+        const target = document.querySelector(href);
         if (!target) return;
         event.preventDefault();
         target.scrollIntoView({ behavior: "smooth", block: "start" });
-        if (window.innerWidth <= 980) navLinks.removeAttribute("style");
+        nav.classList.remove("is-open");
+        document.body.classList.remove("menu-open");
+        menuBtn.setAttribute("aria-expanded", "false");
       });
+    });
+
+    document.querySelectorAll(".js-whatsapp").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openWhatsApp(link.dataset.message || "Bonjour CTD, je souhaite verifier une disponibilite premium.");
+      });
+    });
+
+    docInputs.forEach((input) => {
+      input.addEventListener("change", () => {
+        const tile = input.closest(".upload-tile");
+        const status = tile.querySelector(".file-status");
+        tile.classList.toggle("has-file", input.files.length > 0);
+        status.textContent = input.files.length ? input.files[0].name : "Photo ou PDF";
+        updateCheckout();
+      });
+    });
+
+    [packSelect, validDocs, legalClause, cashClause, checkoutForm].forEach((element) => {
+      element.addEventListener("change", updateCheckout);
+      element.addEventListener("input", updateCheckout);
+    });
+
+    document.querySelectorAll("input[name='cautionMode']").forEach((radio) => {
+      radio.addEventListener("change", updateCheckout);
+    });
+
+    checkoutForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (paymentBtn.disabled) return;
+      const pack = selectedPack();
+      const deposit = Math.round(pack.price * 0.25);
+      const cautionMode = currentCautionMode() === "cash" ? "especes sur place" : "empreinte bancaire";
+      const name = document.getElementById("clientName").value || "A preciser";
+      const phone = document.getElementById("clientPhone").value || "A preciser";
+      const arrival = document.getElementById("arrivalDate").value || "A preciser";
+
+      openWhatsApp(
+        `Bonjour CTD, mon dossier est complet pour ${pack.name}. Acompte a regler : ${formatEuro(deposit)}. Caution : ${formatEuro(pack.caution)} en ${cautionMode}. Arrivee : ${arrival}. Client : ${name}. Telephone : ${phone}. Merci de m'envoyer le lien de paiement securise.`
+      );
     });
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -1154,21 +1949,10 @@
         entry.target.classList.add("visible");
         revealObserver.unobserve(entry.target);
       });
-    }, { threshold: 0.14 });
+    }, { threshold: 0.12 });
 
     document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
-
-    function openWhatsApp(message) {
-      window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    }
-
-    quickForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const type = document.getElementById("quickType").value;
-      const date = document.getElementById("quickDate").value || "A preciser";
-      openWhatsApp(`Bonjour CTD conciergerie, je souhaite faire une demande pour : ${type}. Date d'arrivee : ${date}.`);
-    });
-
+    updateCheckout();
   </script>
 </body>
 </html>
