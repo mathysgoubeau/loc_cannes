@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="CTD Conciergerie Premium à Cannes : packs séjours, location véhicules, caution et finalisation sécurisée." />
+  <meta name="description" content="CTD Conciergerie Premium à Cannes : packs séjours, location de véhicules et accompagnement sur mesure." />
   <title>CTD Conciergerie Premium - Cannes</title>
   <style>
     :root {
@@ -216,8 +216,7 @@
     }
 
     .hero-panel::after,
-    .media::after,
-    .vehicle-main::after {
+    .media::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -343,11 +342,11 @@
 
     .subhero {
       position: relative;
-      min-height: 68svh;
+      min-height: 34svh;
       overflow: hidden;
       background: var(--black);
       color: var(--white);
-      padding: 92px 20px 62px;
+      padding: 92px 20px 30px;
     }
 
     .subhero img {
@@ -368,45 +367,37 @@
       position: relative;
       z-index: 1;
       display: flex;
-      min-height: 48svh;
-      align-items: flex-end;
+      min-height: 14svh;
+      align-items: flex-start;
       max-width: 1280px;
       margin: 0 auto;
     }
 
     .subhero h2 {
-      margin: 22px 0 0;
+      margin: 16px 0 0;
       color: var(--white);
-      font-size: clamp(3rem, 7vw, 6.8rem);
+      font-size: clamp(2.1rem, 5vw, 4.6rem);
       font-weight: 200;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       line-height: 1;
       text-transform: uppercase;
     }
 
     .subhero p:not(.kicker) {
-      max-width: 680px;
-      margin: 22px 0 0;
+      max-width: 560px;
+      margin: 14px 0 0;
       color: rgba(255, 255, 255, 0.72);
-      font-size: 0.92rem;
+      font-size: 0.8rem;
       font-weight: 300;
-      letter-spacing: 0.18em;
-      line-height: 1.8;
+      letter-spacing: 0.14em;
+      line-height: 1.65;
       text-transform: uppercase;
-    }
-
-    .subhero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 34px;
     }
 
     .packs-section {
       position: relative;
       z-index: 2;
-      margin-top: -58px;
-      padding: 0 0 84px;
+      padding: 38px 0 82px;
       background: var(--white);
     }
 
@@ -447,10 +438,9 @@
 
     .pack-stack {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      align-items: start;
-      gap: 18px;
-      max-width: 1180px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -461,25 +451,23 @@
 
     .pack-card {
       display: grid;
-      grid-template-rows: 250px 1fr;
+      grid-template-rows: 185px 1fr;
+      min-height: 0;
       overflow: hidden;
       border: 1px solid rgba(0, 0, 0, 0.14);
       background: var(--white);
-      cursor: pointer;
       transition: border-color 500ms ease, box-shadow 500ms ease;
     }
 
-    .pack-card.is-open {
-      border-color: var(--gold);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.14);
-    }
-
     .pack-card.featured {
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+      grid-template-rows: auto;
+      min-height: 300px;
       border-color: var(--gold);
       background: var(--black);
       color: var(--white);
-      transform: none;
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.16);
     }
 
     .media {
@@ -488,22 +476,22 @@
       overflow: hidden;
     }
 
+    .featured .media {
+      min-height: 100%;
+    }
+
     .featured .media img {
       opacity: 0.58;
       filter: saturate(0.6);
     }
 
     .media img,
-    .vehicle-main img,
-    .vehicle-tile img,
-    .gallery img {
+    .vehicle-card-media img {
       transition: 1.4s ease;
     }
 
     .pack-card:hover .media img,
-    .vehicle-main:hover img,
-    .vehicle-tile:hover img,
-    .gallery a:hover img {
+    .vehicle-card:hover .vehicle-card-media img {
       transform: scale(1.045);
     }
 
@@ -514,37 +502,37 @@
       border: 1px solid rgba(255, 255, 255, 0.24);
       background: rgba(0, 0, 0, 0.62);
       color: var(--white);
-      padding: 10px 12px;
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
+      padding: 8px 10px;
+      font-size: 0.54rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       backdrop-filter: blur(14px);
     }
 
     .badge {
-      top: 20px;
-      left: 20px;
+      top: 16px;
+      left: 16px;
       border-color: var(--gold);
       color: var(--gold);
     }
 
     .capacity {
-      bottom: 20px;
-      left: 20px;
+      bottom: 16px;
+      left: 16px;
     }
 
     .pack-body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 22px;
-      padding: 24px;
+      gap: 14px;
+      padding: 20px;
     }
 
     .pack-top {
       display: grid;
       align-items: start;
-      gap: 18px;
+      gap: 12px;
       border-bottom: 0;
       padding-bottom: 0;
     }
@@ -554,23 +542,31 @@
     }
 
     .pack-title {
-      margin: 12px 0 0;
-      font-size: clamp(2rem, 3vw, 2.8rem);
+      margin: 10px 0 0;
+      font-size: clamp(1.55rem, 2.5vw, 2.25rem);
       font-weight: 220;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.1em;
       line-height: 1;
       text-transform: uppercase;
     }
 
-    .metrics {
-      display: grid;
-      grid-template-columns: 1fr;
-      min-width: 0;
-      border: 1px solid rgba(0, 0, 0, 0.1);
+    .pack-teaser {
+      max-width: 520px;
+      margin: 8px 0 0;
+      color: rgba(0, 0, 0, 0.58);
+      font-size: 0.78rem;
+      line-height: 1.45;
     }
 
-    .pack-card.is-open .metrics {
+    .featured .pack-teaser {
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    .metrics {
+      display: grid;
       grid-template-columns: 1fr 1fr;
+      min-width: 0;
+      border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .featured .metrics {
@@ -578,16 +574,8 @@
     }
 
     .metric {
-      padding: 14px;
+      padding: 11px;
       background: rgba(0, 0, 0, 0.02);
-    }
-
-    .metric.caution-metric {
-      display: none;
-    }
-
-    .pack-card.is-open .metric.caution-metric {
-      display: block;
     }
 
     .featured .metric {
@@ -597,8 +585,8 @@
     .metric span {
       display: block;
       color: rgba(0, 0, 0, 0.45);
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
+      font-size: 0.54rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
@@ -608,46 +596,20 @@
 
     .metric strong {
       display: block;
-      margin-top: 8px;
-      font-size: 0.86rem;
+      margin-top: 7px;
+      font-size: 0.82rem;
       font-weight: 400;
     }
 
-    .pack-summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 16px;
-      color: rgba(0, 0, 0, 0.5);
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .featured .pack-summary {
-      color: rgba(255, 255, 255, 0.52);
-    }
-
-    .pack-summary span:last-child {
-      color: var(--gold);
-    }
-
-    .pack-details,
-    .pack-actions {
-      display: none;
-    }
-
-    .pack-card.is-open .pack-details,
-    .pack-card.is-open .pack-actions {
+    .pack-details {
       display: block;
     }
 
     .copy {
-      margin-top: 18px;
+      margin-top: 12px;
       color: rgba(0, 0, 0, 0.62);
-      font-size: 0.86rem;
-      line-height: 1.6;
+      font-size: 0.8rem;
+      line-height: 1.5;
     }
 
     .featured .copy {
@@ -657,17 +619,17 @@
     .include-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 18px;
+      gap: 8px;
+      margin-top: 12px;
     }
 
     .include {
       min-height: 0;
       border: 1px solid rgba(0, 0, 0, 0.1);
-      padding: 13px 14px;
+      padding: 11px 12px;
       color: rgba(0, 0, 0, 0.68);
-      font-size: 0.82rem;
-      line-height: 1.45;
+      font-size: 0.78rem;
+      line-height: 1.38;
     }
 
     .featured .include {
@@ -676,24 +638,28 @@
       background: rgba(255, 255, 255, 0.04);
     }
 
+    .featured .include-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .include::before {
       content: "";
       display: block;
       width: 22px;
       height: 1px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       background: var(--gold);
     }
 
     .pack-options {
-      margin-top: 22px;
+      margin-top: 16px;
     }
 
     .pack-options-title {
       margin: 0;
       color: rgba(0, 0, 0, 0.44);
-      font-size: 0.64rem;
-      letter-spacing: 0.24em;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
@@ -704,14 +670,15 @@
     .pack-options-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 14px;
+      gap: 8px;
+      margin-top: 10px;
       color: rgba(0, 0, 0, 0.66);
-      font-size: 0.82rem;
-      line-height: 1.45;
+      font-size: 0.78rem;
+      line-height: 1.38;
     }
 
     .featured .pack-options-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       color: rgba(255, 255, 255, 0.68);
     }
 
@@ -721,54 +688,20 @@
     }
 
     .pack-actions {
+      display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
       margin-top: 8px;
-    }
-
-    .pack-card.is-open .pack-actions {
-      display: grid;
     }
 
     .pack-actions .btn {
       width: 100%;
     }
 
-    .check-list {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 1px;
-      margin-top: 32px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .check-list div {
-      min-height: 84px;
-      background: var(--white);
-      padding: 18px;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      line-height: 1.5;
-      text-transform: uppercase;
-    }
-
-    .check-list span,
-    .tick {
-      color: var(--gold);
-    }
-
-    .vehicle-grid {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 18px;
-    }
-
     .vehicles-section {
       position: relative;
       z-index: 2;
-      margin-top: -58px;
-      padding: 0 20px 96px;
+      padding: 38px 20px 86px;
       background: var(--white);
       color: var(--black);
     }
@@ -789,7 +722,7 @@
 
     .vehicle-card-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
@@ -921,251 +854,210 @@
       text-transform: uppercase;
     }
 
-    .vehicle-main,
-    .vehicle-tile {
-      position: relative;
-      min-height: 520px;
-      overflow: hidden;
-      background: #111;
+    .about-section {
+      padding: 84px 20px 92px;
+      background: var(--white);
+      color: var(--black);
     }
 
-    .vehicle-copy {
-      position: absolute;
-      right: 28px;
-      bottom: 28px;
-      left: 28px;
-      z-index: 2;
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.7fr);
+      gap: 44px;
+      align-items: stretch;
     }
 
-    .vehicle-copy h3 {
-      margin: 14px 0 0;
-      font-size: clamp(2rem, 4vw, 4rem);
-      font-weight: 220;
-      letter-spacing: 0.1em;
-      line-height: 1.05;
+    .about-lead h2 {
+      margin: 18px 0 0;
+      font-size: clamp(2.2rem, 4.8vw, 4.9rem);
+      font-weight: 230;
+      letter-spacing: 0.08em;
+      line-height: 1.04;
       text-transform: uppercase;
     }
 
-    .vehicle-copy p:not(.kicker) {
-      max-width: 520px;
-      color: rgba(255, 255, 255, 0.68);
-      line-height: 1.7;
+    .about-lead > p {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: rgba(0, 0, 0, 0.62);
+      font-size: 1rem;
+      line-height: 1.75;
     }
 
-    .vehicle-side {
+    .about-facts {
       display: grid;
-      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 34px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
     }
 
-    .vehicle-tile {
-      min-height: 251px;
+    .about-fact {
+      padding: 18px;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .about-fact:last-child {
+      border-right: 0;
+    }
+
+    .about-fact span {
+      display: block;
+      color: rgba(0, 0, 0, 0.42);
+      font-size: 0.56rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .about-fact strong {
+      display: block;
+      margin-top: 12px;
+      color: var(--black);
+      font-size: 0.92rem;
+      font-weight: 400;
+      line-height: 1.45;
+    }
+
+    .about-media {
+      position: relative;
+      min-height: 470px;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .about-media img {
+      opacity: 0.72;
+      filter: saturate(0.45);
+    }
+
+    .about-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 34%, rgba(0, 0, 0, 0.78));
+    }
+
+    .about-media-caption {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      left: 24px;
+      z-index: 1;
       color: var(--white);
     }
 
-    .vehicle-tile h3 {
-      margin: 10px 0 0;
-      font-size: 1.5rem;
+    .about-media-caption p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      line-height: 1.65;
+      text-transform: uppercase;
     }
 
-    .gallery {
+    .about-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .gallery a {
-      display: block;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .checkout-layout {
-      display: grid;
-      grid-template-columns: 1fr 0.55fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .checkout-card,
-    .summary-card {
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.03);
-      padding: 24px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
-    label.small {
-      display: block;
-      margin-bottom: 8px;
-      color: rgba(255, 255, 255, 0.44);
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    input,
-    select {
-      width: 100%;
-      min-height: 46px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 0;
-      background: #000;
-      color: var(--white);
-      padding: 0 12px;
-      outline: none;
-    }
-
-    input:focus,
-    select:focus {
-      border-color: var(--gold);
-    }
-
-    .upload-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .upload-tile {
-      display: block;
-      border: 1px dashed rgba(255, 255, 255, 0.22);
-      padding: 16px;
-    }
-
-    .upload-tile input {
-      margin-top: 12px;
-      min-height: auto;
-      border: 0;
-      padding: 0;
-      font-size: 0.78rem;
-    }
-
-    .choice-title {
-      margin: 30px 0 0;
-      color: var(--gold);
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    .check-row,
-    .radio-row {
+    .about-card {
       display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-top: 16px;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 0.86rem;
-      line-height: 1.55;
-    }
-
-    .check-row input,
-    .radio-row input {
-      width: 18px;
-      min-width: 18px;
-      height: 18px;
-      min-height: 18px;
-      margin-top: 2px;
-      accent-color: var(--gold);
-    }
-
-    .summary-card {
-      position: sticky;
-      top: 92px;
-    }
-
-    .summary-card h3 {
-      margin: 12px 0 22px;
-      font-size: 1.8rem;
-      font-weight: 240;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .summary-row {
-      display: flex;
+      min-height: 240px;
+      flex-direction: column;
       justify-content: space-between;
-      gap: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 15px 0;
-      color: rgba(255, 255, 255, 0.62);
-      font-size: 0.86rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 24px;
     }
 
-    .summary-row strong {
-      color: var(--white);
-      font-weight: 500;
-    }
-
-    .summary-total {
+    .about-card span,
+    .process-step span {
       color: var(--gold);
-    }
-
-    .status {
-      min-height: 22px;
-      margin: 14px 0 0;
-      color: rgba(255, 255, 255, 0.52);
-      font-size: 0.78rem;
-      line-height: 1.5;
-    }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
-      margin-top: 32px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .timeline div {
-      min-height: 118px;
-      background: var(--black);
-      padding: 18px;
-    }
-
-    .timeline strong {
-      display: block;
-      color: var(--gold);
-      font-size: 0.66rem;
+      font-size: 0.62rem;
+      font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    .timeline span {
-      display: block;
-      margin-top: 16px;
+    .about-card h3,
+    .process-step h3 {
+      margin: 18px 0 0;
+      font-size: 1.25rem;
+      font-weight: 260;
+      letter-spacing: 0.1em;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .about-card p,
+    .process-step p {
+      margin: 22px 0 0;
       color: rgba(255, 255, 255, 0.62);
       font-size: 0.82rem;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
-    .trust-grid {
+    .process-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.12);
+      margin-top: 28px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
     }
 
-    .trust-grid div,
-    .trust-grid a {
-      min-height: 96px;
+    .process-step {
+      min-height: 220px;
+      padding: 24px;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .process-step:last-child {
+      border-right: 0;
+    }
+
+    .process-step span {
+      color: rgba(0, 0, 0, 0.42);
+    }
+
+    .process-step p {
+      color: rgba(0, 0, 0, 0.58);
+    }
+
+    .about-cta {
+      padding: 72px 20px 88px;
       background: var(--black);
-      padding: 22px;
-      color: rgba(255, 255, 255, 0.66);
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      line-height: 1.55;
+      color: var(--white);
+    }
+
+    .about-cta-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.55fr);
+      gap: 28px;
+      align-items: end;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      padding-top: 34px;
+    }
+
+    .about-cta h2 {
+      margin: 14px 0 0;
+      font-size: clamp(1.8rem, 4vw, 3.6rem);
+      font-weight: 240;
+      letter-spacing: 0.08em;
+      line-height: 1.08;
       text-transform: uppercase;
+    }
+
+    .about-cta p:not(.kicker) {
+      max-width: 640px;
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .about-cta-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
     }
 
     footer {
@@ -1199,15 +1091,46 @@
       }
     }
 
+    @media (max-width: 1180px) {
+      .about-grid,
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-step:nth-child(2) {
+        border-right: 0;
+      }
+
+      .process-step:nth-child(-n + 2) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+
     @media (max-width: 900px) {
       .nav-links {
         display: none;
       }
 
+      .nav-inner {
+        gap: 10px;
+        padding: 12px 14px;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        font-size: 0.62rem;
+      }
+
+      .nav .btn {
+        min-height: 40px;
+        padding: 0 12px;
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+      }
+
       .hero-bg,
-      .pack-card,
-      .vehicle-grid,
-      .checkout-layout {
+      .pack-card {
         grid-template-columns: 1fr;
       }
 
@@ -1220,17 +1143,14 @@
       }
 
       .hero-actions,
-      .pack-stack,
-      .form-grid,
-      .upload-grid,
       .include-grid,
       .pack-options-grid,
       .pack-actions,
       .vehicle-card-grid,
-      .check-list,
-      .timeline,
-      .trust-grid,
-      .gallery {
+      .about-layout,
+      .about-grid,
+      .process-grid,
+      .about-cta-inner {
         grid-template-columns: 1fr;
       }
 
@@ -1240,49 +1160,429 @@
         display: block;
       }
 
+      .section-head {
+        margin-bottom: 22px;
+      }
+
+      .section-head h2,
+      .vehicles-section .section-head h2 {
+        font-size: clamp(1.7rem, 9vw, 2.4rem);
+        letter-spacing: 0.07em;
+      }
+
       .section-head > p {
         margin-top: 18px;
       }
 
       .metrics {
-        margin-top: 18px;
         width: 100%;
       }
 
       .packs-section {
-        padding-top: 0;
+        padding: 20px 0 46px;
       }
 
       .media {
-        min-height: 360px;
+        min-height: 0;
+        aspect-ratio: 2.1 / 1;
+      }
+
+      .featured .media {
+        min-height: 0;
+      }
+
+      .pack-stack {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0 12px;
+      }
+
+      .pack-card {
+        grid-template-rows: auto;
+        min-height: 0;
+      }
+
+      .pack-card.featured {
+        grid-column: auto;
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .pack-body {
+        gap: 10px;
+        padding: 14px;
+      }
+
+      .pack-top {
+        gap: 10px;
+      }
+
+      .pack-title {
+        font-size: clamp(1.35rem, 8.6vw, 1.82rem);
+        letter-spacing: 0.07em;
+      }
+
+      .pack-teaser {
+        margin-top: 8px;
+        font-size: 0.74rem;
+        line-height: 1.4;
+      }
+
+      .metric {
+        padding: 9px;
+      }
+
+      .copy {
+        margin-top: 10px;
+        font-size: 0.76rem;
+      }
+
+      .include-grid {
+        margin-top: 10px;
+        gap: 7px;
+      }
+
+      .featured .include-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .include {
+        padding: 10px;
+        font-size: 0.74rem;
+      }
+
+      .pack-options {
+        margin-top: 12px;
+      }
+
+      .pack-options-grid {
+        gap: 7px;
+        font-size: 0.74rem;
+      }
+
+      .featured .pack-options-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pack-actions .btn {
+        min-height: 44px;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
       }
 
       .vehicles-section {
-        padding-top: 0;
+        padding: 24px 14px 64px;
+      }
+
+      .vehicle-card-media {
+        aspect-ratio: 16 / 10;
+      }
+
+      .vehicle-card-body {
+        padding: 18px;
       }
 
       .vehicle-card-title {
         min-height: auto;
+        font-size: 1.55rem;
+        letter-spacing: 0.08em;
+      }
+
+      .vehicle-metrics {
+        grid-template-columns: 1fr;
+        margin-top: 16px;
+      }
+
+      .vehicle-metric {
+        border-right: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 13px;
+      }
+
+      .vehicle-metric:last-child {
+        border-bottom: 0;
+      }
+
+      .vehicle-specs {
+        gap: 10px;
+        margin: 18px 0;
+        font-size: 0.84rem;
       }
 
       .vehicle-examples {
         min-height: auto;
+        font-size: 0.72rem;
       }
 
-      .pack-card.featured {
-        transform: none;
+      .vehicle-card .btn {
+        width: 100%;
+        min-height: 48px;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+      }
+
+      .about-section {
+        padding: 54px 14px 64px;
+      }
+
+      .about-layout {
+        gap: 26px;
+      }
+
+      .about-lead h2 {
+        font-size: clamp(1.9rem, 10vw, 2.8rem);
+        letter-spacing: 0.05em;
+      }
+
+      .about-lead > p {
+        margin-top: 18px;
+        font-size: 0.9rem;
+        line-height: 1.65;
+      }
+
+      .about-facts {
+        grid-template-columns: 1fr;
+        margin-top: 24px;
+      }
+
+      .about-fact {
+        border-right: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 15px;
+      }
+
+      .about-fact:last-child {
+        border-bottom: 0;
+      }
+
+      .about-media {
+        min-height: 340px;
+      }
+
+      .about-card,
+      .process-step {
+        min-height: auto;
+        padding: 18px;
+      }
+
+      .process-step {
+        border-right: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .process-step:last-child {
+        border-bottom: 0;
+      }
+
+      .about-cta {
+        padding: 54px 14px 66px;
+      }
+
+      .about-cta-inner {
+        gap: 24px;
+        padding-top: 26px;
+      }
+
+      .about-cta h2 {
+        font-size: clamp(1.75rem, 9vw, 2.55rem);
+        letter-spacing: 0.05em;
+      }
+
+      .about-cta-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .about-cta-actions .btn {
+        width: 100%;
+        min-height: 46px;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
       }
 
       .subhero {
-        min-height: 64svh;
+        min-height: 30svh;
+        padding: 84px 16px 24px;
       }
 
-      .summary-card {
-        position: static;
+      .subhero-inner {
+        min-height: 11svh;
+      }
+
+      .subhero h2 {
+        margin-top: 12px;
+        font-size: clamp(1.95rem, 11vw, 2.75rem);
+        letter-spacing: 0.05em;
+      }
+
+      .subhero p:not(.kicker) {
+        max-width: 320px;
+        margin-top: 10px;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        line-height: 1.5;
       }
 
       .brand-name {
         display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-inner {
+        padding: 10px 12px;
+      }
+
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+        font-size: 0.58rem;
+      }
+
+      .nav .btn {
+        min-height: 38px;
+        padding: 0 10px;
+        font-size: 0.55rem;
+        letter-spacing: 0.08em;
+      }
+
+      .subhero {
+        min-height: 28svh;
+        padding: 76px 12px 22px;
+      }
+
+      .subhero h2 {
+        font-size: clamp(1.7rem, 10vw, 2.2rem);
+        letter-spacing: 0.035em;
+        line-height: 1.05;
+      }
+
+      .subhero p:not(.kicker) {
+        max-width: 100%;
+        font-size: 0.64rem;
+        letter-spacing: 0.06em;
+      }
+
+      .section {
+        padding: 56px 12px;
+      }
+
+      .section-head h2,
+      .vehicles-section .section-head h2 {
+        font-size: clamp(1.55rem, 8.5vw, 2.1rem);
+        letter-spacing: 0.04em;
+        line-height: 1.08;
+      }
+
+      .section-head > p {
+        font-size: 0.76rem;
+        letter-spacing: 0.07em;
+        line-height: 1.55;
+      }
+
+      .about-section {
+        padding: 42px 12px 54px;
+      }
+
+      .about-layout {
+        gap: 18px;
+      }
+
+      .about-lead h2 {
+        font-size: clamp(1.65rem, 9.5vw, 2.15rem);
+        letter-spacing: 0.035em;
+        line-height: 1.08;
+      }
+
+      .about-lead > p {
+        font-size: 0.84rem;
+        line-height: 1.58;
+      }
+
+      .about-fact {
+        padding: 14px;
+      }
+
+      .about-fact strong {
+        font-size: 0.82rem;
+        line-height: 1.42;
+      }
+
+      .about-media {
+        min-height: 0;
+        aspect-ratio: 1 / 1.08;
+      }
+
+      .about-media-caption {
+        right: 16px;
+        bottom: 16px;
+        left: 16px;
+      }
+
+      .about-media-caption p {
+        font-size: 0.66rem;
+        letter-spacing: 0.06em;
+        line-height: 1.5;
+      }
+
+      .about-card,
+      .process-step {
+        padding: 16px;
+      }
+
+      .about-card span,
+      .process-step span {
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+      }
+
+      .about-card h3,
+      .process-step h3 {
+        margin-top: 14px;
+        font-size: 1.05rem;
+        letter-spacing: 0.055em;
+        line-height: 1.25;
+      }
+
+      .about-card p,
+      .process-step p {
+        margin-top: 16px;
+        font-size: 0.78rem;
+        line-height: 1.55;
+      }
+
+      .process-grid {
+        margin-top: 20px;
+      }
+
+      .about-cta {
+        padding: 42px 12px 54px;
+      }
+
+      .about-cta-inner {
+        gap: 18px;
+        padding-top: 22px;
+      }
+
+      .about-cta h2 {
+        font-size: clamp(1.45rem, 8.5vw, 2rem);
+        letter-spacing: 0.035em;
+        line-height: 1.1;
+      }
+
+      .about-cta p:not(.kicker) {
+        font-size: 0.8rem;
+        line-height: 1.55;
+      }
+
+      .about-cta-actions {
+        gap: 8px;
+      }
+
+      footer {
+        padding: 26px 12px;
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+        line-height: 1.5;
       }
     }
   </style>
@@ -1300,7 +1600,7 @@
           <a href="#packs" data-view="packs">Packs</a>
           <a href="#vehicules" data-view="vehicles">Véhicules</a>
         </nav>
-        <a class="btn light" id="navWhatsapp" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn light" href="#a-propos" data-view="about">À propos</a>
       </div>
     </header>
 
@@ -1316,7 +1616,7 @@
             </div>
           </div>
           <div class="hero-panel">
-            <img src="assets/vehicule-hero.jpeg" alt="" />
+            <img src="assets/vehicule-sportive-porsche.jpeg" alt="" />
             <div class="hero-panel-label">
               <p class="kicker">Location simple</p>
               <strong>Véhicules premium</strong>
@@ -1349,10 +1649,6 @@
             <p class="kicker">Offre principale</p>
             <h2>Packs séjours.</h2>
             <p>Logement. Véhicule. Activité signature.</p>
-            <div class="subhero-actions">
-              <a class="btn" href="#packs-list">Voir les packs</a>
-              <a class="btn light" id="catalogWhatsapp" target="_blank" rel="noopener">Catalogue PDF</a>
-            </div>
           </div>
         </div>
       </section>
@@ -1369,54 +1665,7 @@
 
           <p class="pack-scroll-hint">Faites défiler les packs</p>
           <div class="pack-stack">
-            <article class="pack-card" data-pack-card>
-              <div class="media">
-                <img src="assets/cannes-riviera.jpg" alt="Pack Riviera à Cannes" />
-                <span class="capacity">Jusqu’à 2 personnes</span>
-              </div>
-              <div class="pack-body">
-                <div>
-                  <div class="pack-top">
-                    <div>
-                      <p class="kicker">Expérience</p>
-                      <h3 class="pack-title">Riviera</h3>
-                    </div>
-                    <div class="metrics">
-                      <div class="metric"><span>Prix</span><strong>2 000 €</strong></div>
-                      <div class="metric caution-metric"><span>Caution</span><strong>2 000 €</strong></div>
-                    </div>
-                    <div class="pack-summary">
-                      <span>Voir l’expérience complète</span>
-                      <span>Ouvrir</span>
-                    </div>
-                  </div>
-                  <div class="pack-details">
-                  <p class="copy">Appartement standing. Véhicule premium compact. Beach club.</p>
-                  <div class="include-grid">
-                    <div class="include">Véhicule premium compact</div>
-                    <div class="include">Appartement standing</div>
-                    <div class="include">Beach club ou table d’été</div>
-                  </div>
-                  <div class="pack-options">
-                    <p class="pack-options-title">Options additionnelles</p>
-                    <div class="pack-options-grid">
-                      <div><span>✓</span>Transfert aéroport</div>
-                      <div><span>✓</span>Chef à domicile</div>
-                      <div><span>✓</span>Photographe privé</div>
-                      <div><span>✓</span>Décoration EVJF</div>
-                      <div><span>✓</span>Extension de séjour</div>
-                    </div>
-                  </div>
-                  </div>
-                </div>
-                <div class="pack-actions">
-                  <a class="btn dark js-pack" data-pack="Pack Riviera" href="#">Vérifier la disponibilité</a>
-                  <a class="btn dark" href="#finalisation" data-view="checkout">Finaliser</a>
-                </div>
-              </div>
-            </article>
-
-            <article class="pack-card featured" data-pack-card>
+            <article class="pack-card featured">
               <div class="media">
                 <img src="assets/cannes-signature.jpg" alt="Pack Signature Cannes" />
                 <span class="badge">Le plus demandé</span>
@@ -1428,15 +1677,15 @@
                     <div>
                       <p class="kicker">Expérience</p>
                       <h3 class="pack-title">Signature Cannes</h3>
+                      <p class="pack-teaser">Le format le plus équilibré pour profiter de Cannes sans multiplier les demandes.</p>
                     </div>
                     <div class="metrics">
                       <div class="metric"><span>Prix</span><strong>6 000 €</strong></div>
                       <div class="metric caution-metric"><span>Caution</span><strong>6 000 €</strong></div>
                     </div>
-                    <div class="pack-summary">
-                      <span>Voir l’expérience complète</span>
-                      <span>Ouvrir</span>
-                    </div>
+                  </div>
+                  <div class="pack-actions">
+                    <a class="btn js-pack" data-pack="Pack Signature Cannes" href="#">Vérifier la disponibilité</a>
                   </div>
                   <div class="pack-details">
                   <p class="copy">Villa ou appartement haut standing. SUV luxe. Activité signature.</p>
@@ -1457,14 +1706,53 @@
                   </div>
                   </div>
                 </div>
-                <div class="pack-actions">
-                  <a class="btn js-pack" data-pack="Pack Signature Cannes" href="#">Vérifier la disponibilité</a>
-                  <a class="btn light" href="#finalisation" data-view="checkout">Finaliser</a>
+              </div>
+            </article>
+
+            <article class="pack-card">
+              <div class="media">
+                <img src="assets/cannes-riviera.jpg" alt="Pack Riviera à Cannes" />
+                <span class="capacity">Jusqu’à 2 personnes</span>
+              </div>
+              <div class="pack-body">
+                <div>
+                  <div class="pack-top">
+                    <div>
+                      <p class="kicker">Expérience</p>
+                      <h3 class="pack-title">Riviera</h3>
+                      <p class="pack-teaser">Pour un séjour court à deux, avec l’essentiel premium déjà cadré.</p>
+                    </div>
+                    <div class="metrics">
+                      <div class="metric"><span>Prix</span><strong>2 000 €</strong></div>
+                      <div class="metric caution-metric"><span>Caution</span><strong>2 000 €</strong></div>
+                    </div>
+                  </div>
+                  <div class="pack-actions">
+                    <a class="btn dark js-pack" data-pack="Pack Riviera" href="#">Vérifier la disponibilité</a>
+                  </div>
+                  <div class="pack-details">
+                  <p class="copy">Appartement standing. Véhicule premium compact. Beach club.</p>
+                  <div class="include-grid">
+                    <div class="include">Véhicule premium compact</div>
+                    <div class="include">Appartement standing</div>
+                    <div class="include">Beach club ou table d’été</div>
+                  </div>
+                  <div class="pack-options">
+                    <p class="pack-options-title">Options additionnelles</p>
+                    <div class="pack-options-grid">
+                      <div><span>✓</span>Transfert aéroport</div>
+                      <div><span>✓</span>Chef à domicile</div>
+                      <div><span>✓</span>Photographe privé</div>
+                      <div><span>✓</span>Décoration EVJF</div>
+                      <div><span>✓</span>Extension de séjour</div>
+                    </div>
+                  </div>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="pack-card" data-pack-card>
+            <article class="pack-card">
               <div class="media">
                 <img src="assets/cannes-sunset.jpg" alt="Pack Sunset Club" />
                 <span class="capacity">Jusqu’à 8 personnes</span>
@@ -1475,15 +1763,15 @@
                     <div>
                       <p class="kicker">Expérience</p>
                       <h3 class="pack-title">Sunset Club</h3>
+                      <p class="pack-teaser">Pour un groupe qui veut une expérience privée plus complète et plus exclusive.</p>
                     </div>
                     <div class="metrics">
                       <div class="metric"><span>Prix</span><strong>10 000 €</strong></div>
                       <div class="metric caution-metric"><span>Caution</span><strong>10 000 €</strong></div>
                     </div>
-                    <div class="pack-summary">
-                      <span>Voir l’expérience complète</span>
-                      <span>Ouvrir</span>
-                    </div>
+                  </div>
+                  <div class="pack-actions">
+                    <a class="btn dark js-pack" data-pack="Pack Sunset Club" href="#">Vérifier la disponibilité</a>
                   </div>
                   <div class="pack-details">
                   <p class="copy">Villa privée sélectionnée. Véhicule luxe. Expérience privée.</p>
@@ -1504,20 +1792,8 @@
                   </div>
                   </div>
                 </div>
-                <div class="pack-actions">
-                  <a class="btn dark js-pack" data-pack="Pack Sunset Club" href="#">Vérifier la disponibilité</a>
-                  <a class="btn dark" href="#finalisation" data-view="checkout">Finaliser</a>
-                </div>
               </div>
             </article>
-          </div>
-
-          <div class="check-list" aria-label="Options additionnelles" hidden>
-            <div><span>✓</span> Transfert aéroport</div>
-            <div><span>✓</span> Chef à domicile</div>
-            <div><span>✓</span> Photographe privé</div>
-            <div><span>✓</span> Décoration EVJF / événements</div>
-            <div><span>✓</span> Extension de séjour</div>
           </div>
         </div>
       </section>
@@ -1525,16 +1801,12 @@
 
       <div class="view" data-view-panel="vehicles" hidden>
       <section class="subhero" id="vehicules">
-        <img src="assets/vehicule-hero.jpeg" alt="" />
+        <img src="assets/vehicule-luxe-porsche-noir.jpeg" alt="" />
         <div class="subhero-inner">
           <div>
             <p class="kicker">Location simple</p>
             <h2>Véhicules premium.</h2>
             <p>Livraison. Reprise. Discrétion.</p>
-            <div class="subhero-actions">
-              <a class="btn" href="#vehicules-list">Voir les véhicules</a>
-              <a class="btn light" href="#packs" data-view="packs">Voir les packs</a>
-            </div>
           </div>
         </div>
       </section>
@@ -1552,35 +1824,35 @@
           <div class="vehicle-card-grid">
             <article class="vehicle-card">
               <div class="vehicle-card-media">
-                <img src="assets/vehicule-hero.jpeg" alt="SUV luxe disponible à Cannes" />
-                <span class="vehicle-chip">Sélection saison</span>
+                <img src="assets/vehicule-detail.jpeg" alt="Citadine premium disponible à Cannes" />
+                <span class="vehicle-chip">Simple et rapide</span>
               </div>
               <div class="vehicle-card-body">
-                <h3 class="vehicle-card-title">SUV luxe</h3>
+                <h3 class="vehicle-card-title">Citadine</h3>
                 <div class="vehicle-metrics">
                   <div class="vehicle-metric"><span>Prix</span><strong>Sur demande</strong></div>
                   <div class="vehicle-metric"><span>Caution</span><strong>Selon véhicule</strong></div>
                 </div>
                 <ul class="vehicle-specs">
-                  <li><span>✓</span>Confort premium</li>
-                  <li><span>✓</span>Livraison aéroport</li>
-                  <li><span>✓</span>Conditions envoyées par WhatsApp</li>
+                  <li><span>✓</span>Format pratique pour Cannes</li>
+                  <li><span>✓</span>Réservation rapide</li>
+                  <li><span>✓</span>Livraison selon disponibilité</li>
                 </ul>
                 <p class="vehicle-examples">
                   <span>Types de modèles</span>
-                  Range Rover Sport, Porsche Cayenne, Mercedes GLE, BMW X5.
+                  Audi A3, Mercedes Classe A, BMW Série 1, Mini Cooper.
                 </p>
-                <a class="btn dark js-vehicle" data-vehicle="SUV luxe" href="#">Disponibilité</a>
+                <a class="btn dark js-vehicle" data-vehicle="citadine" href="#">Disponibilité</a>
               </div>
             </article>
 
             <article class="vehicle-card featured">
               <div class="vehicle-card-media">
-                <img src="assets/vehicule-berline.jpeg" alt="Berline sportive" />
+                <img src="assets/vehicule-sportive-amg-vert.jpeg" alt="Voiture sportive disponible à Cannes" />
                 <span class="vehicle-chip">Performance</span>
               </div>
               <div class="vehicle-card-body">
-                <h3 class="vehicle-card-title">Berline sportive</h3>
+                <h3 class="vehicle-card-title">Sportive</h3>
                 <div class="vehicle-metrics">
                   <div class="vehicle-metric"><span>Prix</span><strong>Sur demande</strong></div>
                   <div class="vehicle-metric"><span>Caution</span><strong>Selon véhicule</strong></div>
@@ -1592,57 +1864,33 @@
                 </ul>
                 <p class="vehicle-examples">
                   <span>Types de modèles</span>
-                  Audi RS3, Mercedes AMG compacte, BMW M Performance.
+                  Audi RS3, Mercedes AMG, BMW M Performance, Porsche.
                 </p>
-                <a class="btn dark js-vehicle" data-vehicle="berline sportive" href="#">Disponibilité</a>
+                <a class="btn dark js-vehicle" data-vehicle="sportive" href="#">Disponibilité</a>
               </div>
             </article>
 
             <article class="vehicle-card">
               <div class="vehicle-card-media">
-                <img src="assets/vehicule-detail.jpeg" alt="Véhicule premium compact" />
-                <span class="vehicle-chip">Location simple</span>
+                <img src="assets/vehicule-luxe-porsche-noir.jpeg" alt="Véhicule luxe disponible à Cannes" />
+                <span class="vehicle-chip">Sélection saison</span>
               </div>
               <div class="vehicle-card-body">
-                <h3 class="vehicle-card-title">Véhicule premium compact</h3>
-                <div class="vehicle-metrics">
-                  <div class="vehicle-metric"><span>Prix</span><strong>Sur demande</strong></div>
-                  <div class="vehicle-metric"><span>Caution</span><strong>Selon véhicule</strong></div>
-                </div>
-                <ul class="vehicle-specs">
-                  <li><span>✓</span>Format direct</li>
-                  <li><span>✓</span>Réservation rapide</li>
-                  <li><span>✓</span>Départ simple</li>
-                </ul>
-                <p class="vehicle-examples">
-                  <span>Types de modèles</span>
-                  Audi A3, Mercedes Classe A, BMW Série 1, Mini Cooper.
-                </p>
-                <a class="btn dark js-vehicle" data-vehicle="véhicule premium compact" href="#">Disponibilité</a>
-              </div>
-            </article>
-
-            <article class="vehicle-card">
-              <div class="vehicle-card-media">
-                <img src="assets/vehicule-prestige.jpeg" alt="Véhicule prestige" />
-                <span class="vehicle-chip">Sur validation</span>
-              </div>
-              <div class="vehicle-card-body">
-                <h3 class="vehicle-card-title">Véhicule prestige</h3>
+                <h3 class="vehicle-card-title">Luxe</h3>
                 <div class="vehicle-metrics">
                   <div class="vehicle-metric"><span>Prix</span><strong>Sur demande</strong></div>
                   <div class="vehicle-metric"><span>Caution</span><strong>Validation préalable</strong></div>
                 </div>
                 <ul class="vehicle-specs">
-                  <li><span>✓</span>Sélection limitée</li>
-                  <li><span>✓</span>Profil validé</li>
-                  <li><span>✓</span>Livraison privée</li>
+                  <li><span>✓</span>SUV et prestige</li>
+                  <li><span>✓</span>Remise discrète</li>
+                  <li><span>✓</span>Profil validé par WhatsApp</li>
                 </ul>
                 <p class="vehicle-examples">
                   <span>Types de modèles</span>
-                  Mercedes Classe G, Porsche 911, Lamborghini Urus, SUV prestige.
+                  Range Rover Sport, Porsche Cayenne, Mercedes GLE, BMW X5.
                 </p>
-                <a class="btn dark js-vehicle" data-vehicle="véhicule prestige" href="#">Disponibilité</a>
+                <a class="btn dark js-vehicle" data-vehicle="luxe" href="#">Disponibilité</a>
               </div>
             </article>
           </div>
@@ -1650,118 +1898,148 @@
       </section>
       </div>
 
-      <div class="view" data-view-panel="checkout" hidden>
-      <section class="section black" id="finalisation">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="kicker">Checkout sécurisé</p>
-              <h2>Finalisation.</h2>
-            </div>
-            <p>Documents. Clause. Acompte 25%.</p>
-          </div>
-
-          <div class="checkout-layout">
-            <form class="checkout-card" id="checkoutForm">
-              <div class="form-grid">
-                <div>
-                  <label class="small" for="packSelect">Pack</label>
-                  <select id="packSelect" name="pack">
-                    <option value="riviera">Pack Riviera</option>
-                    <option value="signature" selected>Pack Signature Cannes</option>
-                    <option value="sunset">Pack Sunset Club</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="small" for="arrivalDate">Arrivée</label>
-                  <input id="arrivalDate" name="arrival" type="date" />
-                </div>
-                <div>
-                  <label class="small" for="clientName">Nom complet</label>
-                  <input id="clientName" name="name" type="text" autocomplete="name" />
-                </div>
-                <div>
-                  <label class="small" for="clientPhone">Téléphone</label>
-                  <input id="clientPhone" name="phone" type="tel" autocomplete="tel" placeholder="+33" />
-                </div>
-              </div>
-
-              <p class="choice-title">Documents obligatoires</p>
-              <div class="upload-grid">
-                <label class="upload-tile">Pièce d'identité<input class="doc-input" type="file" accept="image/*,application/pdf" /></label>
-                <label class="upload-tile">Permis recto<input class="doc-input" type="file" accept="image/*,application/pdf" /></label>
-                <label class="upload-tile">Permis verso<input class="doc-input" type="file" accept="image/*,application/pdf" /></label>
-                <label class="upload-tile">Justificatif domicile<input class="doc-input" type="file" accept="image/*,application/pdf" /></label>
-              </div>
-
-              <label class="check-row">
-                <input id="validDocs" type="checkbox" />
-                <span>Je certifie que ces documents sont valides et m’appartiennent.</span>
-              </label>
-
-              <label class="check-row">
-                <input id="legalClause" type="checkbox" />
-                <span>Je reconnais que la caution doit être validée 72h avant l’arrivée. En cas d’échec, le séjour est annulé et l’acompte non remboursé.</span>
-              </label>
-
-              <p class="choice-title">Mode de caution</p>
-              <label class="radio-row">
-                <input type="radio" name="cautionMode" value="empreinte bancaire" checked />
-                <span>Empreinte bancaire. Deadline automatique à J-3.</span>
-              </label>
-              <label class="radio-row">
-                <input type="radio" name="cautionMode" value="espèces sur place" />
-                <span>Espèces sur place. Présence et montant contrôlés le jour J.</span>
-              </label>
-              <label class="check-row hidden" id="cashClauseRow">
-                <input id="cashClause" type="checkbox" />
-                <span>J’accepte que l’absence de caution, un montant incomplet ou de faux billets sur place entraînent l’annulation du séjour et la perte de l’acompte.</span>
-              </label>
-            </form>
-
-            <aside class="summary-card" aria-label="Résumé paiement">
-              <p class="kicker">Résumé</p>
-              <h3 id="summaryPack">Pack Signature Cannes</h3>
-              <div class="summary-row"><span>Montant pack</span><strong id="summaryPrice">6 000 €</strong></div>
-              <div class="summary-row"><span>Caution</span><strong id="summaryCaution">6 000 €</strong></div>
-              <div class="summary-row"><span>Documents</span><strong id="summaryDocs">0/4</strong></div>
-              <div class="summary-row summary-total"><span>Acompte 25%</span><strong id="summaryDeposit">1 500 €</strong></div>
-              <button class="btn" id="paymentBtn" type="submit" form="checkoutForm" disabled>Continuer sur WhatsApp</button>
-              <p class="status" id="paymentState">Ajoutez les documents et acceptez les clauses.</p>
-            </aside>
-          </div>
-
-          <div class="timeline" aria-label="Timeline caution">
-            <div><strong>J-4</strong><span>Relance automatique.</span></div>
-            <div><strong>J-3</strong><span>Deadline empreinte bancaire.</span></div>
-            <div><strong>+6h</strong><span>Délai de régularisation.</span></div>
-            <div><strong>Échec</strong><span>Annulation. Acompte conservé.</span></div>
+      <div class="view" data-view-panel="about" hidden>
+      <section class="subhero" id="a-propos">
+        <img src="assets/cannes-signature.jpg" alt="" />
+        <div class="subhero-inner">
+          <div>
+            <p class="kicker">À propos de nous</p>
+            <h2>CTD Conciergerie.</h2>
+            <p>Une conciergerie premium à Cannes, pensée pour cadrer votre séjour avant votre arrivée.</p>
           </div>
         </div>
       </section>
 
-      <section class="section black" id="trust">
+      <section class="about-section">
+        <div class="container">
+          <div class="about-layout">
+            <div class="about-lead">
+              <p class="kicker">Notre rôle</p>
+              <h2>Un point d’entrée simple pour un séjour premium.</h2>
+              <p>
+                CTD accompagne les clients qui veulent profiter de Cannes avec une organisation claire :
+                logement sélectionné, véhicule adapté, expériences privées et échanges rapides. L’objectif
+                est de vous éviter les recherches dispersées et de vous proposer une solution cohérente avec
+                votre budget, vos dates et votre façon de voyager.
+              </p>
+              <div class="about-facts">
+                <div class="about-fact">
+                  <span>Zone</span>
+                  <strong>Cannes, Côte d’Azur et demandes saisonnières premium.</strong>
+                </div>
+                <div class="about-fact">
+                  <span>Format</span>
+                  <strong>Packs séjours, location de véhicules et options à la carte.</strong>
+                </div>
+                <div class="about-fact">
+                  <span>Promesse</span>
+                  <strong>Un cadre clair avant validation, avec disponibilité vérifiée.</strong>
+                </div>
+              </div>
+            </div>
+            <div class="about-media">
+              <img src="assets/cannes-pack.jpg" alt="Vue premium de Cannes pour CTD Conciergerie" />
+              <div class="about-media-caption">
+                <p>Une expérience construite autour de vos dates, de votre groupe et du niveau de service attendu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section black">
         <div class="container">
           <div class="section-head">
             <div>
-              <p class="kicker">Trust</p>
-              <h2>Preuves visibles.</h2>
+              <p class="kicker">Ce que vous pouvez attendre</p>
+              <h2>Service cadré.</h2>
             </div>
-            <p>Paiement sécurisé. Partenaires privés. Vlogs clients.</p>
+            <p>Chaque demande est traitée avec une logique simple : besoin, disponibilité, conditions, validation.</p>
           </div>
-          <div class="trust-grid">
-            <div>Logo SAS CTD</div>
-            <div>Partenaires véhicules</div>
-            <div>Partenaires immobiliers</div>
-            <div>Stripe / Revolut Business</div>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener">Feed Instagram</a>
-            <a href="https://www.tiktok.com/" target="_blank" rel="noopener">Vlogs TikTok</a>
-            <div>WhatsApp Pro</div>
-            <div>Catalogue PDF</div>
+          <div class="about-grid">
+            <article class="about-card">
+              <div>
+                <span>01</span>
+                <h3>Séjours packagés</h3>
+              </div>
+              <p>Les logements sont proposés dans des packs complets, avec véhicule et expérience, pour garder une offre claire et maîtrisée.</p>
+            </article>
+            <article class="about-card">
+              <div>
+                <span>02</span>
+                <h3>Véhicules premium</h3>
+              </div>
+              <p>Citadine, sportive ou luxe : la sélection dépend des dates, du profil conducteur et des conditions de caution.</p>
+            </article>
+            <article class="about-card">
+              <div>
+                <span>03</span>
+                <h3>Options privées</h3>
+              </div>
+              <p>Transfert, chef, photographe, beach club, yacht ou décoration événementielle peuvent être ajoutés selon disponibilité.</p>
+            </article>
+            <article class="about-card">
+              <div>
+                <span>04</span>
+                <h3>Échange direct</h3>
+              </div>
+              <p>Les disponibilités, cautions et conditions sont confirmées avant paiement, pour éviter les mauvaises surprises.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Déroulé</p>
+              <h2>Comment ça se passe.</h2>
+            </div>
+            <p>Un parcours court, utile et transparent avant toute réservation.</p>
+          </div>
+          <div class="process-grid">
+            <article class="process-step">
+              <span>Étape 1</span>
+              <h3>Votre demande</h3>
+              <p>Vous indiquez les dates, le nombre de personnes, le type de véhicule et les options souhaitées.</p>
+            </article>
+            <article class="process-step">
+              <span>Étape 2</span>
+              <h3>Disponibilité</h3>
+              <p>CTD vérifie les possibilités réelles et vous répond avec une proposition adaptée.</p>
+            </article>
+            <article class="process-step">
+              <span>Étape 3</span>
+              <h3>Conditions</h3>
+              <p>Prix, caution, documents, horaires et modalités sont précisés avant confirmation.</p>
+            </article>
+            <article class="process-step">
+              <span>Étape 4</span>
+              <h3>Validation</h3>
+              <p>Une fois le cadre accepté, l’organisation est verrouillée et le suivi reste direct.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-cta">
+        <div class="container">
+          <div class="about-cta-inner">
+            <div>
+              <p class="kicker">Commencer</p>
+              <h2>Choisissez le format qui correspond à votre besoin.</h2>
+              <p>Parcourez les packs si vous voulez un séjour complet, ou les véhicules si vous cherchez uniquement une location premium à Cannes.</p>
+            </div>
+            <div class="about-cta-actions">
+              <a class="btn" href="#packs" data-view="packs">Voir les packs</a>
+              <a class="btn light" href="#vehicules" data-view="vehicles">Voir les véhicules</a>
+            </div>
           </div>
         </div>
       </section>
       </div>
+
     </main>
 
     <footer>
@@ -1771,17 +2049,6 @@
 
   <script>
     const whatsappNumber = "33672208288";
-    const packs = {
-      riviera: { name: "Pack Riviera", price: 2000, caution: 2000 },
-      signature: { name: "Pack Signature Cannes", price: 6000, caution: 6000 },
-      sunset: { name: "Pack Sunset Club", price: 10000, caution: 10000 }
-    };
-
-    const euro = new Intl.NumberFormat("fr-FR", {
-      style: "currency",
-      currency: "EUR",
-      maximumFractionDigits: 0
-    });
 
     function whatsappUrl(message) {
       return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -1793,6 +2060,7 @@
     function viewFromHash() {
       if (window.location.hash === "#packs") return "packs";
       if (window.location.hash === "#vehicules") return "vehicles";
+      if (window.location.hash === "#a-propos") return "about";
       return "home";
     }
 
@@ -1805,7 +2073,7 @@
         link.toggleAttribute("aria-current", link.dataset.view === view);
       });
       if (updateUrl) {
-        const hash = view === "vehicles" ? "#vehicules" : `#${view}`;
+        const hash = view === "vehicles" ? "#vehicules" : view === "about" ? "#a-propos" : `#${view}`;
         history.pushState({ view }, "", hash);
       }
       window.scrollTo({ top: 0, behavior: "auto" });
@@ -1824,28 +2092,6 @@
 
     showView(viewFromHash(), false);
 
-    const packCards = Array.from(document.querySelectorAll("[data-pack-card]"));
-
-    packCards.forEach((card) => {
-      card.addEventListener("click", (event) => {
-        if (event.target.closest("a, button")) return;
-        const alreadyOpen = card.classList.contains("is-open");
-        packCards.forEach((current) => current.classList.remove("is-open"));
-        if (!alreadyOpen) {
-          card.classList.add("is-open");
-          card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-        }
-      });
-    });
-
-    document.getElementById("navWhatsapp").href = whatsappUrl(
-      "Bonjour CTD, je souhaite vérifier une disponibilité premium. Merci de m'envoyer le catalogue PDF."
-    );
-
-    document.getElementById("catalogWhatsapp").href = whatsappUrl(
-      "Bonjour CTD, je souhaite recevoir le catalogue PDF des packs séjours."
-    );
-
     document.querySelectorAll(".js-pack").forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
@@ -1861,81 +2107,6 @@
         window.open(whatsappUrl(`Bonjour CTD, je souhaite recevoir les disponibilités ${vehicle} pour la saison été à Cannes.`), "_blank");
       });
     });
-
-    const checkoutForm = document.getElementById("checkoutForm");
-    const packSelect = document.getElementById("packSelect");
-    const docInputs = Array.from(document.querySelectorAll(".doc-input"));
-    const validDocs = document.getElementById("validDocs");
-    const legalClause = document.getElementById("legalClause");
-    const cashClause = document.getElementById("cashClause");
-    const cashClauseRow = document.getElementById("cashClauseRow");
-    const paymentBtn = document.getElementById("paymentBtn");
-    const paymentState = document.getElementById("paymentState");
-    const summaryPack = document.getElementById("summaryPack");
-    const summaryPrice = document.getElementById("summaryPrice");
-    const summaryCaution = document.getElementById("summaryCaution");
-    const summaryDocs = document.getElementById("summaryDocs");
-    const summaryDeposit = document.getElementById("summaryDeposit");
-
-    function currentCautionMode() {
-      return document.querySelector("input[name='cautionMode']:checked").value;
-    }
-
-    function refreshCheckout() {
-      const pack = packs[packSelect.value];
-      const docsReady = docInputs.filter((input) => input.files.length > 0).length;
-      const cashMode = currentCautionMode() === "espèces sur place";
-      const cashReady = cashMode ? cashClause.checked : true;
-      const formReady =
-        document.getElementById("clientName").value.trim().length > 2 &&
-        document.getElementById("clientPhone").value.trim().length > 5 &&
-        document.getElementById("arrivalDate").value &&
-        docsReady === 4 &&
-        validDocs.checked &&
-        legalClause.checked &&
-        cashReady;
-
-      summaryPack.textContent = pack.name;
-      summaryPrice.textContent = euro.format(pack.price);
-      summaryCaution.textContent = euro.format(pack.caution);
-      summaryDeposit.textContent = euro.format(Math.round(pack.price * 0.25));
-      summaryDocs.textContent = `${docsReady}/4`;
-      paymentBtn.disabled = !formReady;
-      cashClauseRow.classList.toggle("hidden", !cashMode);
-      paymentState.textContent = formReady
-        ? "Dossier prêt. Envoi vers WhatsApp pour lien de paiement sécurisé."
-        : "Ajoutez les documents et acceptez les clauses.";
-    }
-
-    checkoutForm.addEventListener("input", refreshCheckout);
-    checkoutForm.addEventListener("change", refreshCheckout);
-    document.querySelectorAll("input[name='cautionMode']").forEach((radio) => {
-      radio.addEventListener("change", refreshCheckout);
-    });
-
-    checkoutForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (paymentBtn.disabled) return;
-      const pack = packs[packSelect.value];
-      const arrival = document.getElementById("arrivalDate").value || "à confirmer";
-      const name = document.getElementById("clientName").value.trim();
-      const phone = document.getElementById("clientPhone").value.trim();
-      const cautionMode = currentCautionMode();
-      const deposit = Math.round(pack.price * 0.25);
-      const message = [
-        `Bonjour CTD, mon dossier est complet pour ${pack.name}.`,
-        `Acompte à régler : ${euro.format(deposit)}.`,
-        `Caution : ${euro.format(pack.caution)} en ${cautionMode}.`,
-        `Arrivée : ${arrival}.`,
-        `Client : ${name}.`,
-        `Téléphone : ${phone}.`,
-        "Merci de m'envoyer le lien de paiement sécurisé."
-      ].join(" ");
-      window.open(whatsappUrl(message), "_blank");
-      paymentState.textContent = "WhatsApp ouvert. Envoyez le message pour finaliser.";
-    });
-
-    refreshCheckout();
   </script>
 </body>
 </html>
