@@ -454,8 +454,10 @@
       grid-template-rows: 185px 1fr;
       min-height: 0;
       overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.14);
-      background: var(--white);
+      border: 1px solid var(--gold);
+      background: var(--black);
+      color: var(--white);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.16);
       transition: border-color 500ms ease, box-shadow 500ms ease;
     }
 
@@ -464,10 +466,6 @@
       grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
       grid-template-rows: auto;
       min-height: 300px;
-      border-color: var(--gold);
-      background: var(--black);
-      color: var(--white);
-      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.16);
     }
 
     .media {
@@ -480,7 +478,7 @@
       min-height: 100%;
     }
 
-    .featured .media img {
+    .pack-card .media img {
       opacity: 0.58;
       filter: saturate(0.6);
     }
@@ -553,7 +551,7 @@
     .pack-teaser {
       max-width: 520px;
       margin: 8px 0 0;
-      color: rgba(0, 0, 0, 0.58);
+      color: rgba(255, 255, 255, 0.64);
       font-size: 0.78rem;
       line-height: 1.45;
     }
@@ -566,7 +564,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-width: 0;
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .featured .metrics {
@@ -575,7 +573,7 @@
 
     .metric {
       padding: 11px;
-      background: rgba(0, 0, 0, 0.02);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .featured .metric {
@@ -584,7 +582,7 @@
 
     .metric span {
       display: block;
-      color: rgba(0, 0, 0, 0.45);
+      color: rgba(255, 255, 255, 0.42);
       font-size: 0.54rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -607,7 +605,7 @@
 
     .copy {
       margin-top: 12px;
-      color: rgba(0, 0, 0, 0.62);
+      color: rgba(255, 255, 255, 0.68);
       font-size: 0.8rem;
       line-height: 1.5;
     }
@@ -625,9 +623,10 @@
 
     .include {
       min-height: 0;
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
       padding: 11px 12px;
-      color: rgba(0, 0, 0, 0.68);
+      color: rgba(255, 255, 255, 0.74);
       font-size: 0.78rem;
       line-height: 1.38;
     }
@@ -657,7 +656,7 @@
 
     .pack-options-title {
       margin: 0;
-      color: rgba(0, 0, 0, 0.44);
+      color: rgba(255, 255, 255, 0.42);
       font-size: 0.58rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -672,7 +671,7 @@
       grid-template-columns: 1fr;
       gap: 8px;
       margin-top: 10px;
-      color: rgba(0, 0, 0, 0.66);
+      color: rgba(255, 255, 255, 0.68);
       font-size: 0.78rem;
       line-height: 1.38;
     }
@@ -700,7 +699,7 @@
 
     .pack-caution-note {
       margin: 10px 0 0;
-      color: rgba(0, 0, 0, 0.46);
+      color: rgba(255, 255, 255, 0.48);
       font-size: 0.64rem;
       letter-spacing: 0.08em;
       line-height: 1.45;
@@ -1168,14 +1167,46 @@
       background: var(--black);
       color: rgba(255, 255, 255, 0.58);
       padding: 34px 20px;
-      text-align: center;
       font-size: 0.68rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
-    body[data-active-view="home"] footer {
-      display: none;
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      max-width: 1180px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-link {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.04);
+      transition: border-color 300ms ease, background 300ms ease;
+    }
+
+    .social-link:hover {
+      border-color: var(--gold);
+      background: rgba(197, 160, 89, 0.12);
+    }
+
+    .social-link img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
     }
 
     .hidden {
@@ -1786,6 +1817,16 @@
         letter-spacing: 0.12em;
         line-height: 1.5;
       }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .social-link {
+        width: 36px;
+        height: 36px;
+      }
     }
   </style>
 </head>
@@ -1930,7 +1971,7 @@
                     <p class="pack-caution-note">Caution réglementaire : 6 000 €.</p>
                   </div>
                   <div class="pack-actions">
-                    <a class="btn dark js-pack" data-pack="Pack 2" href="#">Vérifier la disponibilité</a>
+                    <a class="btn js-pack" data-pack="Pack 2" href="#">Vérifier la disponibilité</a>
                   </div>
                   <div class="pack-details">
                   <p class="copy">Voiture au choix selon disponibilité : BMW X3 M, GTI, Tiguan, BMW X1 ou RS3.</p>
@@ -1975,7 +2016,7 @@
                     <p class="pack-caution-note">Caution réglementaire : 10 000 €.</p>
                   </div>
                   <div class="pack-actions">
-                    <a class="btn dark js-pack" data-pack="Pack 3" href="#">Vérifier la disponibilité</a>
+                    <a class="btn js-pack" data-pack="Pack 3" href="#">Vérifier la disponibilité</a>
                   </div>
                   <div class="pack-details">
                   <p class="copy">Voiture au choix selon disponibilité : RS7, RS6, Classe G63, C63S ou M5.</p>
@@ -2029,7 +2070,7 @@
           <div class="vehicle-card-grid">
             <article class="vehicle-card">
               <div class="vehicle-card-media">
-                <img src="assets/bmwx1.png" alt="Citadine premium disponible à Cannes" />
+                <img src="assets/bmwx1noir.png" alt="Citadine premium disponible à Cannes" />
                 <span class="vehicle-chip">Citadine</span>
               </div>
               <div class="vehicle-card-body">
@@ -2305,7 +2346,17 @@
     </main>
 
     <footer>
-      SAS CTD - Conciergerie Premium - Côte d’Azur
+      <div class="footer-inner">
+        <span>SAS CTD - Conciergerie Premium - Côte d’Azur</span>
+        <div class="footer-social" aria-label="Réseaux sociaux">
+          <a class="social-link" href="https://www.instagram.com/ctd_conciergerie/" target="_blank" rel="noopener" aria-label="Instagram CTD Conciergerie">
+            <img src="assets/logo-instagram.svg" alt="" />
+          </a>
+          <a class="social-link" href="https://www.tiktok.com/@custodia.conciergerie06?lang=fr" target="_blank" rel="noopener" aria-label="TikTok CTD Conciergerie">
+            <img src="assets/logo-tiktok.svg" alt="" />
+          </a>
+        </div>
+      </div>
     </footer>
   </div>
 
