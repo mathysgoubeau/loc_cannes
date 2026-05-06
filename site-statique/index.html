@@ -8,7 +8,7 @@
   <style>
     :root {
       --black: #000000;
-      --gold: #c5a059;
+      --gold: #c9a84c;
       --white: #ffffff;
       --muted: rgba(255, 255, 255, 0.62);
       --line: rgba(255, 255, 255, 0.14);
@@ -134,6 +134,7 @@
       min-height: 46px;
       align-items: center;
       justify-content: center;
+      max-width: 100%;
       border: 1px solid var(--gold);
       background: var(--gold);
       color: var(--black);
@@ -144,6 +145,7 @@
       letter-spacing: 0.18em;
       line-height: 1.35;
       text-transform: uppercase;
+      overflow-wrap: anywhere;
       cursor: pointer;
       transition: 0.35s ease;
     }
@@ -301,12 +303,31 @@
       text-transform: uppercase;
     }
 
+    .hero-rating {
+      margin: 18px auto 0;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
     .hero-actions {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       width: min(620px, 100%);
       margin: 40px auto 0;
+    }
+
+    .hero-reassurance {
+      max-width: 620px;
+      margin: 16px auto 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      line-height: 1.6;
+      text-transform: uppercase;
     }
 
     .hero-note {
@@ -322,6 +343,27 @@
       font-size: 0.62rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+    }
+
+    .hero-catalog-link {
+      display: inline-flex;
+      min-height: 36px;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: var(--black);
+      padding: 0 12px;
+      font-weight: 700;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      transition: background 300ms ease, color 300ms ease;
+    }
+
+    .hero-catalog-link:hover {
+      background: transparent;
+      color: var(--gold);
     }
 
     .section {
@@ -514,6 +556,12 @@
       color: var(--gold);
     }
 
+    .popular-badge {
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 700;
+    }
+
     .capacity {
       bottom: 16px;
       left: 16px;
@@ -697,6 +745,15 @@
       width: 100%;
     }
 
+    .pack-microcopy {
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
     .pack-caution-note {
       margin: 10px 0 0;
       color: rgba(255, 255, 255, 0.48);
@@ -708,6 +765,47 @@
 
     .featured .pack-caution-note {
       color: rgba(255, 255, 255, 0.48);
+    }
+
+    .pack-summary-block {
+      display: grid;
+      gap: 12px;
+      max-width: 1040px;
+      margin: 16px auto 0;
+      padding: 0 20px;
+    }
+
+    .pack-availability-note,
+    .pack-included-summary {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: rgba(0, 0, 0, 0.035);
+      padding: 16px 18px;
+      color: rgba(0, 0, 0, 0.68);
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .pack-availability-note {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .pack-included-summary span {
+      display: block;
+      color: var(--black);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .pack-included-summary strong {
+      display: block;
+      margin-top: 8px;
+      color: rgba(0, 0, 0, 0.68);
+      font-size: 0.84rem;
+      font-weight: 400;
     }
 
     .vehicles-section {
@@ -902,6 +1000,7 @@
     .vehicle-price-table-wrap {
       overflow-x: auto;
       border: 1px solid rgba(0, 0, 0, 0.12);
+      -webkit-overflow-scrolling: touch;
     }
 
     .vehicle-price-table {
@@ -956,6 +1055,46 @@
       line-height: 1.6;
     }
 
+    .chauffeur-section {
+      margin-top: 30px;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      padding-top: 26px;
+    }
+
+    .chauffeur-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .chauffeur-item {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 18px;
+    }
+
+    .chauffeur-item span {
+      display: block;
+      color: rgba(0, 0, 0, 0.42);
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .chauffeur-item strong {
+      display: block;
+      margin-top: 10px;
+      color: var(--black);
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .chauffeur-item p {
+      margin: 10px 0 0;
+      color: rgba(0, 0, 0, 0.58);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
     .about-section {
       padding: 84px 20px 92px;
       background: var(--white);
@@ -984,6 +1123,23 @@
       color: rgba(0, 0, 0, 0.62);
       font-size: 1rem;
       line-height: 1.75;
+    }
+
+    .about-credibility {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .about-credibility span {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 9px 10px;
+      color: rgba(0, 0, 0, 0.62);
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      line-height: 1.35;
+      text-transform: uppercase;
     }
 
     .about-facts {
@@ -1162,6 +1318,107 @@
       gap: 10px;
     }
 
+    .trust-section {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .testimonial {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 22px;
+    }
+
+    .testimonial p {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.66);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .testimonial strong {
+      display: block;
+      margin-top: 18px;
+      color: var(--black);
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .faq-block {
+      margin-top: 34px;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      padding-top: 28px;
+    }
+
+    .faq-block h3 {
+      margin: 0 0 18px;
+      font-size: clamp(1.35rem, 2.4vw, 2.25rem);
+      font-weight: 260;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 18px;
+    }
+
+    .faq-item h4 {
+      margin: 0;
+      color: var(--black);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
+    .faq-item p {
+      margin: 10px 0 0;
+      color: rgba(0, 0, 0, 0.58);
+      font-size: 0.84rem;
+      line-height: 1.6;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 40;
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      max-width: calc(100vw - 40px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: var(--gold);
+      color: var(--black);
+      padding: 0 20px;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.26);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .floating-whatsapp:hover {
+      background: var(--white);
+    }
+
     footer {
       border-top: 1px solid rgba(255, 255, 255, 0.12);
       background: var(--black);
@@ -1174,9 +1431,10 @@
 
     .footer-inner {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 18px;
+      gap: 14px;
       max-width: 1180px;
       margin: 0 auto;
       text-align: center;
@@ -1200,7 +1458,7 @@
 
     .social-link:hover {
       border-color: var(--gold);
-      background: rgba(197, 160, 89, 0.12);
+      background: rgba(201, 168, 76, 0.12);
     }
 
     .social-link img {
@@ -1299,7 +1557,8 @@
       }
 
       .hero-content {
-        padding-top: 148px;
+        min-height: 100svh;
+        padding: 148px 14px 150px;
       }
 
       .hero-bg,
@@ -1320,17 +1579,36 @@
       .pack-options-grid,
       .pack-actions,
       .vehicle-card-grid,
+      .chauffeur-grid,
       .about-layout,
       .about-grid,
       .process-grid,
-      .about-cta-inner {
+      .about-cta-inner,
+      .testimonial-grid,
+      .faq-grid {
         grid-template-columns: 1fr;
       }
 
       .section-head,
-      .pack-top,
-      .hero-note {
+      .pack-top {
         display: block;
+      }
+
+      .hero-note {
+        right: 14px;
+        bottom: 18px;
+        left: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+      }
+
+      .hero-catalog-link {
+        width: min(300px, 100%);
       }
 
       .section-head {
@@ -1449,6 +1727,16 @@
         letter-spacing: 0.06em;
       }
 
+      .pack-summary-block {
+        padding: 0 12px;
+      }
+
+      .pack-availability-note,
+      .pack-included-summary {
+        padding: 14px;
+        font-size: 0.76rem;
+      }
+
       .vehicles-section {
         padding: 24px 14px 64px;
       }
@@ -1509,7 +1797,7 @@
       }
 
       .vehicle-price-table {
-        min-width: 0;
+        min-width: 520px;
         font-size: 0.76rem;
       }
 
@@ -1547,6 +1835,10 @@
       .about-facts {
         grid-template-columns: 1fr;
         margin-top: 24px;
+      }
+
+      .about-credibility {
+        margin-top: 18px;
       }
 
       .about-fact {
@@ -1629,6 +1921,20 @@
       .brand-name {
         display: none;
       }
+
+      .floating-whatsapp {
+        right: 14px;
+        bottom: 14px;
+        left: auto;
+        min-height: 48px;
+        padding: 0 14px;
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+      }
+
+      footer {
+        padding-bottom: 88px;
+      }
     }
 
     @media (max-width: 520px) {
@@ -1661,7 +1967,47 @@
       }
 
       .hero-content {
-        padding-top: 142px;
+        padding: 142px 12px 148px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 13vw, 2.8rem);
+        letter-spacing: 0.055em;
+        line-height: 1.08;
+      }
+
+      .hero-subtitle {
+        margin-top: 18px;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        line-height: 1.65;
+      }
+
+      .hero-actions {
+        gap: 8px;
+        margin-top: 28px;
+      }
+
+      .hero-actions .btn {
+        min-height: 44px;
+        padding: 0 12px;
+        font-size: 0.58rem;
+        letter-spacing: 0.08em;
+      }
+
+      .hero-rating {
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+      }
+
+      .hero-reassurance {
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .hero-note {
+        font-size: 0.54rem;
+        letter-spacing: 0.08em;
       }
 
       .subhero {
@@ -1682,6 +2028,7 @@
       }
 
       .vehicle-price-table {
+        min-width: 500px;
         font-size: 0.72rem;
       }
 
@@ -1788,7 +2135,7 @@
       }
 
       .about-cta {
-        padding: 42px 12px 54px;
+        padding: 42px 12px 96px;
       }
 
       .about-cta-inner {
@@ -1812,7 +2159,7 @@
       }
 
       footer {
-        padding: 26px 12px;
+        padding: 26px 12px 92px;
         font-size: 0.58rem;
         letter-spacing: 0.12em;
         line-height: 1.5;
@@ -1826,6 +2173,14 @@
       .social-link {
         width: 36px;
         height: 36px;
+      }
+
+      .floating-whatsapp {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        width: auto;
+        min-height: 48px;
       }
     }
   </style>
@@ -1875,11 +2230,67 @@
               <a class="btn" href="#packs" data-view="packs">Voir les packs</a>
               <a class="btn light" href="#vehicules" data-view="vehicles">Louer un véhicule</a>
             </div>
+            <p class="hero-reassurance">+80 logements · +30 véhicules · Disponibilité confirmée avant paiement</p>
           </div>
         </div>
         <div class="hero-note">
-          <span>Catalogue PDF par WhatsApp</span>
+          <a class="hero-catalog-link" href="https://wa.me/33672208288?text=Bonjour%20CTD%2C%20je%20souhaite%20recevoir%20le%20catalogue%20sur%20WhatsApp." target="_blank" rel="noopener">Catalogue sur WhatsApp</a>
           <span>Logements uniquement via packs</span>
+        </div>
+      </section>
+
+      <section class="section trust-section" aria-labelledby="trust-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Ils nous ont fait confiance</p>
+              <h2 id="trust-title">Ils nous ont fait confiance.</h2>
+            </div>
+            <p>Des demandes cadrées, confirmées par écrit et suivies directement sur WhatsApp.</p>
+          </div>
+          <div class="testimonial-grid">
+            <article class="testimonial">
+              <p>“Logement, véhicule et activités prêts à l’arrivée. Les échanges étaient clairs du début à la fin.”</p>
+              <strong>Séjour pack Riviera</strong>
+            </article>
+            <article class="testimonial">
+              <p>“Disponibilité confirmée rapidement, caution expliquée avant paiement et suivi simple pendant le séjour.”</p>
+              <strong>Séjour pack Cannes</strong>
+            </article>
+            <article class="testimonial">
+              <p>“Organisation fluide pour un groupe, avec les options ajustées avant validation.”</p>
+              <strong>Séjour pack Croisette</strong>
+            </article>
+          </div>
+          <div class="faq-block" aria-labelledby="faq-title">
+            <h3 id="faq-title">FAQ</h3>
+            <div class="faq-grid">
+              <article class="faq-item">
+                <h4>Puis-je personnaliser mon pack ?</h4>
+                <p>Oui, les activités et options peuvent être ajustées selon vos dates, votre groupe et le budget.</p>
+              </article>
+              <article class="faq-item">
+                <h4>Comment fonctionne la caution ?</h4>
+                <p>La caution CB est bloquée, puis restituée sous 48h après le séjour si tout est conforme.</p>
+              </article>
+              <article class="faq-item">
+                <h4>Le véhicule est-il livré à mon logement ?</h4>
+                <p>Oui, la livraison à votre logement est incluse selon disponibilité et horaires confirmés.</p>
+              </article>
+              <article class="faq-item">
+                <h4>Puis-je ajouter des activités ?</h4>
+                <p>Oui, CTD peut ajouter bateau, quad, jet ski, restaurant, club ou autre demande saisonnière.</p>
+              </article>
+              <article class="faq-item">
+                <h4>Quel est le délai de réponse ?</h4>
+                <p>Les demandes sont traitées rapidement sur WhatsApp, avec confirmation avant paiement.</p>
+              </article>
+              <article class="faq-item">
+                <h4>Les logements sont-ils inclus ?</h4>
+                <p>Les logements sont inclus dans les packs. Pour une location simple, seuls les véhicules sont proposés.</p>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
       </div>
@@ -1911,14 +2322,14 @@
             <article class="pack-card featured">
               <div class="media">
                 <img src="assets/cannes-signature.jpg" alt="Pack 1 Cannes" />
-                <span class="badge">Pack 1</span>
+                <span class="badge">Pack Riviera</span>
                 <span class="capacity">1 à 3 personnes</span>
               </div>
               <div class="pack-body">
                 <div>
                   <div class="pack-top">
                     <div>
-                      <p class="kicker">Studio + citadine</p>
+                      <p class="kicker">Pack 1 · Studio + citadine</p>
                       <h3 class="pack-title">Pack Riviera</h3>
                       <p class="pack-teaser">Le format pour 1 à 3 personnes avec logement studio, véhicule citadin et activité nautique ou quad.</p>
                     </div>
@@ -1926,13 +2337,13 @@
                       <div class="metric"><span>Prix</span><strong>2 000 €</strong></div>
                       <div class="metric"><span>Logement</span><strong>Studio</strong></div>
                     </div>
-                    <p class="pack-caution-note">Caution réglementaire : 2 000 €.</p>
+                    <p class="pack-caution-note">Caution CB bloquée — restituée sous 48h après le séjour.</p>
                   </div>
                   <div class="pack-actions">
-                    <a class="btn js-pack" data-pack="Pack 1" href="#">Vérifier la disponibilité</a>
+                    <a class="btn js-pack" data-pack="Pack Riviera (Pack 1)" href="#">Demander ma disponibilité</a>
                   </div>
+                  <p class="pack-microcopy">Disponibilité vérifiée avant toute confirmation</p>
                   <div class="pack-details">
-                  <p class="copy">Voiture au choix selon disponibilité : Clio 5, Polo 6, Renault Captur ou Peugeot 208.</p>
                   <div class="include-grid">
                     <div class="include">Logement : studio</div>
                     <div class="include">Activité : excursion quad ou jet ski + bouée tractée</div>
@@ -1954,13 +2365,14 @@
             <article class="pack-card">
               <div class="media">
                 <img src="assets/cannes-riviera.jpg" alt="Pack 2 Cannes" />
+                <span class="badge popular-badge">Le plus populaire</span>
                 <span class="capacity">3 à 5 personnes</span>
               </div>
               <div class="pack-body">
                 <div>
                   <div class="pack-top">
                     <div>
-                      <p class="kicker">Appartement + sportive</p>
+                      <p class="kicker">Pack 2 · Appartement + performance</p>
                       <h3 class="pack-title">Pack Cannes</h3>
                       <p class="pack-teaser">Le format 3 à 5 personnes avec appartement, véhicules dynamiques et deux activités possibles.</p>
                     </div>
@@ -1968,13 +2380,13 @@
                       <div class="metric"><span>Prix</span><strong>6 000 €</strong></div>
                       <div class="metric"><span>Logement</span><strong>Appartement 2-3 chambres</strong></div>
                     </div>
-                    <p class="pack-caution-note">Caution réglementaire : 6 000 €.</p>
+                    <p class="pack-caution-note">Caution CB bloquée — restituée sous 48h après le séjour.</p>
                   </div>
                   <div class="pack-actions">
-                    <a class="btn js-pack" data-pack="Pack 2" href="#">Vérifier la disponibilité</a>
+                    <a class="btn js-pack" data-pack="Pack Cannes (Pack 2)" href="#">Demander ma disponibilité</a>
                   </div>
+                  <p class="pack-microcopy">Disponibilité vérifiée avant toute confirmation</p>
                   <div class="pack-details">
-                  <p class="copy">Voiture au choix selon disponibilité : BMW X3 M, GTI, Tiguan, BMW X1 ou RS3.</p>
                   <div class="include-grid">
                     <div class="include">Logement : appartement 2 à 3 chambres</div>
                     <div class="include">Activités : demi-journée bateau + karting</div>
@@ -2005,7 +2417,7 @@
                 <div>
                   <div class="pack-top">
                     <div>
-                      <p class="kicker">Villa + premium</p>
+                      <p class="kicker">Pack 3 · Villa + premium</p>
                       <h3 class="pack-title">Pack Croisette</h3>
                       <p class="pack-teaser">Le format 5 à 8 personnes avec villa, véhicules premium et personnalisation complète des activités.</p>
                     </div>
@@ -2013,13 +2425,13 @@
                       <div class="metric"><span>Prix</span><strong>10 000 €</strong></div>
                       <div class="metric"><span>Logement</span><strong>Villa</strong></div>
                     </div>
-                    <p class="pack-caution-note">Caution réglementaire : 10 000 €.</p>
+                    <p class="pack-caution-note">Caution CB bloquée — restituée sous 48h après le séjour.</p>
                   </div>
                   <div class="pack-actions">
-                    <a class="btn js-pack" data-pack="Pack 3" href="#">Vérifier la disponibilité</a>
+                    <a class="btn js-pack" data-pack="Pack Croisette (Pack 3)" href="#">Demander ma disponibilité</a>
                   </div>
+                  <p class="pack-microcopy">Disponibilité vérifiée avant toute confirmation</p>
                   <div class="pack-details">
-                  <p class="copy">Voiture au choix selon disponibilité : RS7, RS6, Classe G63, C63S ou M5.</p>
                   <div class="include-grid">
                     <div class="include">Logement : villa</div>
                     <div class="include">Activités : personnalisation complète du séjour</div>
@@ -2041,6 +2453,13 @@
               </div>
             </article>
           </div>
+          <div class="pack-summary-block">
+            <p class="pack-availability-note">Véhicule selon disponibilité — confirmé avant validation</p>
+            <div class="pack-included-summary">
+              <span>Inclus dans tous les packs</span>
+              <strong>Accueil personnalisé · Caution CB · Approvisionnement · Suivi WhatsApp</strong>
+            </div>
+          </div>
         </div>
       </section>
       </div>
@@ -2051,8 +2470,8 @@
         <div class="subhero-inner">
           <div>
             <p class="kicker">Location simple</p>
-            <h2>Véhicules premium.</h2>
-            <p>Premium. Citadine. Sportive. Tarifs à partir du prix par jour.</p>
+            <h2>Roulez différemment.</h2>
+            <p>Premium. Citadine. Performance. Tarifs à partir du prix par jour.</p>
           </div>
         </div>
       </section>
@@ -2064,7 +2483,7 @@
               <p class="kicker">Catégories véhicules</p>
               <h2>Sélection du catalogue.</h2>
             </div>
-            <p>Certains modèles manquants seront communiqués dès que possible.</p>
+            <p>Catalogue complet sur demande WhatsApp.</p>
           </div>
 
           <div class="vehicle-card-grid">
@@ -2088,20 +2507,20 @@
 
             <article class="vehicle-card featured">
               <div class="vehicle-card-media">
-                <img src="assets/rs3.jpeg" alt="Voiture sportive disponible à Cannes" />
+                <img src="assets/rs3.jpeg" alt="Voiture performance disponible à Cannes" />
                 <span class="vehicle-chip">Performance</span>
               </div>
               <div class="vehicle-card-body">
-                <h3 class="vehicle-card-title">Sportive</h3>
+                <h3 class="vehicle-card-title">Performance</h3>
                 <div class="vehicle-metrics">
                   <div class="vehicle-metric"><span>À partir de</span><strong>200 € / jour</strong></div>
                 </div>
                 <ul class="vehicle-specs">
                   <li><span>✓</span>BMW X3 M, GTI, RS3, BMW X6</li>
                   <li><span>✓</span>RS3 Berline, Tiguan Rline, Ford Mustang</li>
-                  <li><span>✓</span>Audi S3 Daza, Golf 8R</li>
+                  <li><span>✓</span>Audi S3, Golf 8R</li>
                 </ul>
-                <a class="btn dark js-vehicle" data-vehicle="sportive" href="#">Disponibilité</a>
+                <a class="btn dark js-vehicle" data-vehicle="performance" href="#">Disponibilité</a>
               </div>
             </article>
 
@@ -2190,11 +2609,33 @@
                     <td><strong>600 € / jour</strong></td>
                   </tr>
                   <tr>
-                    <td>C63S cab decata</td>
+                    <td>Mercedes C63S Cabriolet</td>
                     <td><strong>500 € / jour</strong></td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <p class="vehicle-pricing-note">Tarifs indicatifs selon disponibilité et durée · Livraison à votre logement incluse</p>
+            <div class="chauffeur-section">
+              <div class="vehicle-pricing-head">
+                <div>
+                  <p class="kicker">Service chauffeur</p>
+                  <h3>Chauffeur privé & Mise à disposition.</h3>
+                </div>
+                <p>Un format avec chauffeur pour transferts, soirées, plages, restaurants et demandes longues durées.</p>
+              </div>
+              <div class="chauffeur-grid">
+                <div class="chauffeur-item">
+                  <span>Van</span>
+                  <strong>Tarif sur demande</strong>
+                  <p>Mise à disposition avec chauffeur selon durée, horaires et itinéraire.</p>
+                </div>
+                <div class="chauffeur-item">
+                  <span>Classe S</span>
+                  <strong>Tarif sur demande</strong>
+                  <p>Service privé haut de gamme pour transferts et déplacements à Cannes.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2218,13 +2659,18 @@
           <div class="about-layout">
             <div class="about-lead">
               <p class="kicker">Notre rôle</p>
-              <h2>Un point d’entrée simple pour un séjour premium.</h2>
+              <h2>Cannes, sans les complications.</h2>
               <p>
-                CTD accompagne les clients qui veulent profiter de Cannes avec une organisation claire :
-                logement selon pack, véhicule adapté, activités prévues et échanges rapides. L’objectif
-                est de vous éviter les recherches dispersées et de vous proposer une solution cohérente avec
-                votre budget, vos dates et votre façon de voyager.
+                CTD organise votre séjour à Cannes de A à Z — logement, véhicule, activités.
+                Vous arrivez, tout est prêt.
               </p>
+              <div class="about-credibility" aria-label="Crédibilité CTD">
+                <span>SAS déclarée</span>
+                <span>Côte d’Azur</span>
+                <span>Fondée en 2025</span>
+                <span>+80 logements partenaires</span>
+                <span>+30 véhicules</span>
+              </div>
               <div class="about-facts">
                 <div class="about-fact">
                   <span>Zone</span>
@@ -2272,7 +2718,7 @@
                 <span>02</span>
                 <h3>Véhicules premium</h3>
               </div>
-              <p>Citadine, sportive ou premium : la sélection dépend des dates, du profil conducteur et des modèles disponibles.</p>
+              <p>+30 véhicules disponibles, de la citadine au prestige.</p>
             </article>
             <article class="about-card">
               <div>
@@ -2286,7 +2732,7 @@
                 <span>04</span>
                 <h3>Échange direct</h3>
               </div>
-              <p>Les disponibilités, tarifs et conditions sont confirmés avant paiement, pour éviter les mauvaises surprises.</p>
+              <p>Zéro surprise — tout est confirmé avant paiement, par écrit.</p>
             </article>
           </div>
         </div>
@@ -2347,7 +2793,7 @@
 
     <footer>
       <div class="footer-inner">
-        <span>SAS CTD - Conciergerie Premium - Côte d’Azur</span>
+        <span>SAS CTD · Conciergerie Premium · Côte d’Azur · Saison 2025</span>
         <div class="footer-social" aria-label="Réseaux sociaux">
           <a class="social-link" href="https://www.instagram.com/ctd_conciergerie/" target="_blank" rel="noopener" aria-label="Instagram CTD Conciergerie">
             <img src="assets/insta.png" alt="" />
@@ -2358,6 +2804,7 @@
         </div>
       </div>
     </footer>
+    <a class="floating-whatsapp" href="https://wa.me/33672208288?text=Bonjour%20CTD%2C%20je%20souhaite%20lancer%20ma%20demande." target="_blank" rel="noopener" aria-label="Lancer ma demande sur WhatsApp">Lancer ma demande</a>
   </div>
 
   <script>
@@ -2409,7 +2856,7 @@
       link.addEventListener("click", (event) => {
         event.preventDefault();
         const pack = link.dataset.pack;
-        window.open(whatsappUrl(`Bonjour CTD, je souhaite vérifier la disponibilité du ${pack}. Merci de m'envoyer le catalogue PDF.`), "_blank");
+        window.open(whatsappUrl(`Bonjour CTD, je souhaite demander ma disponibilité pour ${pack}.`), "_blank");
       });
     });
 
