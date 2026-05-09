@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="CTD Conciergerie Premium à Cannes : packs séjours, location de véhicules et accompagnement sur mesure." />
   <title>CTD Conciergerie Premium - Cannes</title>
+  <link rel="icon" type="image/png" href="assets/ctd-logo.png" />
+  <link rel="apple-touch-icon" href="assets/ctd-logo.png" />
   <style>
     :root {
       --black: #000000;
@@ -406,6 +408,10 @@
       text-transform: uppercase;
     }
 
+    #packs h2 {
+      font-size: clamp(2.42rem, 5.75vw, 5.3rem);
+    }
+
     .subhero p:not(.kicker) {
       max-width: 560px;
       margin: 14px 0 0;
@@ -474,7 +480,7 @@
 
     .pack-card {
       display: grid;
-      grid-template-rows: 185px 1fr;
+      grid-template-rows: 210px 1fr;
       min-height: 0;
       overflow: hidden;
       border: 1px solid var(--gold);
@@ -511,7 +517,7 @@
       grid-column: 1 / -1;
       grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
       grid-template-rows: auto;
-      min-height: 300px;
+      min-height: 360px;
     }
 
     .media {
@@ -554,21 +560,26 @@
     }
 
     .badge {
-      top: 16px;
+      bottom: 16px;
       left: 16px;
       border-color: var(--gold);
       color: var(--gold);
     }
 
     .popular-badge {
+      top: 16px;
+      bottom: auto;
       background: var(--gold);
-      color: var(--white);
+      color: #111118;
       font-weight: 700;
     }
 
     .capacity {
       bottom: 16px;
-      left: 16px;
+      right: 16px;
+      left: auto;
+      border-color: rgba(201, 168, 76, 0.52);
+      color: rgba(255, 255, 255, 0.88);
     }
 
     .pack-body {
@@ -577,6 +588,12 @@
       justify-content: space-between;
       gap: 14px;
       padding: 20px;
+    }
+
+    .pack-body > div {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
     }
 
     .pack-top {
@@ -593,19 +610,18 @@
 
     .pack-title {
       margin: 10px 0 0;
-      font-size: clamp(1.55rem, 2.5vw, 2.25rem);
-      font-weight: 220;
-      letter-spacing: 0.1em;
-      line-height: 1;
-      text-transform: uppercase;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 520;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
     }
 
     .pack-teaser {
       max-width: 520px;
-      margin: 8px 0 0;
+      margin: 10px 0 0;
       color: rgba(255, 255, 255, 0.64);
-      font-size: 0.78rem;
-      line-height: 1.45;
+      font-size: 0.84rem;
+      line-height: 1.55;
     }
 
     .featured .pack-teaser {
@@ -651,6 +667,55 @@
       font-weight: 400;
     }
 
+    .pack-price {
+      display: grid;
+      gap: 9px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 14px;
+    }
+
+    .pack-price-main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .pack-price-main strong {
+      color: var(--white);
+      font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+      font-weight: 540;
+      line-height: 1;
+    }
+
+    .pack-price-main span {
+      color: rgba(255, 255, 255, 0.46);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .pack-price-subline {
+      margin: 0;
+      color: var(--gold);
+      font-size: 0.74rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .pack-market-note {
+      margin: 0;
+      border: 0.5px solid rgba(201, 168, 76, 0.2);
+      border-radius: 8px;
+      background: rgba(201, 168, 76, 0.06);
+      padding: 10px 12px;
+      color: rgba(201, 168, 76, 0.8);
+      font-size: 0.72rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
     .pack-details {
       display: block;
     }
@@ -669,18 +734,22 @@
     .include-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 8px;
-      margin-top: 12px;
+      gap: 10px;
+      margin-top: 10px;
     }
 
     .include {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
       min-height: 0;
       border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(255, 255, 255, 0.04);
-      padding: 11px 12px;
+      padding: 12px;
       color: rgba(255, 255, 255, 0.74);
       font-size: 0.78rem;
-      line-height: 1.38;
+      line-height: 1.42;
     }
 
     .featured .include {
@@ -694,12 +763,57 @@
     }
 
     .include::before {
-      content: "";
+      content: none;
+    }
+
+    .include-icon {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 6px;
+      background: rgba(201, 168, 76, 0.1);
+      color: var(--gold);
+    }
+
+    .include-icon svg,
+    .pack-caution-note svg,
+    .pack-trust-item svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .include-copy strong,
+    .include-copy small {
       display: block;
-      width: 22px;
-      height: 1px;
-      margin-bottom: 8px;
-      background: var(--gold);
+    }
+
+    .include-copy strong {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.82rem;
+      font-weight: 560;
+      line-height: 1.35;
+    }
+
+    .include-copy small {
+      margin-top: 4px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.72rem;
+      line-height: 1.45;
+    }
+
+    .pack-block-title {
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
     .pack-options {
@@ -721,7 +835,7 @@
     .pack-options-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 8px;
+      gap: 11px;
       margin-top: 10px;
       color: rgba(255, 255, 255, 0.68);
       font-size: 0.78rem;
@@ -742,11 +856,15 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
-      margin-top: 8px;
+      margin-top: auto;
+      padding-top: 18px;
     }
 
     .pack-actions .btn {
       width: 100%;
+      min-height: 55px;
+      padding-top: 8px;
+      padding-bottom: 8px;
     }
 
     .pack-microcopy {
@@ -759,8 +877,11 @@
     }
 
     .pack-caution-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       margin: 10px 0 0;
-      color: rgba(255, 255, 255, 0.48);
+      color: rgba(255, 255, 255, 0.4);
       font-size: 0.64rem;
       letter-spacing: 0.08em;
       line-height: 1.45;
@@ -778,26 +899,35 @@
 
     .pack-summary-block {
       display: grid;
-      gap: 12px;
+      gap: 14px;
       max-width: 1040px;
       margin: 16px auto 0;
       padding: 0 20px;
     }
 
-    .pack-availability-note,
     .pack-included-summary {
       border: 1px solid rgba(0, 0, 0, 0.12);
       background: rgba(0, 0, 0, 0.035);
-      padding: 16px 18px;
+      padding: 20px 22px;
       color: rgba(0, 0, 0, 0.68);
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       line-height: 1.6;
     }
 
     .pack-availability-note {
       margin: 0;
+      color: var(--gold);
+      font-size: 0.84rem;
+      font-style: italic;
       letter-spacing: 0.1em;
+      line-height: 1.5;
+      text-align: center;
       text-transform: uppercase;
+    }
+
+    .pack-included-summary {
+      border-top-color: var(--gold);
+      text-align: center;
     }
 
     .pack-included-summary span {
@@ -815,6 +945,32 @@
       color: rgba(0, 0, 0, 0.68);
       font-size: 0.84rem;
       font-weight: 400;
+    }
+
+    .pack-trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .pack-trust-item {
+      display: flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.025);
+      padding: 12px;
+      color: rgba(0, 0, 0, 0.58);
+      font-size: 0.72rem;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .pack-trust-item svg {
+      flex: 0 0 auto;
+      color: var(--gold);
     }
 
     .vehicles-section {
@@ -1337,9 +1493,42 @@
       gap: 12px;
     }
 
+    .faq-blocks {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-block {
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      background: var(--white);
+    }
+
+    .faq-block-title {
+      margin: 0;
+      background: #111118;
+      color: var(--white);
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .faq-block .faq-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
     .faq-item {
       border: 1px solid rgba(0, 0, 0, 0.12);
       padding: 20px;
+    }
+
+    .faq-block .faq-item {
+      border: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.16);
     }
 
     .faq-item h3 {
@@ -1409,6 +1598,13 @@
 
     .hidden {
       display: none;
+    }
+
+    .icon-sprite {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
     }
 
     @keyframes goldFlow {
@@ -1616,8 +1812,8 @@
       }
 
       .pack-title {
-        font-size: clamp(1.35rem, 8.6vw, 1.82rem);
-        letter-spacing: 0.07em;
+        font-size: clamp(1.45rem, 8.8vw, 2rem);
+        letter-spacing: 0.01em;
       }
 
       .pack-teaser {
@@ -1637,7 +1833,7 @@
 
       .include-grid {
         margin-top: 10px;
-        gap: 7px;
+        gap: 10px;
       }
 
       .featured .include-grid {
@@ -1649,12 +1845,20 @@
         font-size: 0.74rem;
       }
 
+      .pack-price {
+        padding: 12px;
+      }
+
+      .pack-price-main strong {
+        font-size: 1.55rem;
+      }
+
       .pack-options {
         margin-top: 12px;
       }
 
       .pack-options-grid {
-        gap: 7px;
+        gap: 10px;
         font-size: 0.74rem;
       }
 
@@ -1663,7 +1867,7 @@
       }
 
       .pack-actions .btn {
-        min-height: 44px;
+        min-height: 52px;
         font-size: 0.62rem;
         letter-spacing: 0.12em;
       }
@@ -1678,10 +1882,13 @@
         padding: 0 12px;
       }
 
-      .pack-availability-note,
       .pack-included-summary {
         padding: 14px;
         font-size: 0.76rem;
+      }
+
+      .pack-trust-row {
+        grid-template-columns: 1fr 1fr;
       }
 
       .vehicles-section {
@@ -1857,6 +2064,10 @@
         letter-spacing: 0.05em;
       }
 
+      #packs h2 {
+        font-size: clamp(2.25rem, 12vw, 3.15rem);
+      }
+
       .subhero p:not(.kicker) {
         max-width: 320px;
         margin-top: 10px;
@@ -1941,6 +2152,10 @@
         font-size: clamp(1.7rem, 10vw, 2.2rem);
         letter-spacing: 0.035em;
         line-height: 1.05;
+      }
+
+      #packs h2 {
+        font-size: clamp(1.95rem, 11.5vw, 2.55rem);
       }
 
       .subhero p:not(.kicker) {
@@ -2099,6 +2314,67 @@
   </style>
 </head>
 <body data-active-view="home">
+  <svg class="icon-sprite" aria-hidden="true">
+    <symbol id="icon-building" viewBox="0 0 24 24">
+      <path d="M4 21V5l8-2 8 2v16" />
+      <path d="M8 9h1M8 13h1M8 17h1M15 9h1M15 13h1M15 17h1" />
+      <path d="M3 21h18" />
+    </symbol>
+    <symbol id="icon-car" viewBox="0 0 24 24">
+      <path d="M5 16h14l-1.5-5h-11L5 16Z" />
+      <path d="M7 16v2M17 16v2M7 18h.01M17 18h.01" />
+      <path d="M8 11l1.5-4h5L16 11" />
+    </symbol>
+    <symbol id="icon-wave" viewBox="0 0 24 24">
+      <path d="M3 16c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2" />
+      <path d="M3 20c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2" />
+    </symbol>
+    <symbol id="icon-wheel" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8" />
+      <circle cx="12" cy="12" r="2" />
+      <path d="M12 4v6M12 14v6M4 12h6M14 12h6" />
+    </symbol>
+    <symbol id="icon-boat" viewBox="0 0 24 24">
+      <path d="M4 15h16l-2 4H6l-2-4Z" />
+      <path d="M8 15V7l7 3v5" />
+      <path d="M3 20c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 2-1" />
+    </symbol>
+    <symbol id="icon-coffee" viewBox="0 0 24 24">
+      <path d="M5 8h11v5a5 5 0 0 1-5 5H9a4 4 0 0 1-4-4V8Z" />
+      <path d="M16 10h2a2 2 0 0 1 0 4h-2" />
+      <path d="M8 4v1M12 4v1M16 4v1" />
+    </symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24">
+      <path d="M3 11l9-7 9 7" />
+      <path d="M5 10v11h14V10" />
+      <path d="M10 21v-6h4v6" />
+    </symbol>
+    <symbol id="icon-rocket" viewBox="0 0 24 24">
+      <path d="M12 15l-3-3c1-5 4-8 10-9-1 6-4 9-9 10Z" />
+      <path d="M9 12l-4 1-2 5 5-2 1-4Z" />
+      <path d="M14 6h.01" />
+    </symbol>
+    <symbol id="icon-sliders" viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h16" />
+      <path d="M8 4v4M16 10v4M11 16v4" />
+    </symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24">
+      <rect x="5" y="10" width="14" height="10" rx="2" />
+      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24">
+      <path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3Z" />
+      <path d="M8.5 12l2.2 2.2 4.8-5" />
+    </symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path d="M5 20l1.2-3.5A7.5 7.5 0 1 1 9 19.1L5 20Z" />
+      <path d="M9 8.5c.4 3 2.2 4.8 5.5 5.6l1.1-1.1" />
+    </symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8" />
+      <path d="M12 7v5l3 2" />
+    </symbol>
+  </svg>
   <div class="page">
     <header class="nav">
       <div class="nav-inner">
@@ -2183,42 +2459,69 @@
             <article class="pack-card featured">
               <div class="media">
                 <img src="assets/cannes-signature.jpg" alt="Pack 1 Cannes" />
-                <span class="badge">Pack Riviera</span>
-                <span class="capacity">1 à 3 personnes</span>
+                <span class="badge">Studio + citadine</span>
+                <span class="capacity">1 à 3 pers.</span>
               </div>
               <div class="pack-body">
                 <div>
                   <div class="pack-top">
                     <div>
-                      <p class="kicker">Studio + citadine</p>
-                      <h3 class="pack-title">Pack Riviera</h3>
-                      <p class="pack-teaser">Le format pour 1 à 3 personnes avec logement studio, véhicule citadin et activité nautique ou quad.</p>
+                      <p class="kicker">Pack Riviera</p>
+                      <h3 class="pack-title">L'escapade Cannes.</h3>
+                      <p class="pack-teaser">Votre première semaine sur la Côte d'Azur — logement, voiture et adrénaline inclus.</p>
                     </div>
-                    <div class="metrics">
-                      <div class="metric"><span>Prix</span><strong>2 000 €</strong></div>
-                      <div class="metric"><span>Logement</span><strong>Studio</strong></div>
+                    <div class="pack-price">
+                      <div class="pack-price-main">
+                        <strong>3 000 €</strong>
+                        <span>la semaine</span>
+                      </div>
+                      <p class="pack-price-subline">Soit moins de 1 000 € / personne tout inclus à Cannes</p>
+                      <p class="pack-market-note">Un studio seul à Cannes en juillet : 700 € à 1 200 € la nuit. Ici, c'est la semaine.</p>
                     </div>
-                    <p class="pack-caution-note">Caution CB bloquée — restituée sous 48h après le séjour.</p>
+                    <p class="pack-caution-note">
+                      <svg aria-hidden="true"><use href="#icon-lock"></use></svg>
+                      <span>Caution CB bloquée — restituée sous 48h après le séjour.</span>
+                    </p>
+                  </div>
+                  <div class="pack-details">
+                    <p class="pack-block-title">Ce qui est inclus</p>
+                    <div class="include-grid">
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-building"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Studio au cœur de Cannes</strong>
+                          <small>Logement prêt à votre arrivée, approvisionné</small>
+                        </span>
+                      </div>
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-car"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Véhicule citadin livré à domicile</strong>
+                          <small>Clio 5, Polo 6, BMW X1, Peugeot 208...</small>
+                        </span>
+                      </div>
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-wave"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Matinée jet ski sur la Méditerranée</strong>
+                          <small>Ou excursion quad dans l'arrière-pays cannois</small>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="pack-options">
+                      <p class="pack-options-title">Services inclus</p>
+                      <div class="pack-options-grid">
+                        <div><span>✓</span>Accueil physique personnalisé à l'arrivée</div>
+                        <div><span>✓</span>Logement approvisionné avant votre arrivée</div>
+                        <div><span>✓</span>Accès réseaux plages, clubs &amp; restaurants</div>
+                        <div><span>✓</span>Suivi WhatsApp pendant tout le séjour</div>
+                      </div>
+                    </div>
                   </div>
                   <div class="pack-actions">
                     <a class="btn js-pack" data-pack="Pack Riviera (Pack 1)" href="#">Demander ma disponibilité</a>
                   </div>
                   <p class="pack-microcopy">Disponibilité vérifiée avant toute confirmation</p>
-                  <div class="pack-details">
-                  <div class="include-grid">
-                    <div class="include">Logement : studio</div>
-                    <div class="include">Activité : excursion quad ou jet ski + bouée tractée</div>
-                    <div class="include">Service de conciergerie classique</div>
-                  </div>
-                  <div class="pack-options">
-                    <p class="pack-options-title">Services inclus</p>
-                    <div class="pack-options-grid">
-                      <div><span>✓</span>Accueil physique personnalisé</div>
-                      <div><span>✓</span>Approvisionnement</div>
-                      <div><span>✓</span>Accès aux réseaux plage, club et restaurant</div>
-                    </div>
-                  </div>
-                  </div>
                 </div>
               </div>
             </article>
@@ -2226,45 +2529,80 @@
             <article class="pack-card popular-pack">
               <div class="media">
                 <img src="assets/cannes-riviera.jpg" alt="Pack 2 Cannes" />
-                <span class="badge popular-badge">Le plus populaire</span>
-                <span class="capacity">3 à 5 personnes</span>
+                <span class="badge popular-badge">LE PLUS POPULAIRE</span>
+                <span class="badge">Appartement + performance</span>
+                <span class="capacity">3 à 5 pers.</span>
               </div>
               <div class="pack-body">
                 <div>
                   <div class="pack-top">
                     <div>
-                      <p class="kicker">Appartement + sportive</p>
-                      <h3 class="pack-title">Pack Cannes</h3>
-                      <p class="pack-teaser">Le format 3 à 5 personnes avec appartement, véhicules dynamiques et deux activités possibles.</p>
+                      <p class="kicker">Pack Cannes</p>
+                      <h3 class="pack-title">L'expérience groupe.</h3>
+                      <p class="pack-teaser">Appartement 2-3 chambres, voiture qui claque et deux activités mémorables. C'est ça Cannes entre amis.</p>
                     </div>
-                    <div class="metrics">
-                      <div class="metric"><span>Prix</span><strong>6 000 €</strong></div>
-                      <div class="metric"><span>Logement</span><strong>Appartement 2-3 chambres</strong></div>
+                    <div class="pack-price">
+                      <div class="pack-price-main">
+                        <strong>6 000 €</strong>
+                        <span>la semaine</span>
+                      </div>
+                      <p class="pack-price-subline">Soit moins de 1 500 € / personne pour 5 à Cannes avec tout inclus</p>
+                      <p class="pack-market-note">Un appartement 3 chambres à Cannes en saison : 1 500 € à 3 000 € la nuit. Ici, c'est la semaine entière.</p>
                     </div>
-                    <p class="pack-caution-note">Caution CB bloquée — restituée sous 48h après le séjour.</p>
+                    <p class="pack-caution-note">
+                      <svg aria-hidden="true"><use href="#icon-lock"></use></svg>
+                      <span>Caution CB bloquée — restituée sous 48h après le séjour.</span>
+                    </p>
+                  </div>
+                  <div class="pack-details">
+                    <p class="pack-block-title">Ce qui est inclus</p>
+                    <div class="include-grid">
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-building"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Appartement 2-3 chambres Cannes</strong>
+                          <small>Prêt et approvisionné à votre arrivée</small>
+                        </span>
+                      </div>
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-wheel"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Véhicule performance livré</strong>
+                          <small>RS3, BMW X3M, GTI, Ford Mustang, Golf 8R...</small>
+                        </span>
+                      </div>
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-boat"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Demi-journée en mer + karting</strong>
+                          <small>Ou quad + jet ski — deux expériences incluses</small>
+                        </span>
+                      </div>
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-coffee"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Petit-déjeuner quotidien Italian Café</strong>
+                          <small>Le café mythique de la Croisette, chaque matin</small>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="pack-options">
+                      <p class="pack-options-title">Services inclus</p>
+                      <div class="pack-options-grid">
+                        <div><span>✓</span>Accueil physique personnalisé à l'arrivée</div>
+                        <div><span>✓</span>Logement approvisionné avant votre arrivée</div>
+                        <div><span>✓</span>Lavage voiture inclus pendant la semaine</div>
+                        <div><span>✓</span>Accès réseaux plages, clubs &amp; restaurants</div>
+                        <div><span>✓</span>Petit-déjeuner quotidien au Italian Café</div>
+                        <div><span>✓</span>Assistance réservation restos &amp; boîtes de nuit</div>
+                        <div><span>✓</span>Suivi WhatsApp pendant tout le séjour</div>
+                      </div>
+                    </div>
                   </div>
                   <div class="pack-actions">
                     <a class="btn js-pack" data-pack="Pack Cannes (Pack 2)" href="#">Demander ma disponibilité</a>
                   </div>
                   <p class="pack-microcopy">Disponibilité vérifiée avant toute confirmation</p>
-                  <div class="pack-details">
-                  <div class="include-grid">
-                    <div class="include">Logement : appartement 2 à 3 chambres</div>
-                    <div class="include">Activités : demi-journée bateau + karting</div>
-                    <div class="include">Alternative : excursion quad + jet ski</div>
-                  </div>
-                  <div class="pack-options">
-                    <p class="pack-options-title">Services inclus</p>
-                    <div class="pack-options-grid">
-                      <div><span>✓</span>Accueil physique personnalisé</div>
-                      <div><span>✓</span>Approvisionnement</div>
-                      <div><span>✓</span>Accès aux réseaux plage, club et restaurant</div>
-                      <div><span>✓</span>Petit déjeuner Italian Café</div>
-                      <div><span>✓</span>Lavage de voiture durant la semaine</div>
-                      <div><span>✓</span>Assistance réservation restaurant / boîte de nuit</div>
-                    </div>
-                  </div>
-                  </div>
                 </div>
               </div>
             </article>
@@ -2272,44 +2610,72 @@
             <article class="pack-card">
               <div class="media">
                 <img src="assets/cannes-sunset.jpg" alt="Pack 3 Cannes" />
-                <span class="capacity">5 à 8 personnes</span>
+                <span class="badge">Villa + prestige</span>
+                <span class="capacity">5 à 8 pers.</span>
               </div>
               <div class="pack-body">
                 <div>
                   <div class="pack-top">
                     <div>
-                      <p class="kicker">Villa + premium</p>
-                      <h3 class="pack-title">Pack Croisette</h3>
-                      <p class="pack-teaser">Le format 5 à 8 personnes avec villa, véhicules premium et personnalisation complète des activités.</p>
+                      <p class="kicker">Pack Croisette</p>
+                      <h3 class="pack-title">Le sur-mesure total.</h3>
+                      <p class="pack-teaser">Villa, véhicules prestige, programme entièrement construit avec vous. Vous choisissez tout. On organise tout.</p>
                     </div>
-                    <div class="metrics">
-                      <div class="metric"><span>Prix</span><strong>10 000 €</strong></div>
-                      <div class="metric"><span>Logement</span><strong>Villa</strong></div>
+                    <div class="pack-price">
+                      <div class="pack-price-main">
+                        <strong>10 000 €</strong>
+                        <span>la semaine</span>
+                      </div>
+                      <p class="pack-price-subline">Moins de 1 500 € / pers. — villa, prestige et programme 100% personnalisé</p>
+                      <p class="pack-market-note">Une villa à Cannes en juillet-août : 5 000 € à 15 000 € la semaine, sans voiture ni services.</p>
                     </div>
-                    <p class="pack-caution-note">Caution CB bloquée — restituée sous 48h après le séjour.</p>
+                    <p class="pack-caution-note">
+                      <svg aria-hidden="true"><use href="#icon-lock"></use></svg>
+                      <span>Caution CB bloquée — restituée sous 48h après le séjour.</span>
+                    </p>
+                  </div>
+                  <div class="pack-details">
+                    <p class="pack-block-title">Ce qui est inclus</p>
+                    <div class="include-grid">
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-home"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Villa privatisée à Cannes</strong>
+                          <small>Logement prestige prêt et aménagé à votre arrivée</small>
+                        </span>
+                      </div>
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-rocket"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Véhicule(s) prestige au choix</strong>
+                          <small>RS7, RS6, Classe G63, C63S, M5 — ou deux véhicules simultanément</small>
+                        </span>
+                      </div>
+                      <div class="include">
+                        <span class="include-icon"><svg aria-hidden="true"><use href="#icon-sliders"></use></svg></span>
+                        <span class="include-copy">
+                          <strong>Programme 100% personnalisé</strong>
+                          <small>On construit chaque journée avec vous après l'acompte</small>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="pack-options">
+                      <p class="pack-options-title">Vous pouvez tout personnaliser</p>
+                      <div class="pack-options-grid">
+                        <div><span>✓</span>1 ou 2 véhicules prestige simultanément</div>
+                        <div><span>✓</span>Table VIP boîte de nuit &amp; restaurant gastronomique</div>
+                        <div><span>✓</span>Journée bateau privatisée en mer</div>
+                        <div><span>✓</span>Plage privée réservée avec bed &amp; jet ski</div>
+                        <div><span>✓</span>Menu champagne &amp; vins selon vos goûts</div>
+                        <div><span>✓</span>Ménage journalier inclus</div>
+                        <div><span>✓</span>Mise à disposition chauffeur disponible</div>
+                      </div>
+                    </div>
                   </div>
                   <div class="pack-actions">
                     <a class="btn js-pack" data-pack="Pack Croisette (Pack 3)" href="#">Demander ma disponibilité</a>
                   </div>
                   <p class="pack-microcopy">Disponibilité vérifiée avant toute confirmation</p>
-                  <div class="pack-details">
-                  <div class="include-grid">
-                    <div class="include">Logement : villa</div>
-                    <div class="include">Activités : personnalisation complète du séjour</div>
-                    <div class="include">Expérience Premium</div>
-                  </div>
-                  <div class="pack-options">
-                    <p class="pack-options-title">Services inclus</p>
-                    <div class="pack-options-grid">
-                      <div><span>✓</span>Accueil physique personnalisé</div>
-                      <div><span>✓</span>Approvisionnement</div>
-                      <div><span>✓</span>Accès aux réseaux plage, club et restaurant</div>
-                      <div><span>✓</span>Lavage de voiture durant la semaine</div>
-                      <div><span>✓</span>Assistance réservation restaurant / boîte de nuit</div>
-                      <div><span>✓</span>Ménage journalier</div>
-                    </div>
-                  </div>
-                  </div>
                 </div>
               </div>
             </article>
@@ -2318,7 +2684,25 @@
             <p class="pack-availability-note">Véhicule selon disponibilité — confirmé avant validation</p>
             <div class="pack-included-summary">
               <span>Inclus dans tous les packs</span>
-              <strong>Accueil personnalisé · Caution CB · Approvisionnement · Suivi WhatsApp</strong>
+              <strong>Accueil personnalisé · Caution CB restituée · Approvisionnement inclus · Suivi WhatsApp dédié</strong>
+            </div>
+            <div class="pack-trust-row" aria-label="Réassurance packs">
+              <div class="pack-trust-item">
+                <svg aria-hidden="true"><use href="#icon-car"></use></svg>
+                <span>Véhicule livré à domicile</span>
+              </div>
+              <div class="pack-trust-item">
+                <svg aria-hidden="true"><use href="#icon-shield"></use></svg>
+                <span>Disponibilité confirmée avant paiement</span>
+              </div>
+              <div class="pack-trust-item">
+                <svg aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                <span>Suivi WhatsApp inclus</span>
+              </div>
+              <div class="pack-trust-item">
+                <svg aria-hidden="true"><use href="#icon-clock"></use></svg>
+                <span>Réponse sous 24h</span>
+              </div>
             </div>
           </div>
         </div>
@@ -2671,31 +3055,74 @@
             </div>
             <p>Les points essentiels sur les packs, les cautions, les véhicules et les délais de réponse.</p>
           </div>
-          <div class="faq-grid">
-            <article class="faq-item">
-              <h3>Puis-je personnaliser mon pack ?</h3>
-              <p>Oui, les activités et options peuvent être ajustées selon vos dates, votre groupe et le budget.</p>
-            </article>
-            <article class="faq-item">
-              <h3>Comment fonctionne la caution ?</h3>
-              <p>La caution CB est bloquée, puis restituée sous 48h après le séjour si tout est conforme.</p>
-            </article>
-            <article class="faq-item">
-              <h3>Le véhicule est-il livré à mon logement ?</h3>
-              <p>Oui, la livraison à votre logement est incluse selon disponibilité et horaires confirmés.</p>
-            </article>
-            <article class="faq-item">
-              <h3>Puis-je ajouter des activités ?</h3>
-              <p>Oui, CTD peut ajouter bateau, quad, jet ski, restaurant, club ou autre demande saisonnière.</p>
-            </article>
-            <article class="faq-item">
-              <h3>Quel est le délai de réponse ?</h3>
-              <p>Les demandes sont traitées rapidement sur WhatsApp, avec confirmation avant paiement.</p>
-            </article>
-            <article class="faq-item">
-              <h3>Les logements sont-ils inclus ?</h3>
-              <p>Les logements sont inclus dans les packs. Pour une location simple, seuls les véhicules sont proposés.</p>
-            </article>
+          <div class="faq-blocks">
+            <section class="faq-block" aria-labelledby="faq-before-title">
+              <h3 class="faq-block-title" id="faq-before-title">Avant de réserver</h3>
+              <div class="faq-grid">
+                <article class="faq-item">
+                  <h3>Comment savoir quel pack me correspond ?</h3>
+                  <p>Simple — Pack Riviera pour 1 à 3 personnes, Pack Cannes pour 3 à 5 personnes, Pack Croisette pour 5 à 8 personnes avec villa et personnalisation totale. En cas de doute, contactez-nous sur WhatsApp, on vous guide en 2 minutes.</p>
+                </article>
+                <article class="faq-item">
+                  <h3>Est-ce que les logements et véhicules sont vraiment disponibles ?</h3>
+                  <p>Oui. CTD ne confirme aucune réservation sans avoir vérifié la disponibilité réelle au préalable. Aucune mauvaise surprise à l'arrivée — c'est notre engagement principal.</p>
+                </article>
+                <article class="faq-item">
+                  <h3>Peut-on personnaliser son pack ?</h3>
+                  <p>Oui pour tous les packs. Les activités et services peuvent être ajustés selon vos envies et votre budget. Le Pack Croisette inclut une personnalisation totale — on construit le programme ensemble après votre acompte.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="faq-block" aria-labelledby="faq-payment-title">
+              <h3 class="faq-block-title" id="faq-payment-title">Bloc 2 — Paiement &amp; Caution</h3>
+              <div class="faq-grid">
+                <article class="faq-item">
+                  <h3>Comment fonctionne le paiement ?</h3>
+                  <p>Vous payez un acompte pour confirmer votre réservation. Le solde est réglé selon les modalités précisées dans votre catalogue. Tout se fait via un lien de paiement sécurisé.</p>
+                </article>
+                <article class="faq-item">
+                  <h3>C'est quoi la caution et est-ce que je la récupère ?</h3>
+                  <p>La caution est bloquée sur votre carte bancaire — elle n'est pas débitée. Elle est automatiquement restituée dans les 48h après votre départ si tout est conforme. C'est une garantie standard, pas un paiement supplémentaire.</p>
+                </article>
+                <article class="faq-item">
+                  <h3>Que se passe-t-il si je ne paie pas la caution avant mon arrivée ?</h3>
+                  <p>La caution doit être confirmée 72h avant votre arrivée. Sans ça, le séjour ne peut pas être maintenu et l'acompte est perdu. C'est précisé clairement dans votre catalogue avant toute réservation — zéro surprise.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="faq-block" aria-labelledby="faq-stay-title">
+              <h3 class="faq-block-title" id="faq-stay-title">Bloc 3 — Après l'acompte &amp; pendant le séjour</h3>
+              <div class="faq-grid">
+                <article class="faq-item">
+                  <h3>Que se passe-t-il une fois l'acompte payé ?</h3>
+                  <p>CTD vous contacte personnellement sous 24h. On prend le temps de construire votre séjour avec vous — restos, clubs, plages privées, activités nautiques, goûts et préférences. Vous n'avez rien à chercher, on s'occupe de tout.</p>
+                </article>
+                <article class="faq-item">
+                  <h3>Est-ce que le véhicule est livré à notre logement ?</h3>
+                  <p>Oui. Le véhicule est livré directement à votre adresse de séjour. Un membre de CTD effectue la remise en main propre et vous présente le véhicule sur place.</p>
+                </article>
+                <article class="faq-item">
+                  <h3>Comment se passe l'accueil à notre arrivée ?</h3>
+                  <p>Vous êtes accueillis personnellement. Le logement est prêt et approvisionné, le véhicule est livré, vous recevez vos coupons activités et votre welcome kit. Vous arrivez — tout est déjà en place.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="faq-block" aria-labelledby="faq-trust-title">
+              <h3 class="faq-block-title" id="faq-trust-title">Bloc 4 — Confiance &amp; sérieux</h3>
+              <div class="faq-grid">
+                <article class="faq-item">
+                  <h3>CTD est une société officielle ?</h3>
+                  <p>Oui. CTD est une SAS déclarée, basée sur la Côte d'Azur. Contrats clairs, paiements sécurisés, caution CB — tout est structuré et transparent.</p>
+                </article>
+                <article class="faq-item">
+                  <h3>Je ne vous connais pas — comment vous faire confiance ?</h3>
+                  <p>CTD est nouveau sur le marché — et c'est précisément pour ça qu'on a tout mis en place pour que vous n'ayez pas à nous faire confiance sur parole. Site détaillé, conditions transparentes, disponibilité vérifiée avant paiement, contrat à chaque réservation. Vous savez exactement ce que vous achetez avant de payer quoi que ce soit.</p>
+                </article>
+              </div>
+            </section>
           </div>
         </div>
       </section>
@@ -2719,7 +3146,7 @@
   </div>
 
   <script>
-    const whatsappNumber = "33672208288";
+    const whatsappNumber = "33746724684";
 
     function whatsappUrl(message) {
       return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
