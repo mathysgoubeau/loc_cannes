@@ -1306,6 +1306,12 @@
       text-transform: uppercase;
     }
 
+    .about-credibility .highlight {
+      border-color: rgba(201, 168, 76, 0.58);
+      background: rgba(201, 168, 76, 0.08);
+      color: var(--gold);
+    }
+
     .about-facts {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1374,6 +1380,99 @@
       letter-spacing: 0.14em;
       line-height: 1.65;
       text-transform: uppercase;
+    }
+
+    .about-comparison,
+    .about-founders {
+      margin-top: 44px;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      padding-top: 34px;
+    }
+
+    .about-comparison h2,
+    .about-founders h2 {
+      margin: 12px 0 0;
+      color: var(--black);
+      font-size: clamp(1.65rem, 3.4vw, 3rem);
+      font-weight: 280;
+      letter-spacing: 0.08em;
+      line-height: 1.08;
+      text-transform: uppercase;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .comparison-card {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: rgba(0, 0, 0, 0.035);
+      padding: 22px;
+    }
+
+    .comparison-card.with-ctd {
+      border-color: rgba(201, 168, 76, 0.62);
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .comparison-card h3 {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.52);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .comparison-card.with-ctd h3 {
+      color: var(--gold);
+    }
+
+    .comparison-card ul {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(0, 0, 0, 0.64);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .comparison-card.with-ctd ul {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .comparison-card li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .comparison-card li::before {
+      content: "";
+      position: absolute;
+      top: 0.72em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .comparison-card.with-ctd li::before {
+      background: var(--gold);
+    }
+
+    .about-founders p {
+      max-width: 980px;
+      margin: 18px 0 0;
+      color: rgba(0, 0, 0, 0.62);
+      font-size: 1rem;
+      font-style: italic;
+      line-height: 1.75;
     }
 
     .about-grid {
@@ -1478,7 +1577,7 @@
 
     .about-cta-actions {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 10px;
     }
 
@@ -1730,6 +1829,7 @@
       .include-grid,
       .pack-options-grid,
       .pack-actions,
+      .comparison-grid,
       .vehicle-card-grid,
       .chauffeur-grid,
       .about-layout,
@@ -2234,10 +2334,20 @@
         left: 16px;
       }
 
-      .about-media-caption p {
+            .about-media-caption p {
         font-size: 0.66rem;
         letter-spacing: 0.06em;
         line-height: 1.5;
+      }
+
+      .about-comparison,
+      .about-founders {
+        margin-top: 30px;
+        padding-top: 24px;
+      }
+
+      .comparison-card {
+        padding: 18px;
       }
 
       .about-card,
@@ -2894,7 +3004,7 @@
           <div>
             <p class="kicker">À propos de nous</p>
             <h2>CTD Conciergerie.</h2>
-            <p>Une conciergerie premium à Cannes, pensée pour cadrer votre séjour avant votre arrivée.</p>
+            <p>Une conciergerie premium, à Cannes, pensée pour cadrer votre séjour avant votre arrivée.</p>
           </div>
         </div>
       </section>
@@ -2904,10 +3014,11 @@
           <div class="about-layout">
             <div class="about-lead">
               <p class="kicker">Notre rôle</p>
-              <h2>Cannes, sans les complications.</h2>
+              <h2>On a créé CTD parce que ça n'existait pas.</h2>
               <p>
-                CTD organise votre séjour à Cannes de A à Z — logement, véhicule, activités.
-                Vous arrivez, tout est prêt.
+                Pas de conciergerie qui réunisse logement, véhicule et activités en un seul pack à Cannes.
+                Alors on l'a construit. CTD c'est ça — un interlocuteur unique, un séjour organisé avant votre arrivée,
+                zéro recherche de votre côté.
               </p>
               <div class="about-credibility" aria-label="Crédibilité CTD">
                 <span>SAS déclarée</span>
@@ -2915,6 +3026,7 @@
                 <span>Fondée en 2025</span>
                 <span>+80 logements partenaires</span>
                 <span>+30 véhicules</span>
+                <span class="highlight">Premier pack séjour clé en main de Cannes</span>
               </div>
               <div class="about-facts">
                 <div class="about-fact">
@@ -2927,7 +3039,7 @@
                 </div>
                 <div class="about-fact">
                   <span>Promesse</span>
-                  <strong>Un cadre clair avant validation, avec disponibilité vérifiée.</strong>
+                  <strong>Vous arrivez. Tout est prêt.</strong>
                 </div>
               </div>
             </div>
@@ -2937,6 +3049,37 @@
                 <p>Une expérience construite autour de vos dates, de votre groupe et du niveau de service attendu.</p>
               </div>
             </div>
+          </div>
+          <div class="about-comparison">
+            <p class="kicker">Ce que les autres ne font pas</p>
+            <h2>Ce que les autres ne font pas.</h2>
+            <div class="comparison-grid">
+              <div class="comparison-card">
+                <h3>Sans CTD</h3>
+                <ul>
+                  <li>Logement Airbnb + voiture autre site + activités à chercher seul</li>
+                  <li>Réservation par Snap, questions sans fin, marchandage</li>
+                  <li>Vous arrivez et vous vous débrouillez</li>
+                </ul>
+              </div>
+              <div class="comparison-card with-ctd">
+                <h3>Avec CTD</h3>
+                <ul>
+                  <li>Un seul pack, un seul interlocuteur, tout inclus</li>
+                  <li>Site transparent, tarifs clairs, disponibilité confirmée avant paiement</li>
+                  <li>On construit votre programme avec vous après l'acompte</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="about-founders">
+            <p class="kicker">Derrière CTD</p>
+            <h2>Derrière CTD</h2>
+            <p>
+              CTD c'est deux associés basés sur la Côte d'Azur, passionnés par Cannes et par l'idée qu'un séjour bien organisé change tout.
+              On a monté cette structure en partant d'un constat simple — personne ne proposait ça ici.
+              On le fait maintenant, et on met notre réputation derrière chaque séjour.
+            </p>
           </div>
         </div>
       </section>
@@ -3021,13 +3164,11 @@
         <div class="container">
           <div class="about-cta-inner">
             <div>
-              <p class="kicker">Commencer</p>
-              <h2>Choisissez le format qui correspond à votre besoin.</h2>
-              <p>Parcourez les packs si vous voulez un séjour complet, ou les véhicules si vous cherchez uniquement une location premium à Cannes.</p>
+              <p class="kicker">Question avant réservation</p>
+              <h2>Vous avez une question avant de réserver ?</h2>
             </div>
             <div class="about-cta-actions">
-              <a class="btn" href="#packs" data-view="packs">Voir les packs</a>
-              <a class="btn light" href="#vehicules" data-view="vehicles">Voir les véhicules</a>
+              <a class="btn" href="https://wa.me/33746724684?text=Bonjour%20CTD%2C%20j%27ai%20une%20question%20avant%20de%20r%C3%A9server." target="_blank" rel="noopener">Écrivez-nous sur WhatsApp</a>
             </div>
           </div>
         </div>
